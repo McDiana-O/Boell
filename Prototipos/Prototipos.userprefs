@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MenuGame.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Juego6\CrackHide.cs" Line="8" Column="2" />
+      <File FileName="Assets\Scripts\Juego6\Game6Touch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Juego6\AlmaJuego6.cs" Line="12" Column="32" />
+      <File FileName="Assets\Scripts\Juego1\AlmaJuego.cs" Line="13" Column="2" />
+      <File FileName="Assets\ScriptMenuWinLose.cs" Line="30" Column="40" />
+      <File FileName="Assets\Scripts\Juego2\AlmaJuego2.cs" Line="25" Column="4" />
+      <File FileName="Assets\Scripts\MenuGame.cs" Line="16" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
