@@ -53,6 +53,8 @@
      <Compile Include="Assets\Scripts\Juego1\Arbolhide.cs" />
      <Compile Include="Assets\Scripts\Juego1\Game1Touch.cs" />
      <Compile Include="Assets\Scripts\Juego10\TouchGameDiez.cs" />
+     <Compile Include="Assets\Scripts\Juego14\AlmaJuego14.cs" />
+     <Compile Include="Assets\Scripts\Juego14\Destroy.cs" />
      <Compile Include="Assets\Scripts\Juego2\AlmaJuego2.cs" />
      <Compile Include="Assets\Scripts\Juego2\Drop.cs" />
      <Compile Include="Assets\Scripts\Juego2\Game2Touch.cs" />
