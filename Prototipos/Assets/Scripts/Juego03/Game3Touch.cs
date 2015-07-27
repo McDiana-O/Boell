@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Game2Touch : MonoBehaviour {
+public class Game3Touch : MonoBehaviour {
 
 	public Vector2 coordenadas;
 	public Vector3 coordScreen;

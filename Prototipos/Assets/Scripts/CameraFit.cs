@@ -197,7 +197,7 @@ public class CameraFit : MonoBehaviour
 		Gizmos.DrawIcon(_tc, "point.png", false);
 		Gizmos.DrawIcon(_tr, "point.png", false);
 		
-		Gizmos.color = Color.green;
+		Gizmos.color = Color.red;
 		Gizmos.DrawLine(_bl, _br);
 		Gizmos.DrawLine(_br, _tr);
 		Gizmos.DrawLine(_tr, _tl);

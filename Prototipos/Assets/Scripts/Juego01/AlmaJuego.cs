@@ -36,12 +36,12 @@ public class AlmaJuego : MonoBehaviour {
 		}
 		else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
 			MyStateGame= stateGame.Gano;
-			timer.text = "you win!!!";
+//			timer.text = "you win!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 		}
 		else if(MyStateGame.Equals (stateGame.Perdio)){
-			timer.text = "you lost!!!";
+			//timer.text = "you lost!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
@@ -54,7 +54,7 @@ public class AlmaJuego : MonoBehaviour {
 	{
 		while (time > 0 && MyStateGame!=stateGame.Gano)
 		{
-			timer.text = time.ToString();
+			//timer.text = time.ToString();
 			time -= 1;
 			yield return new WaitForSeconds(1);
 		}
