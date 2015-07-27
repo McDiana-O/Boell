@@ -40,7 +40,7 @@ $RECYCLE.BIN/
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-.apdisk
+
 # =============== #
 # Unity generated #
 # =============== #
@@ -73,3 +73,5 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 [Tt]humbs.db
+
+.apdisk
