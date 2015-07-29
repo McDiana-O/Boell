@@ -46,23 +46,28 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Minijuego8\Scripts\GamePlayEight.cs" />
-     <Compile Include="Assets\ScriptMenuWinLose.cs" />
+     <Compile Include="Assets\Scripts\AlphaAnimacion.cs" />
      <Compile Include="Assets\Scripts\CameraFit.cs" />
-     <Compile Include="Assets\Scripts\Juego1\AlmaJuego.cs" />
-     <Compile Include="Assets\Scripts\Juego1\Arbolhide.cs" />
-     <Compile Include="Assets\Scripts\Juego1\Game1Touch.cs" />
+     <Compile Include="Assets\Scripts\Juego01\AlmaJuego.cs" />
+     <Compile Include="Assets\Scripts\Juego01\Arbolhide.cs" />
+     <Compile Include="Assets\Scripts\Juego01\Game1Touch.cs" />
+     <Compile Include="Assets\Scripts\Juego02\HideGameObj.cs" />
+     <Compile Include="Assets\Scripts\Juego02\Minigame2.cs" />
+     <Compile Include="Assets\Scripts\Juego03\AlmaJuego3.cs" />
+     <Compile Include="Assets\Scripts\Juego03\Drop.cs" />
+     <Compile Include="Assets\Scripts\Juego03\Game3Touch.cs" />
+     <Compile Include="Assets\Scripts\Juego03\ScripPileton.cs" />
+     <Compile Include="Assets\Scripts\Juego06\AlmaJuego6.cs" />
+     <Compile Include="Assets\Scripts\Juego06\CrackHide.cs" />
+     <Compile Include="Assets\Scripts\Juego06\Game6Touch.cs" />
      <Compile Include="Assets\Scripts\Juego10\TouchGameDiez.cs" />
      <Compile Include="Assets\Scripts\Juego14\AlmaJuego14.cs" />
      <Compile Include="Assets\Scripts\Juego14\Destroy.cs" />
-     <Compile Include="Assets\Scripts\Juego2\AlmaJuego2.cs" />
-     <Compile Include="Assets\Scripts\Juego2\Drop.cs" />
-     <Compile Include="Assets\Scripts\Juego2\Game2Touch.cs" />
-     <Compile Include="Assets\Scripts\Juego2\ScripPileton.cs" />
-     <Compile Include="Assets\Scripts\Juego6\AlmaJuego6.cs" />
-     <Compile Include="Assets\Scripts\Juego6\CrackHide.cs" />
-     <Compile Include="Assets\Scripts\Juego6\Game6Touch.cs" />
      <Compile Include="Assets\Scripts\MenuGame.cs" />
+     <Compile Include="Assets\Scripts\ScriptMenuWinLose.cs" />
+     <Compile Include="Assets\Scripts\minijuego8\GamePlayEight.cs" />
+     <Compile Include="Assets\Scripts\numeroRandom.cs" />
+     <Compile Include="Assets\Scripts\timedown.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
