@@ -64,10 +64,12 @@
      <Compile Include="Assets\Scripts\Juego14\AlmaJuego14.cs" />
      <Compile Include="Assets\Scripts\Juego14\Destroy.cs" />
      <Compile Include="Assets\Scripts\MenuGame.cs" />
+     <Compile Include="Assets\Scripts\NumerosRandom.cs" />
      <Compile Include="Assets\Scripts\ScriptMenuWinLose.cs" />
      <Compile Include="Assets\Scripts\minijuego8\GamePlayEight.cs" />
      <Compile Include="Assets\Scripts\numeroRandom.cs" />
      <Compile Include="Assets\Scripts\timedown.cs" />
+     <Compile Include="Assets\offsetwater.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

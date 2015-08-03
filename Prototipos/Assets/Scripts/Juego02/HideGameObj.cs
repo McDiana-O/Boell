@@ -5,10 +5,10 @@ public class HideGameObj : MonoBehaviour {
 	public GameObject[] gamesObjects;
 	// Use this for initialization
 	void Start () {
-		foreach(GameObject gamesObj in  gamesObjects)
+		/*foreach(GameObject gamesObj in  gamesObjects)
 		{
 			gamesObj.SetActive(false);
-		}
+		}*/
 	}
 
 
