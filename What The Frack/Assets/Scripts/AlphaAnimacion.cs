@@ -32,5 +32,10 @@ public class AlphaAnimacion : MonoBehaviour {
 		}
 	}
 
+	public void alpheComplete(){
+		thisObjet.material.color = new Color (1f, 1f, 1f, 1f);
+		activateAnimacion = false;
+	}
+
 
 }

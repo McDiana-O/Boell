@@ -7,15 +7,26 @@ public class timedown : MonoBehaviour {
 	public Image cooldown;
 	public bool coolingDown;
 	public float waitTime = 30.0f;
-	
+	//public GamePlay02 _gamePlay02;
+	public bool ActivateClock = false;
+	public bool isTimeOver;
+	// Use this for initialization
+
 	// Update is called once per frame
 	void Update () 
 	{
-		if (coolingDown == true)
+		if (ActivateClock) 
 		{
-			//Reduce fill amount over 30 seconds
-			cooldown.fillAmount -= 1.0f/waitTime * Time.deltaTime;
+			if (coolingDown == true)
+			{
+				//Reduce fill amount over 30 seconds
+				cooldown.fillAmount -= 1.0f/waitTime * Time.deltaTime;
+			}
+			if (cooldown.fillAmount <= 0) {
+				isTimeOver=true;
+			}
 		}
+
 	}
 	public void StopRelog()
 	{

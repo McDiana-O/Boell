@@ -5,33 +5,59 @@ using UnityEngine.UI;
 public class AlmaJuego : MonoBehaviour {
 	public int time;
 	public Text timer;
-	static int totalTree= 49;
+	static int totalTree= 30;
 	public int totalArboles;
-	public enum stateGame{Taladora,Aplanadora,Mezcladora,Gano,Perdio};
+	public enum stateGame{Inicio,BeginGame,Taladora,Aplanadora,Mezcladora,Gano,Perdio};
 	public stateGame  MyStateGame;
-	public GameObject carrito;
-	private Animator animCarrito;
+	public GameObject carrito1;
+	public GameObject carrito2;
+	public GameObject carrito3;
+	private Animator animCarrito1;
+	private Animator animCarrito2;
+	private Animator animCarrito3;
 
+	public GameObject TarjestasInformativas; 
+	public GameObject CanvasTutorial;
 	public GameObject MenuWinLose;
+	private timedown _timeDown;
 	// Use this for initialization
 	void Start () {
-		MyStateGame = stateGame.Taladora;
-		StartCoroutine (countdown());
-		totalArboles = totalTree;
-		animCarrito = carrito.GetComponent<Animator>();
+		MyStateGame = stateGame.Inicio;
 
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
+
+		totalArboles = totalTree;
+		animCarrito1 = carrito1.GetComponent<Animator>();
+		animCarrito2 = carrito2.GetComponent<Animator>();
+		animCarrito3 = carrito3.GetComponent<Animator>();
+
+		animCarrito1.speed = 1;
+		animCarrito2.speed = 0;
+		animCarrito3.speed = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
+		if (MyStateGame.Equals(stateGame.BeginGame)){
+			StartCoroutine (countdown());
+			_timeDown.ActivateClock=true;
+			MyStateGame= stateGame.Taladora;
+		}
+
+		else if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
 			totalArboles=totalTree;
-			animCarrito.SetBool("estaAplanando",true);
+			animCarrito1.speed = 0;
+			animCarrito2.speed = 1;
+			animCarrito3.speed = 0;
+			//animCarrito.SetBool("estaAplanando",true);
 			MyStateGame= stateGame.Aplanadora;
 		}
 		else if (MyStateGame.Equals (stateGame.Aplanadora) && totalArboles<=0) {
 			totalArboles=totalTree;
-			animCarrito.SetBool("estaCementado",true);
+			animCarrito1.speed = 0;
+			animCarrito2.speed = 0;
+			animCarrito3.speed = 1;
+			//animCarrito.SetBool("estaCementado",true);
 			MyStateGame= stateGame.Mezcladora;
 		}
 		else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
@@ -39,8 +65,12 @@ public class AlmaJuego : MonoBehaviour {
 //			timer.text = "you win!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+			animCarrito1.speed = 0;
+			animCarrito2.speed = 0;
+			animCarrito3.speed = 0;
 		}
-		else if(MyStateGame.Equals (stateGame.Perdio)){
+		else if(time <= 0){
+			MyStateGame = stateGame.Perdio;
 			//timer.text = "you lost!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
@@ -58,8 +88,15 @@ public class AlmaJuego : MonoBehaviour {
 			time -= 1;
 			yield return new WaitForSeconds(1);
 		}
-		if (time <= 0) {
-			MyStateGame = stateGame.Perdio;
-		}
+
 	}
+
+	public void hideCards(){
+		TarjestasInformativas.SetActive (false);
+		MyStateGame = stateGame.BeginGame;
+	} 
+	public void HideTutorial(){
+		CanvasTutorial.SetActive (false);
+
+	} 
 }

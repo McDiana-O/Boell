@@ -15,12 +15,13 @@ public class GamePlay14 : MonoBehaviour {
 	//private GameObject [] Organs;
 	bool win;
 	//este minijuego dura 8 seg en los 3 niveles
-
+	private timedown _timeDown;
 
 	// Use this for initialization
 	void Start () {
 		gender = Random.Range (0, 2);
 		win = false;
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		//Organs[] = 
 		Debug.Log (gender);
 		if (gender == 0) {
@@ -31,6 +32,7 @@ public class GamePlay14 : MonoBehaviour {
 		if (gender == 1) {
 			Person.GetComponent<Image> ().sprite = Gurl;
 		}
+		_timeDown.ActivateClock = true;
 		StartCoroutine (SetElements ());
 	}
 	

@@ -24,7 +24,7 @@ public class CrackHide : MonoBehaviour {
 	public void ChangeToSellado(){
 		myState=stateCrack.Sellado;
 		mySpriteRender.sprite = spriteSellado;
-		transform.localScale += new Vector3(1.5F, 1.5F, 0);
+		//transform.localScale += new Vector3(1.5F, 1.5F, 0);
 		juegosoul6.SendMessage("sellando");
 	}
 }

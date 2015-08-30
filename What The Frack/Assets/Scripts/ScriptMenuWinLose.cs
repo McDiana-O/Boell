@@ -32,13 +32,13 @@ public class ScriptMenuWinLose : MonoBehaviour {
 
 	public void SetMenssageWinorLose(tipoMensaje typeMenssage){
 		if(typeMenssage == tipoMensaje.Gano){
-			textoWinLose.text="GANASTE!!";
+			textoWinLose.text="FRACK IT!";
 			btn_siguiente.SetActive(true);
 			
 		}
 
 		else if(typeMenssage == tipoMensaje.Perdio){
-			textoWinLose.text="PERDISTE!!";
+			textoWinLose.text="NO FRACK";
 			btn_siguiente.SetActive(false);
 		}
 

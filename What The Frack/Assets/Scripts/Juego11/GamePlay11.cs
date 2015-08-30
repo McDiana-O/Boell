@@ -1,0 +1,85 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GamePlay11 : MonoBehaviour {
+	public float time,lowerLimit,upperLimit;
+	private int creados=0,pointID,tempCount=1,position,position2,numMethane=5,numGas=20,createdMethane=0,createdGas=0;
+	private float[] posY=new float[6];
+	private float[] posY2=new float[6];
+	public GameObject[] MethaneArray;
+	public GameObject MenuWinLose;
+	public GameObject Gas;
+	private GameObject tempObj;
+	bool win;
+
+	private timedown _timeDown;
+	//esta variable va ser  global
+	public int level=1;
+	// Use this for initialization
+	void Start () {
+		posY [0] = -3.5f;
+		posY [1] = -2.2f;
+		posY [2] = -0.9f;
+		posY [3] = 0.4f;
+		posY [4] = 1.7f;
+		posY [5] = 3.0f;
+		posY2 [0] = -2.8f;
+		posY2 [1] = -0.3f;
+		posY2 [2] = 2.8f;
+		win = false;
+		switch (level) {
+		case 1:
+			numMethane=5;
+			lowerLimit=1.4f;
+			upperLimit=4.4f;
+			break;
+		case 2:
+			numMethane=10;
+			lowerLimit=1.0f;
+			upperLimit=5.0f;
+			break;
+		case 3:
+			numMethane=15;
+			lowerLimit=1.0f;
+			upperLimit=4.0f;
+			break;
+		}
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		StartCoroutine (SetElements());
+		_timeDown.ActivateClock = true;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	} 
+	IEnumerator SetElements()
+	{
+		while (time > 0 && !win)
+		{
+			time -= 0.2f;
+			//Debug.Log(time);
+			if(time < upperLimit && time > lowerLimit){
+				if(tempCount==(4-level))
+				{
+					pointID = Random.Range(0,4);
+					position2 = Random.Range(0,3);
+					Instantiate(MethaneArray[pointID],new Vector3(posY2[position2],-14.0f,0.0f),Quaternion.identity);
+					tempCount=1;
+					creados++;
+					//Debug.Log(creados);
+				}
+				else tempCount++;
+				position = Random.Range(0,6);
+				Instantiate(Gas,new Vector3(posY[position],-14.0f,0.0f),Quaternion.identity);
+			}
+			yield return new WaitForSeconds(0.2f);
+		}
+		if (time <= 0) {
+			//MyStateGame = stateGame.Perdio;
+			//timer.text = "you lost!!!";
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		}
+	}
+}
