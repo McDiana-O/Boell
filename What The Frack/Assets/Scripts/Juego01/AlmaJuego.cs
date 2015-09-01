@@ -15,6 +15,7 @@ public class AlmaJuego : MonoBehaviour {
 	private Animator animCarrito1;
 	private Animator animCarrito2;
 	private Animator animCarrito3;
+	public GameObject[] Audios;
 
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
@@ -42,9 +43,12 @@ public class AlmaJuego : MonoBehaviour {
 			StartCoroutine (countdown());
 			_timeDown.ActivateClock=true;
 			MyStateGame= stateGame.Taladora;
+			Audios[0].GetComponent<AudioSource>().Play();
 		}
 
 		else if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
+			Audios[0].GetComponent<AudioSource>().Stop();
+			Audios[1].GetComponent<AudioSource>().Play();
 			totalArboles=totalTree;
 			animCarrito1.speed = 0;
 			animCarrito2.speed = 1;
@@ -53,6 +57,8 @@ public class AlmaJuego : MonoBehaviour {
 			MyStateGame= stateGame.Aplanadora;
 		}
 		else if (MyStateGame.Equals (stateGame.Aplanadora) && totalArboles<=0) {
+			Audios[1].GetComponent<AudioSource>().Stop();
+			Audios[2].GetComponent<AudioSource>().Play();
 			totalArboles=totalTree;
 			animCarrito1.speed = 0;
 			animCarrito2.speed = 0;
@@ -62,6 +68,7 @@ public class AlmaJuego : MonoBehaviour {
 		}
 		else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
 			MyStateGame= stateGame.Gano;
+			Audios[2].GetComponent<AudioSource>().Stop();
 //			timer.text = "you win!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
@@ -70,6 +77,9 @@ public class AlmaJuego : MonoBehaviour {
 			animCarrito3.speed = 0;
 		}
 		else if(time <= 0){
+			Audios[0].GetComponent<AudioSource>().Stop();
+			Audios[1].GetComponent<AudioSource>().Stop();
+			Audios[2].GetComponent<AudioSource>().Stop();
 			MyStateGame = stateGame.Perdio;
 			//timer.text = "you lost!!!";
 			MenuWinLose.SetActive(true);

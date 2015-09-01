@@ -28,7 +28,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	}
 
 	public void RepetirLevel(){
-		if (idMiniGame < 11) {
+		if (idMiniGame < 9) {
 			Application.LoadLevel ("Juego0"+(idMiniGame+1));
 		}
 		else {

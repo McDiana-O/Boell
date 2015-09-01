@@ -27,14 +27,15 @@ public class menuTarjetas : MonoBehaviour {
 		txt_contenido.text= contenidos[numeroTarjeta-1];
 
 		if (numeroTarjeta < 16) {
-			txt_titulo.text=titulos[numeroTarjeta-1];
-		}
-		if (numeroTarjeta < 5) {
-			imgCard.sprite = ImgCards [numeroTarjeta - 1];
+			txt_titulo.text = titulos [numeroTarjeta - 1];
 		}
 		else {
-			imgCard.sprite = ImgCards [0];
+			txt_titulo.text = "";
 		}
+
+		imgCard.sprite = ImgCards [numeroTarjeta - 1];
+		
+
 	}
 	public void tarjetasCanvasHide(bool isHide){
 		tarjetaCanvas.SetActive (isHide);

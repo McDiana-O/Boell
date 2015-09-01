@@ -6,7 +6,8 @@ public class GamePlay07 : MonoBehaviour {
 	public GameObject PerforacionDiagonal;
 	public GameObject[] PuntosObjetivos;
 	public GameObject MenuWinLose;
-
+	public GameObject TarjestasInformativas; 
+	public GameObject CanvasTutorial;
 
 	public enum stateGame07{Begin,AnimVertical,AnimDiagonal,Win,Lose,End};
 
@@ -26,7 +27,7 @@ public class GamePlay07 : MonoBehaviour {
 		temp = Random.Range (0, 3);
 		showPuntoObjetivo (temp);
 		myState = stateGame07.Begin;
-		myState = stateGame07.AnimVertical;
+
 		_stopPerforacion = PerforacionDiagonal.GetComponent<StopPerforacion> ();
 	}
 	
@@ -88,5 +89,15 @@ public class GamePlay07 : MonoBehaviour {
 		else {
 			myState = stateGame07.Lose;
 		}
+	}
+
+	public void hideCards(){
+		TarjestasInformativas.SetActive (false);
+		myState = stateGame07.AnimVertical;
+	} 
+	public void HideTutorial(){
+		
+		CanvasTutorial.SetActive (false);
+
 	}
 }
