@@ -11,6 +11,9 @@ public class GamePlay11 : MonoBehaviour {
 	public GameObject Gas;
 	private GameObject tempObj;
 	bool win;
+	public GameObject TarjestasInformativas; 
+	public GameObject CanvasTutorial;
+	private bool BeginGame=false;
 
 	private timedown _timeDown;
 	//esta variable va ser  global
@@ -26,6 +29,7 @@ public class GamePlay11 : MonoBehaviour {
 		posY2 [0] = -2.8f;
 		posY2 [1] = -0.3f;
 		posY2 [2] = 2.8f;
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		win = false;
 		switch (level) {
 		case 1:
@@ -45,8 +49,7 @@ public class GamePlay11 : MonoBehaviour {
 			break;
 		}
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		StartCoroutine (SetElements());
-		_timeDown.ActivateClock = true;
+		//StartCoroutine (SetElements());
 	}
 	
 	// Update is called once per frame
@@ -55,6 +58,7 @@ public class GamePlay11 : MonoBehaviour {
 	} 
 	IEnumerator SetElements()
 	{
+		_timeDown.ActivateClock = true;
 		while (time > 0 && !win)
 		{
 			time -= 0.2f;
@@ -71,7 +75,8 @@ public class GamePlay11 : MonoBehaviour {
 				}
 				else tempCount++;
 				position = Random.Range(0,6);
-				Instantiate(Gas,new Vector3(posY[position],-14.0f,0.0f),Quaternion.identity);
+				if(tempCount<3)
+					Instantiate(Gas,new Vector3(posY[position],-14.0f,0.0f),Quaternion.identity);
 			}
 			yield return new WaitForSeconds(0.2f);
 		}
@@ -81,5 +86,16 @@ public class GamePlay11 : MonoBehaviour {
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
+	}
+
+	public void HideCanvasTutorial(){
+		CanvasTutorial.SetActive (false);
+		_timeDown.ActivateClock = true;
+		StartCoroutine (SetElements());
+		BeginGame = true;
+	}
+	
+	public void HideTarjetaInformativa(){
+		TarjestasInformativas.SetActive (false);
 	}
 }

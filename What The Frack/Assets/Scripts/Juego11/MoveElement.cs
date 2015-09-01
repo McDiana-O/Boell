@@ -5,8 +5,8 @@ public class MoveElement : MonoBehaviour {
 	public float translation;
 	public float position;
 	void Start () {
-		//translation = 0.1f+Random.value/8;
-		translation = 0.1f;
+		translation = 0.1f+Random.value/8;
+		//translation = 0.1f;
 		}
 	
 	// Update is called once per frame
