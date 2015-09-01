@@ -3,29 +3,38 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class AlmaJuego6 : MonoBehaviour {
+	public GameObject TarjestasInformativas; 
+	public GameObject CanvasTutorial;
+	private timedown _timeDown;
+
+
 	public int time;
 	public Text timer;
 	public  int totalCrack= 3;
-	public enum stateGame{InGame,Gano,Perdio};
+	public enum stateGame{Begin,InGame,Gano,Perdio};
 	public stateGame  MyStateGame= stateGame.InGame;
 
 	public GameObject MenuWinLose;
 	// Use this for initialization
 	void Start () {
-		MyStateGame = stateGame.InGame;
-		StartCoroutine (countdown());
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		time= (int) _timeDown.waitTime;
+		MyStateGame = stateGame.Begin;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(MyStateGame==stateGame.InGame && totalCrack<=0){
 			MyStateGame= stateGame.Gano;
-			timer.text= "You Win!!!";
+			_timeDown.ActivateClock = false;
+			///timer.text= "You Win!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 		}
 		else if(MyStateGame.Equals (stateGame.Perdio)){
-			timer.text = "You Lost!!!";
+			//timer.text = "You Lost!!!";
+			_timeDown.ActivateClock = false;
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
@@ -47,5 +56,17 @@ public class AlmaJuego6 : MonoBehaviour {
 		if (time <= 0) {
 			MyStateGame = stateGame.Perdio;
 		}
+	}
+
+	public void HideCanvasTutorial(){
+		CanvasTutorial.SetActive (false);
+		MyStateGame = stateGame.InGame;
+		StartCoroutine (countdown());
+		_timeDown.ActivateClock = true;
+	}
+	
+	public void HideTarjetaInformativa(){
+		TarjestasInformativas.SetActive (false);
+		
 	}
 }

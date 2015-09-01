@@ -21,12 +21,16 @@ public class AlmaJuego : MonoBehaviour {
 	public GameObject CanvasTutorial;
 	public GameObject MenuWinLose;
 	private timedown _timeDown;
+	public int[] timeLelvel;
+	private int nivel=1;
 	// Use this for initialization
 	void Start () {
 		MyStateGame = stateGame.Inicio;
 
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
-
+		nivel = PlayerPrefs.GetInt ("Nivel");
+		_timeDown.waitTime = timeLelvel [nivel - 1];
+		time = timeLelvel [nivel - 1];
 		totalArboles = totalTree;
 		animCarrito1 = carrito1.GetComponent<Animator>();
 		animCarrito2 = carrito2.GetComponent<Animator>();

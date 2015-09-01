@@ -22,6 +22,7 @@ public class AlmaJuego3 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		nivel=PlayerPrefs.GetInt ("Nivel");
 		win=false;
 		if(nivel==1){
 			Piletonestotales=2;

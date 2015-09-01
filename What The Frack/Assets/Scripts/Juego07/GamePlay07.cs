@@ -20,6 +20,8 @@ public class GamePlay07 : MonoBehaviour {
 	public stateGame07 myState;
 	private float _tempy;
 
+	public int time=3;
+
 	private float[] vertical = {0.0f,25.0f,15.0f,8.0f};
 
 	// Use this for initialization
@@ -27,12 +29,18 @@ public class GamePlay07 : MonoBehaviour {
 		temp = Random.Range (0, 3);
 		showPuntoObjetivo (temp);
 		myState = stateGame07.Begin;
+		nivel = PlayerPrefs.GetInt ("Nivel");
+
 
 		_stopPerforacion = PerforacionDiagonal.GetComponent<StopPerforacion> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(time<=0 && myState == stateGame07.Begin){
+			myState = stateGame07.AnimVertical;
+		}
+
 		if(myState != stateGame07.Lose && myState != stateGame07.Win)
 		{
 			if (_stopPerforacion.isTouchPoint) {
@@ -67,7 +75,9 @@ public class GamePlay07 : MonoBehaviour {
 			if (T.phase == TouchPhase.Canceled || T.phase == TouchPhase.Ended)
 			{
 				//_isTouchScreen=true;
+				Debug.Log("entroaqui ");
 				myState = stateGame07.AnimDiagonal;
+				Debug.Log("entroaqui "+myState.ToString());
 			}
 		}
 	}
@@ -91,12 +101,24 @@ public class GamePlay07 : MonoBehaviour {
 		}
 	}
 
+	IEnumerator countdown()
+	{
+		while (time > 0)
+		{
+			//timer.text = time.ToString();
+			time -= 1;
+			yield return new WaitForSeconds(1);
+		}
+		
+	}
+
+
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
-		myState = stateGame07.AnimVertical;
+
 	} 
 	public void HideTutorial(){
-		
+		StartCoroutine (countdown());
 		CanvasTutorial.SetActive (false);
 
 	}

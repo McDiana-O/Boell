@@ -29,6 +29,7 @@ public class GamePlay02 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		nivel=PlayerPrefs.GetInt ("Nivel");
 		myState = stateGame02.Begin;
 		switch (nivel) {
 		
