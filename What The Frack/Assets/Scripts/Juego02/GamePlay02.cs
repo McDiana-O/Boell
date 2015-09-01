@@ -128,11 +128,12 @@ public class GamePlay02 : MonoBehaviour {
 
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
+		myState = stateGame02.CreateRoads;
+		_timeDown.ActivateClock = true;
 	}
 
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		myState = stateGame02.CreateRoads;
-		_timeDown.ActivateClock = true;
+
 	}
 }

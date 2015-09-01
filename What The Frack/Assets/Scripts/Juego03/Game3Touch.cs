@@ -18,7 +18,7 @@ public class Game3Touch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		#if UNITY_ANDROID
+		#if UNITY_ANDROID || UNITY_EDITOR
 		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
 
 			Vector2 pos =Input.GetTouch(0).position;
@@ -27,25 +27,46 @@ public class Game3Touch : MonoBehaviour {
 			//sierra.transform.position=pos;
 			//Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
 			//sierra.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
-			tempPileton  = hitInfo.transform.gameObject;
-			scriptpileton = tempPileton.GetComponent<ScripPileton>();
-			if(tempPileton.name=="Pileton1" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
-			{
-				Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
-				tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+			if(hitInfo){
+				tempPileton  = hitInfo.transform.gameObject;
+				scriptpileton = tempPileton.GetComponent<ScripPileton>();
+				if(tempPileton.name=="Pileton1" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
+				else if(tempPileton.name=="Pileton2" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
+				else if(tempPileton.name=="Pileton3" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
 				
-			}
-			else if(tempPileton.name=="Pileton2" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
-			{
-				Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
-				tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
-				
-			}
-			else if(tempPileton.name=="Pileton3" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
-			{
-				Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
-				tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
-				
+				else if(tempPileton.name=="Pileton4" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
+				else if(tempPileton.name=="Pileton5" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
+				else if(tempPileton.name=="Pileton6" && scriptpileton.mystate ==ScripPileton.statePileton.drag)
+				{
+					Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
+					tempPileton.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
+					
+				}
 			}
 
 		}

@@ -30,14 +30,16 @@ public class Game6Touch : MonoBehaviour {
 				Vector2 pos =myTouch.position;
 				
 				RaycastHit2D hitInfo=Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos),Vector2.zero);
-				
-				tempCrack  = hitInfo.transform.gameObject;
-				tempCrackHide = tempCrack.GetComponent<CrackHide>();
-				if(tempCrack.tag=="crack" && tempCrackHide.myState ==CrackHide.stateCrack.Grieta && juegosoul6.MyStateGame== AlmaJuego6.stateGame.InGame)
-				{
-					tempCrackHide.ChangeToSellado();
-					
+				if (hitInfo){
+					tempCrack  = hitInfo.transform.gameObject;
+					tempCrackHide = tempCrack.GetComponent<CrackHide>();
+					if(tempCrack.tag=="crack" && tempCrackHide.myState ==CrackHide.stateCrack.Grieta && juegosoul6.MyStateGame== AlmaJuego6.stateGame.InGame)
+					{
+						tempCrackHide.ChangeToSellado();
+						
+					}
 				}
+
 				
 			}
 			//Do whatever you want with the current touch.

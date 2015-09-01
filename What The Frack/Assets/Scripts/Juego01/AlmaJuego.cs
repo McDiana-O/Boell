@@ -75,8 +75,6 @@ public class AlmaJuego : MonoBehaviour {
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
-
-
 	}
 
 
@@ -93,10 +91,10 @@ public class AlmaJuego : MonoBehaviour {
 
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
-		MyStateGame = stateGame.BeginGame;
 	} 
 	public void HideTutorial(){
-		CanvasTutorial.SetActive (false);
 
+		CanvasTutorial.SetActive (false);
+		MyStateGame = stateGame.BeginGame;
 	} 
 }
