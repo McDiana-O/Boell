@@ -4,74 +4,96 @@ using UnityEngine.UI;
 public class AlmaJuego04 : MonoBehaviour {
 	public int time;
 	public Text timer;
+	public Text textoPruebas;
 	public RawImage agua;
 	public Vector2 coordenadas;
+	public Vector3 coordenadasAnt;
 	public Vector3 coordScreen;
 	private float tempPulsos;
-	public enum stateGameMini10{Inicio,Pulsando,Gano,Perdio};
-	stateGameMini10 mysate;
+	public enum stateGameMini04{Inicio,Pulsando,Gano,Perdio};
+	public GameObject Perforacion;
+	public AudioSource audioPerforacion;
+	public AudioSource audioClipWin;
+	stateGameMini04 mysate;
 
 	public GameObject MenuWinLose;
 
 	// Use this for initialization
 	void Start () {
-		mysate = stateGameMini10.Inicio;
+		mysate = stateGameMini04.Inicio;
 		StartCoroutine (countdown());
-		//tempPulsos = (recTransformAgua.localScale.y *100)/2;
-		//texto.text = tempPulsos.ToString();
-		/*RectTransform rt = agua.GetComponent (typeof (RectTransform)) as RectTransform;
-		rt.sizeDelta = new Vector2 (20, 20);*/
-
+		StartCoroutine (SetWinLose ());
 	}
 
 	void FixedUpdate(){
+		if (mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
+			#if UNITY_STANDALONE || UNITY_EDITOR
+			coordenadas = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			//textoPruebas.text = "x=" + coordenadas.x.ToString () + " y=" + coordenadas.y.ToString ();
+			if (Input.GetMouseButtonDown (0)) {
+				Perforacion.transform.position = Vector3.up * (coordenadas.y + 194.0f);
+				audioPerforacion.Play();
+			}
+			#endif
+		
+			#if UNITY_ANDROID
 
-		#if UNITY_STANDALONE || UNITY_EDITOR
-		coordenadas= Camera.main.ScreenToWorldPoint( Input.mousePosition);
-		
-		Debug.Log(coordenadas);
-		agua.uvRect = new Rect (new Vector2(0.0f,(float)((1)*(coordenadas.y/-2.6))),new Vector2(1.0f,1.0f));
-		if (Input.GetMouseButtonDown (0)) {
-			Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-			RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
-		}
-		#endif
-		
-		#if UNITY_ANDROID
-		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.GetTouch (0).position);
-			//sierra.transform.position = new Vector3 (worldPos.x, worldPos.y, 0);
-			Debug.Log("X="+worldPos.x+" Y="+worldPos.y);
-			agua.uvRect = new Rect (new Vector2(0.0f,(float)((1)*(worldPos.y+1/-2.6))),new Vector2(1.0f,1.0f));
-		}
-		#endif
-		//if (agua.fillAmount == 0 && mysate != stateGameMini10.Perdio) {
-		if (false) {
-			mysate = stateGameMini10.Gano;
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
-		} else if (time <= 0 && mysate != stateGameMini10.Gano) {
-			mysate = stateGameMini10.Perdio;
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && mysate == stateGameMini04.Inicio) {
+				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
+				if (worldPos.y > 160.0f && worldPos.y < 172.0f && worldPos.x > -20.0f && worldPos.x < 20.0f) {
+					coordenadasAnt = worldPos;
+					mysate = stateGameMini04.Pulsando;
+					Perforacion.transform.position = Vector3.up * (worldPos.y + 194.0f);
+					audioPerforacion.Play();
+				}
+			}
+			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && mysate == stateGameMini04.Pulsando) {
+				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
+				if (worldPos.x < -25.0f || worldPos.x > 25.0f || coordenadasAnt.y <= worldPos.y) {
+					//textoPruebas.text = "Pierde por Salirse";
+					mysate = stateGameMini04.Perdio;
+					audioPerforacion.Stop();
+				} else {
+					Perforacion.transform.position = Vector3.up * (worldPos.y + 194.0f);
+					coordenadasAnt = worldPos;
+					if (worldPos.y < -228.0f) {
+						mysate = stateGameMini04.Gano;
+						audioPerforacion.Stop();
+						audioClipWin.Play();
+					}
+				}
+			}
+			if (Input.touchCount > 0 && (Input.GetTouch (0).phase == TouchPhase.Canceled || Input.GetTouch (0).phase == TouchPhase.Ended) && mysate == stateGameMini04.Pulsando) {
+				//textoPruebas.text = "Pierde por Soltar";
+				mysate = stateGameMini04.Perdio;
+				audioPerforacion.Stop();
+			}
+			#endif
+			if (time <= 0 && mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
+				//textoPruebas.text = "Pierde por Tiempo";
+				mysate = stateGameMini04.Perdio;;
+				audioPerforacion.Stop();
+			}
 		}
 	}
-
-	public void CuentaPulsadas(){
-		//if (agua.fillAmount > 0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
-		if ((mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
-			mysate = stateGameMini10.Pulsando;
-		} 
-	}
-
 
 	IEnumerator countdown()
 	{
-		while (time >=0 && mysate!= stateGameMini10.Gano)
+		timer.text = time.ToString();
+		while (time >0 && mysate!= stateGameMini04.Gano)
 		{
+			yield return new WaitForSeconds(1);
 			time -= 1;
 			timer.text = time.ToString();
-			yield return new WaitForSeconds(1);
 		}
+	}
+	IEnumerator SetWinLose()
+	{
+		while (mysate!= stateGameMini04.Perdio && mysate!= stateGameMini04.Gano) {
+			yield return new WaitForSeconds(0.7f);
+		}
+		yield return new WaitForSeconds(1);
+		MenuWinLose.SetActive (true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mysate== stateGameMini04.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 	}
 }
