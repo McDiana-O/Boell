@@ -2,16 +2,21 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class GamePlay14 : MonoBehaviour {
 
 	private int gender;
 	public float time;
 	public Sprite Dude;
 	public Sprite Gurl;
+	public Animation Blink;
+	public GameObject[] Organs_B;
+	public GameObject[] Organs;
 	public GameObject Person;
 	public GameObject GirlStuff;
 	public GameObject GirlStuff2;
 	public GameObject MenuWinLose;
+
 	//private GameObject [] Organs;
 	bool win;
 	//este minijuego dura 8 seg en los 3 niveles
@@ -28,9 +33,12 @@ public class GamePlay14 : MonoBehaviour {
 			Person.GetComponent<Image> ().sprite = Dude;
 			GirlStuff.SetActive(false);
 			GirlStuff2.SetActive(false);
+//			Blink.Play()
 		}
 		if (gender == 1) {
 			Person.GetComponent<Image> ().sprite = Gurl;
+//			Organs = 6;
+//			Organs_B = 5;
 		}
 		_timeDown.ActivateClock = true;
 		StartCoroutine (SetElements ());
