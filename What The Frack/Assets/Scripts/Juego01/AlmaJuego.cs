@@ -22,13 +22,13 @@ public class AlmaJuego : MonoBehaviour {
 	public GameObject MenuWinLose;
 	private timedown _timeDown;
 	public int[] timeLelvel;
-	private int nivel=1;
+	public int nivel=1;
 	// Use this for initialization
 	void Start () {
 		MyStateGame = stateGame.Inicio;
 
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
-		nivel = PlayerPrefs.GetInt ("Nivel");
+		//nivel = PlayerPrefs.GetInt ("Nivel");
 		_timeDown.waitTime = timeLelvel [nivel - 1];
 		time = timeLelvel [nivel - 1];
 		totalArboles = totalTree;
@@ -44,12 +44,20 @@ public class AlmaJuego : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (MyStateGame.Equals(stateGame.BeginGame)){
-			StartCoroutine (countdown());
 			_timeDown.ActivateClock=true;
 			MyStateGame= stateGame.Taladora;
 			Audios[0].GetComponent<AudioSource>().Play();
 		}
-
+		if (_timeDown.isTimeOver &&  MyStateGame!=stateGame.Gano) {
+			Audios[0].GetComponent<AudioSource>().Stop();
+			Audios[1].GetComponent<AudioSource>().Stop();
+			Audios[2].GetComponent<AudioSource>().Stop();
+			MyStateGame = stateGame.Perdio;
+			_timeDown.ActivateClock=false;
+			//timer.text = "you lost!!!";
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		}
 		else if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
 			Audios[0].GetComponent<AudioSource>().Stop();
 			Audios[1].GetComponent<AudioSource>().Play();
@@ -73,6 +81,7 @@ public class AlmaJuego : MonoBehaviour {
 		else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
 			MyStateGame= stateGame.Gano;
 			Audios[2].GetComponent<AudioSource>().Stop();
+			_timeDown.ActivateClock=false;
 //			timer.text = "you win!!!";
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
@@ -80,28 +89,8 @@ public class AlmaJuego : MonoBehaviour {
 			animCarrito2.speed = 0;
 			animCarrito3.speed = 0;
 		}
-		else if(time <= 0){
-			Audios[0].GetComponent<AudioSource>().Stop();
-			Audios[1].GetComponent<AudioSource>().Stop();
-			Audios[2].GetComponent<AudioSource>().Stop();
-			MyStateGame = stateGame.Perdio;
-			//timer.text = "you lost!!!";
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
-		}
 	}
-
-
-	IEnumerator countdown()
-	{
-		while (time > 0 && MyStateGame!=stateGame.Gano)
-		{
-			//timer.text = time.ToString();
-			time -= 1;
-			yield return new WaitForSeconds(1);
-		}
-
-	}
+	
 
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);

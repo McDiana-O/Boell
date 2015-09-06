@@ -43,7 +43,7 @@ public class GamePlayTen : MonoBehaviour {
 			mysate = stateGameMini10.Pulsando;
 			//recTransformAgua.localScale = new Vector3(1,recTransformAgua.localScale.y-0.05f,1);
 			//tempPulsos = (recTransformAgua.localScale.y *100)/2;
-			agua.fillAmount -= 0.1f;
+			agua.fillAmount -= 0.05f;
 			texto.text = tempPulsos.ToString ();
 		} 
 	}
