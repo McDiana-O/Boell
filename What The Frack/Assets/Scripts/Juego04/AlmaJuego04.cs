@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 public class AlmaJuego04 : MonoBehaviour {
-	public int time;
+	public float time=2;
 	public Text timer;
 	public Text textoPruebas;
 	public RawImage agua;
@@ -14,49 +14,67 @@ public class AlmaJuego04 : MonoBehaviour {
 	public GameObject Perforacion;
 	public AudioSource audioPerforacion;
 	public AudioSource audioClipWin;
+	public AudioSource audioClipMain;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	stateGameMini04 mysate;
-
+	private timedown _timeDown;
 	public GameObject MenuWinLose;
+	public GameObject TarjestasInformativas; 
+	public GameObject CanvasTutorial;
+	public int level;
 
 	// Use this for initialization
 	void Start () {
-		mysate = stateGameMini04.Inicio;
-		StartCoroutine (countdown());
+		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		level = PlayerPrefs.GetInt("Nivel");
+		switch (level) {
+		case 1:
+			time = 8.0f;
+			break;
+		case 2:
+			time= 7.0f;
+			break;
+		case 3:
+			time = 5.0f;
+			break;
+		}
+		//StartCoroutine (countdown());
 		StartCoroutine (SetWinLose ());
 	}
 
 	void FixedUpdate(){
 		if (mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
 			#if UNITY_STANDALONE || UNITY_EDITOR
-			coordenadas = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			/*coordenadas = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//textoPruebas.text = "x=" + coordenadas.x.ToString () + " y=" + coordenadas.y.ToString ();
 			if (Input.GetMouseButtonDown (0)) {
-				Perforacion.transform.position = Vector3.up * (coordenadas.y + 194.0f);
+				Perforacion.transform.position = Vector3.up * (coordenadas.y + 204.0f);
 				audioPerforacion.Play();
-			}
+			}*/
 			#endif
 		
 			#if UNITY_ANDROID
 
 			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && mysate == stateGameMini04.Inicio) {
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
-				if (worldPos.y > 160.0f && worldPos.y < 172.0f && worldPos.x > -20.0f && worldPos.x < 20.0f) {
+				if (worldPos.y > 160.0f && worldPos.y < 252.0f && worldPos.x > -28.0f && worldPos.x < 28.0f) {
 					coordenadasAnt = worldPos;
 					mysate = stateGameMini04.Pulsando;
-					Perforacion.transform.position = Vector3.up * (worldPos.y + 194.0f);
+					Perforacion.transform.position = Vector3.up * (worldPos.y + 204.0f);
 					audioPerforacion.Play();
 				}
 			}
 			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && mysate == stateGameMini04.Pulsando) {
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
-				if (worldPos.x < -25.0f || worldPos.x > 25.0f || coordenadasAnt.y <= worldPos.y) {
+				if (worldPos.x < -28.0f || worldPos.x > 28.0f || coordenadasAnt.y <= worldPos.y) {
 					//textoPruebas.text = "Pierde por Salirse";
 					mysate = stateGameMini04.Perdio;
 					audioPerforacion.Stop();
 				} else {
 					Perforacion.transform.position = Vector3.up * (worldPos.y + 194.0f);
 					coordenadasAnt = worldPos;
-					if (worldPos.y < -228.0f) {
+					if (worldPos.y < -200.0f) {
 						mysate = stateGameMini04.Gano;
 						audioPerforacion.Stop();
 						audioClipWin.Play();
@@ -69,7 +87,7 @@ public class AlmaJuego04 : MonoBehaviour {
 				audioPerforacion.Stop();
 			}
 			#endif
-			if (time <= 0 && mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
+			if (_timeDown.isTimeOver && mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
 				//textoPruebas.text = "Pierde por Tiempo";
 				mysate = stateGameMini04.Perdio;;
 				audioPerforacion.Stop();
@@ -79,12 +97,12 @@ public class AlmaJuego04 : MonoBehaviour {
 
 	IEnumerator countdown()
 	{
-		timer.text = time.ToString();
+		//timer.text = time.ToString();
 		while (time >0 && mysate!= stateGameMini04.Gano)
 		{
 			yield return new WaitForSeconds(1);
 			time -= 1;
-			timer.text = time.ToString();
+			//timer.text = time.ToString();
 		}
 	}
 	IEnumerator SetWinLose()
@@ -92,8 +110,24 @@ public class AlmaJuego04 : MonoBehaviour {
 		while (mysate!= stateGameMini04.Perdio && mysate!= stateGameMini04.Gano) {
 			yield return new WaitForSeconds(0.7f);
 		}
+		_timeDown.ActivateClock = false;
+		audioClipMain.Stop();
+		if(mysate == stateGameMini04.Gano)
+			audioWin.Play ();
+		else
+			audioLose.Play ();
 		yield return new WaitForSeconds(1);
 		MenuWinLose.SetActive (true);
 		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mysate== stateGameMini04.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+	}
+	public void HideCanvasTutorial(){
+		CanvasTutorial.SetActive (false);
+		_timeDown.waitTime = time;
+		_timeDown.ActivateClock = true;
+		mysate = stateGameMini04.Inicio;
+	}
+	
+	public void HideTarjetaInformativa(){
+		TarjestasInformativas.SetActive (false);
 	}
 }

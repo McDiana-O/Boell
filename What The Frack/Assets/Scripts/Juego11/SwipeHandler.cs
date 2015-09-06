@@ -29,6 +29,8 @@ public class SwipeHandler : MonoBehaviour
 				SwipeID = T.fingerId;
 				StartPos = P;
 				if (hitInfo) {
+					hitInfo.rigidbody.AddForce (Vector3.up);
+					swipeSound.Play();
 					//_changeSprite = hitInfo.transform.GetComponent<changeSprite>();
 					//afterNameRoad=_changeSprite.nameOfFather;
 				}
