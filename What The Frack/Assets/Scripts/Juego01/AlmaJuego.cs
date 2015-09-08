@@ -28,7 +28,7 @@ public class AlmaJuego : MonoBehaviour {
 		MyStateGame = stateGame.Inicio;
 
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
-		//nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel = PlayerPrefs.GetInt ("Nivel");
 		_timeDown.waitTime = timeLelvel [nivel - 1];
 		time = timeLelvel [nivel - 1];
 		totalArboles = totalTree;
