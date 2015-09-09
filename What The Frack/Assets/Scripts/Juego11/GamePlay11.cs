@@ -3,13 +3,19 @@ using System.Collections;
 
 public class GamePlay11 : MonoBehaviour {
 	public float time,lowerLimit,upperLimit;
-	private int creados=0,pointID,tempCount=1,position,position2,numMethane=5,numGas=20,createdMethane=0,createdGas=0;
+	public int numMethane=20,numGas=5;
+	private int creados=0,pointID,tempCount=1,position,position2,createdMethane=0,createdGas=0;
 	private float[] posX=new float[6];
 	private float[] posX2=new float[6];
+	public enum stateGameMini11{Inicio,Jugando,Gano,Perdio};
+	stateGameMini11 mystate;
 	public GameObject[] MethaneArray;
 	public GameObject MenuWinLose;
 	public GameObject Gas;
 	private GameObject tempObj;
+	public AudioSource audioClipMain;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	bool win;
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
@@ -20,6 +26,7 @@ public class GamePlay11 : MonoBehaviour {
 	public int level=1;
 	// Use this for initialization
 	void Start () {
+		mystate = stateGameMini11.Inicio;
 		level=PlayerPrefs.GetInt("Nivel");
 		posX [0] = -3.5f;
 		posX [1] = -2.2f;
@@ -34,17 +41,17 @@ public class GamePlay11 : MonoBehaviour {
 		win = false;
 		switch (level) {
 		case 1:
-			numMethane=5;
+			numGas=5;
 			lowerLimit=1.4f;
 			upperLimit=4.4f;
 			break;
 		case 2:
-			numMethane=10;
+			numGas=10;
 			lowerLimit=1.0f;
 			upperLimit=5.0f;
 			break;
 		case 3:
-			numMethane=15;
+			numGas=15;
 			lowerLimit=1.0f;
 			upperLimit=4.0f;
 			break;
@@ -62,30 +69,31 @@ public class GamePlay11 : MonoBehaviour {
 		_timeDown.ActivateClock = true;
 		while (!_timeDown.isTimeOver)
 		{
+			if (numGas<=0 && mystate!= stateGameMini11.Perdio && mystate!= stateGameMini11.Gano) {
+				mystate = stateGameMini11.Gano;
+				_timeDown.ActivateClock = false;
+			}
 			time -= 0.2f;
 			//Debug.Log(time);
 			if(time < upperLimit && time > lowerLimit){
 				if(tempCount==(4-level))
 				{
-					pointID = Random.Range(0,4);
-					position2 = Random.Range(0,3);
-					Instantiate(MethaneArray[pointID],new Vector3(posX2[position2],-14.0f,0.0f),Quaternion.identity);
+					position = Random.Range(0,6);
+					Instantiate(Gas,new Vector3(posX[position],-14.0f,0.0f),Quaternion.identity);
 					tempCount=1;
 					creados++;
 					//Debug.Log(creados);
 				}
 				else tempCount++;
-				position = Random.Range(0,6);
+				pointID = Random.Range(0,4);
+				position2 = Random.Range(0,3);
 				if(tempCount<3)
-					Instantiate(Gas,new Vector3(posX[position],-14.0f,0.0f),Quaternion.identity);
+					Instantiate(MethaneArray[pointID],new Vector3(posX2[position2],-14.0f,0.0f),Quaternion.identity);
 			}
 			yield return new WaitForSeconds(0.2f);
 		}
-		if (time <= 0) {
-			//MyStateGame = stateGame.Perdio;
-			//timer.text = "you lost!!!";
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		if (_timeDown.isTimeOver && mystate!= stateGameMini11.Perdio && mystate!= stateGameMini11.Gano) {
+			mystate = stateGameMini11.Perdio;
 		}
 	}
 
@@ -93,10 +101,27 @@ public class GamePlay11 : MonoBehaviour {
 		CanvasTutorial.SetActive (false);
 		_timeDown.ActivateClock = true;
 		StartCoroutine (SetElements());
+		StartCoroutine (SetWinLose());
+		mystate = stateGameMini11.Jugando;
 		BeginGame = true;
 	}
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+	}
+
+	IEnumerator SetWinLose()
+	{
+		while (mystate!= stateGameMini11.Perdio && mystate!= stateGameMini11.Gano) {
+			yield return new WaitForSeconds(0.5f);
+		}
+		audioClipMain.Stop();
+		if(mystate == stateGameMini11.Gano)
+			audioWin.Play ();
+		else
+			audioLose.Play ();
+		yield return new WaitForSeconds(1);
+		MenuWinLose.SetActive (true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate== stateGameMini11.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 	}
 }

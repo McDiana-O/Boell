@@ -11,12 +11,19 @@ public class SwipeHandler : MonoBehaviour
 	public bool sendDownMessage = true;
 	public bool sendLeftMessage = true;
 	public bool sendRightMessage = true;
+	private Vector3[] Direcciones= new Vector3[6];
 	private Vector2 StartPos;
 	private int SwipeID = -1;
 	public string afterNameRoad;
 	void Start(){
 		Debugtext1.text="";
 		Debugtext2.text="";
+		Direcciones [0] = new Vector3(1,0,0);
+		Direcciones [1] = new Vector3(-1,0,0);
+		Direcciones [2] = new Vector3(1,1,0);
+		Direcciones [3] = new Vector3(-1,1,0);
+		Direcciones [4] = new Vector3(1,-1,0);
+		Direcciones [5] = new Vector3(-1,-1,0);
 	}
 
 	void Update ()
@@ -29,7 +36,7 @@ public class SwipeHandler : MonoBehaviour
 				SwipeID = T.fingerId;
 				StartPos = P;
 				if (hitInfo) {
-					hitInfo.rigidbody.AddForce (Vector3.up);
+					hitInfo.rigidbody.AddForce (Direcciones[Random.Range(0,6)]);
 					swipeSound.Play();
 					//_changeSprite = hitInfo.transform.GetComponent<changeSprite>();
 					//afterNameRoad=_changeSprite.nameOfFather;
@@ -38,9 +45,9 @@ public class SwipeHandler : MonoBehaviour
 				var delta = P - StartPos;
 				if (T.phase == TouchPhase.Moved) {
 					if (hitInfo) {
-						Debugtext2.text = "Objeto=" + hitInfo.transform.gameObject.tag;
-						hitInfo.rigidbody.AddForce (delta * delta.magnitude);
-						swipeSound.Play();
+						//Debugtext2.text = "Objeto=" + hitInfo.transform.gameObject.tag;
+						//hitInfo.rigidbody.AddForce (delta * delta.magnitude);
+						//swipeSound.Play();
 						SwipeID = -1;
 					}
 				} else if (T.phase == TouchPhase.Canceled || T.phase == TouchPhase.Ended) {
