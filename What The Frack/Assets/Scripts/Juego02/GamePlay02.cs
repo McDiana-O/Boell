@@ -26,6 +26,10 @@ public class GamePlay02 : MonoBehaviour {
 	public bool[] IsRoadFull = new bool[4];
 
 	public bool isTouchPoint= false;
+
+	//esperando un segundo
+	float secondsCounter=0;
+	float secondsToCount=1;
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -87,17 +91,22 @@ public class GamePlay02 : MonoBehaviour {
 		
 			if (totalMachines == numpoint) {
 				myState = stateGame02.Win;
-				MenuWinLose.SetActive (true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.Gano);
+				/*if(!couroutineStarted)
+					StartCoroutine(UsingYield(1));*/
+				//MenuWinLose.SetActive (true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.Gano);
 			}
 		} 
 		else if (_timeDown.isTimeOver) 
 		{
 			myState = stateGame02.Lose;
 		}
-		if (myState == stateGame02.Lose) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		if (myState == stateGame02.Lose || myState == stateGame02.Win) {
+
+
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame02.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				
 		}
 
 	}
@@ -126,7 +135,7 @@ public class GamePlay02 : MonoBehaviour {
 
 	}
 
-
+ 
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 		myState = stateGame02.CreateRoads;

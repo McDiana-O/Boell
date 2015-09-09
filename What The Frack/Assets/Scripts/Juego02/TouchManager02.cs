@@ -10,7 +10,7 @@ public class TouchManager02 : MonoBehaviour {
 	
 	private Vector2 StartPos;
 	private int SwipeID = -1;
-	
+
 	public int afterIDFather=-1;
 
 	private changeRoad _changeRoad;
@@ -20,8 +20,12 @@ public class TouchManager02 : MonoBehaviour {
 	public GameObject[] roadHorizontal2;
 	public GameObject[] roadVertical1;
 	public GameObject[] roadVertical2;
-	void Awake(){
+
+	private SFX_Sounds _sfxSounds;
+	void Start(){
 		_gamePlay02 = this.GetComponent<GamePlay02> ();
+		_sfxSounds = GameObject.FindGameObjectWithTag ("SFXSounds").GetComponent<SFX_Sounds>();
+		_sfxSounds.ChangeAudio ("Motor_Silencioso");
 	}
 
 	void Update ()
@@ -48,6 +52,8 @@ public class TouchManager02 : MonoBehaviour {
 					{
 						_changeRoad = hitInfo.transform.GetComponent<changeRoad>();
 						afterIDFather =_changeRoad.ID_Father;
+						_sfxSounds.SFXPlay();
+						_sfxSounds.SFXLoop(true);
 						EnabledCollider();
 					}
 				}
@@ -66,6 +72,8 @@ public class TouchManager02 : MonoBehaviour {
 					{
 						//Debugtext2.text="Murio "+ T.fingerId;
 						SwipeID = -1;
+						_sfxSounds.SFXStop();
+						_sfxSounds.SFXLoop(false);
 						//MessageTarget.SendMessage("OnTap", SendMessageOptions.DontRequireReceiver);
 					}
 					
@@ -76,6 +84,8 @@ public class TouchManager02 : MonoBehaviour {
 					//Debugtext2.text="Termino: "+ T.fingerId;
 					_gamePlay02.checkFullRoad(afterIDFather);
 					afterIDFather=-1;
+					_sfxSounds.SFXStop();
+					_sfxSounds.SFXLoop(false);
 				}
 				
 				
