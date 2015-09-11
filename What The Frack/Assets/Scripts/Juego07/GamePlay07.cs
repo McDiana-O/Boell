@@ -20,9 +20,17 @@ public class GamePlay07 : MonoBehaviour {
 	public stateGame07 myState;
 	private float _tempy;
 
-	public int time=3;
+
+	public int wait=3;
 
 	private float[] vertical = {0.0f,25.0f,15.0f,8.0f};
+
+	//esperando un segundo
+	private float time=1;
+	
+	//Audios
+	public AudioSource _audioTema;
+	public AudioClip[] winloseAudio;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +45,7 @@ public class GamePlay07 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(time<=0 && myState == stateGame07.Begin){
+		if(wait<=0 && myState == stateGame07.Begin){
 			myState = stateGame07.AnimVertical;
 		}
 
@@ -45,6 +53,9 @@ public class GamePlay07 : MonoBehaviour {
 		{
 			if (_stopPerforacion.isTouchPoint) {
 				myState = stateGame07.Win;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
 			}
 			else if (myState == stateGame07.AnimVertical) {
 				animacionVertical ();
@@ -54,7 +65,7 @@ public class GamePlay07 : MonoBehaviour {
 				animacionDiagonal ();
 			}
 		}
-		if (myState == stateGame07.Win) {
+		/*if (myState == stateGame07.Win) {
 			//myState = stateGame07.Win;
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
@@ -63,6 +74,12 @@ public class GamePlay07 : MonoBehaviour {
 			//myState = stateGame07.Win;
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		}
+		*/
+		if ((myState == stateGame07.Lose || myState == stateGame07.Win) && time<=0) {
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame07.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+			
 		}
 	}
 
@@ -88,6 +105,9 @@ public class GamePlay07 : MonoBehaviour {
 		}
 		else {
 			myState = stateGame07.Lose;
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			StartCoroutine (countdown());
 		}
 	}
 
@@ -98,27 +118,40 @@ public class GamePlay07 : MonoBehaviour {
 		}
 		else {
 			myState = stateGame07.Lose;
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			StartCoroutine (countdown());
 		}
 	}
 
-	IEnumerator countdown()
+	IEnumerator countdownBeginGame()
 	{
-		while (time > 0)
+		while (wait > 0)
 		{
 			//timer.text = time.ToString();
-			time -= 1;
+			wait -= 1;
 			yield return new WaitForSeconds(1);
 		}
 		
 	}
 
+	IEnumerator countdown()
+	{
+		//timer.text = time.ToString();
+		while (time >0 && (myState != stateGame07.Lose|| myState != stateGame07.Win))
+		{
+			yield return new WaitForSeconds(1.5f);
+			time -= 1;
+			//timer.text = time.ToString();
+		}
+	}
 
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
 
 	} 
 	public void HideTutorial(){
-		StartCoroutine (countdown());
+		StartCoroutine (countdownBeginGame());
 		CanvasTutorial.SetActive (false);
 
 	}

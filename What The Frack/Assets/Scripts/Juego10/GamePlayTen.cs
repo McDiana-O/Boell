@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 public class GamePlayTen : MonoBehaviour {
-	public int time;
+	//public int time;
 	public Button button;
 	public Image agua;
 
@@ -21,11 +21,18 @@ public class GamePlayTen : MonoBehaviour {
 
 	public float[] tapSecond;
 	public int nivel=1;
+
+	//esperando un segundo
+	private float time=1;
+	
+	//Audios
+	public AudioSource _audioTema;
+	public AudioClip[] winloseAudio;
 	// Use this for initialization
 	void Start () {
 		nivel = PlayerPrefs.GetInt ("Nivel");
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
-		_timeDown.waitTime = (float)time;
+		//_timeDown.waitTime = (float)time;
 		_animBomba = Bomba.GetComponent<Animator> ();
 		_animBomba.speed=0;
 		mysate = stateGameMini10.Inicio;
@@ -33,20 +40,32 @@ public class GamePlayTen : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (agua.fillAmount == 0 && mysate != stateGameMini10.Perdio) 
+		if (agua.fillAmount == 0 &&( mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) 
 		{
 			mysate = stateGameMini10.Gano;
 			button.interactable = false; 
-			MenuWinLose.SetActive(true);
+			//MenuWinLose.SetActive(true);
 			_timeDown.ActivateClock=false;
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+			StartCoroutine (countdown());
+			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 		} 
-		else if (_timeDown.isTimeOver && mysate != stateGameMini10.Gano)
+		else if (_timeDown.isTimeOver && ( mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano))
 		{
 			_timeDown.ActivateClock=false;
 			mysate = stateGameMini10.Perdio;
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			StartCoroutine (countdown());
+			//MenuWinLose.SetActive(true);
+			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+		}
+
+		if ((mysate == stateGameMini10.Gano ||mysate ==  stateGameMini10.Perdio) && time<=0) {
 			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(mysate == stateGameMini10.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+			
 		}
 	}
 
@@ -60,7 +79,16 @@ public class GamePlayTen : MonoBehaviour {
 			agua.fillAmount -= tapSecond[nivel-1];
 		} 
 	}
-
+	IEnumerator countdown()
+	{
+		//timer.text = time.ToString();
+		while (time >0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano))
+		{
+			yield return new WaitForSeconds(1.5f);
+			time -= 1;
+			//timer.text = time.ToString();
+		}
+	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 		_timeDown.ActivateClock = true;

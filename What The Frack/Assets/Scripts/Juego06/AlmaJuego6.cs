@@ -8,7 +8,7 @@ public class AlmaJuego6 : MonoBehaviour {
 	private timedown _timeDown;
 
 
-	public int time;
+	//public int time;
 	public Text timer;
 	public  int totalCrack= 3;
 	public enum stateGame{Begin,InGame,Gano,Perdio};
@@ -23,10 +23,18 @@ public class AlmaJuego6 : MonoBehaviour {
 	private int indexCracks=0;
 	private int countCrack=0;
 	public AudioSource[] rocasQuebrandose;
+
+	//esperando un segundo
+	private float time=1;
+	
+	//Audios
+	public AudioSource _audioTema;
+	public AudioClip[] winloseAudio;
+
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		time= (int) _timeDown.waitTime;
+	//	time= (int) _timeDown.waitTime;
 		MyStateGame = stateGame.Begin;
 		pointID = NumerosRandom.randomArray (12);
 		nivel = PlayerPrefs.GetInt ("Nivel");
@@ -50,6 +58,11 @@ public class AlmaJuego6 : MonoBehaviour {
 	void Update () {
 		if (_timeDown.isTimeOver && MyStateGame!= stateGame.Gano) {
 			MyStateGame = stateGame.Perdio;
+			_timeDown.ActivateClock = false;
+
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			StartCoroutine (countdown());
 		}
 		if (countCrack==2){
 			if(totalCrack!=0){
@@ -58,20 +71,27 @@ public class AlmaJuego6 : MonoBehaviour {
 			else if(MyStateGame==stateGame.InGame && totalCrack<=0){
 				MyStateGame= stateGame.Gano;
 				_timeDown.ActivateClock = false;
-				
+
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
 				///timer.text= "You Win!!!";
-				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 			}
 		}
-
-		if(MyStateGame.Equals (stateGame.Perdio)){
+		if ((MyStateGame == stateGame.Perdio || MyStateGame == stateGame.Gano) && time<=0) {
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(MyStateGame == stateGame.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+			
+		}
+		/*if(MyStateGame.Equals (stateGame.Perdio)){
 			//timer.text = "You Lost!!!";
-			_timeDown.ActivateClock = false;
+
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
-	
+		*/
 	}
 
 	private void InitializeCracks(){
@@ -86,6 +106,17 @@ public class AlmaJuego6 : MonoBehaviour {
 	public void sellando(){
 		totalCrack=totalCrack-1;
 		countCrack++;
+	}
+
+	IEnumerator countdown()
+	{
+		//timer.text = time.ToString();
+		while (time >0 && (MyStateGame != stateGame.Perdio ||MyStateGame != stateGame.Gano))
+		{
+			yield return new WaitForSeconds(1.5f);
+			time -= 1;
+			//timer.text = time.ToString();
+		}
 	}
 
 	public void HideCanvasTutorial(){

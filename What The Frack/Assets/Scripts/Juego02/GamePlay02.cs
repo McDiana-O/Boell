@@ -28,8 +28,11 @@ public class GamePlay02 : MonoBehaviour {
 	public bool isTouchPoint= false;
 
 	//esperando un segundo
-	float secondsCounter=0;
-	float secondsToCount=1;
+	private float time=1;
+
+	//Audios
+	public AudioSource _audioTema;
+	public AudioClip[] winloseAudio;
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -90,7 +93,13 @@ public class GamePlay02 : MonoBehaviour {
 		{
 		
 			if (totalMachines == numpoint) {
+
 				myState = stateGame02.Win;
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
+
 				/*if(!couroutineStarted)
 					StartCoroutine(UsingYield(1));*/
 				//MenuWinLose.SetActive (true);
@@ -99,13 +108,20 @@ public class GamePlay02 : MonoBehaviour {
 		} 
 		else if (_timeDown.isTimeOver) 
 		{
+
 			myState = stateGame02.Lose;
+
+			_timeDown.ActivateClock=false;
+			_audioTema.Stop();
+			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			StartCoroutine (countdown());
+
 		}
-		if (myState == stateGame02.Lose || myState == stateGame02.Win) {
+		if ((myState == stateGame02.Lose || myState == stateGame02.Win) && time<=0) {
 
 
-				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame02.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame02.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 				
 		}
 
@@ -120,6 +136,11 @@ public class GamePlay02 : MonoBehaviour {
 			else if(roadFull[idFather]<8)
 			{
 				myState = stateGame02.Lose;
+
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
 			}
 		} 
 
@@ -130,12 +151,25 @@ public class GamePlay02 : MonoBehaviour {
 			else if(roadFull[idFather]<9)
 			{
 				myState = stateGame02.Lose;
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
 			}
 		}
 
 	}
 
- 
+	IEnumerator countdown()
+	{
+		//timer.text = time.ToString();
+		while (time >0 && (myState != stateGame02.Lose || myState != stateGame02.Win))
+		{
+			yield return new WaitForSeconds(1.5f);
+			time -= 1;
+			//timer.text = time.ToString();
+		}
+	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 		myState = stateGame02.CreateRoads;

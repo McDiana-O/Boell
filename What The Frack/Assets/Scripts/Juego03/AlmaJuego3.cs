@@ -7,8 +7,7 @@ public class AlmaJuego3 : MonoBehaviour {
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
 	private timedown _timeDown;
-
-	public int time;
+	
 	//public Text timer;
 	public GameObject[] piletones;
 	public GameObject[] points;
@@ -19,6 +18,13 @@ public class AlmaJuego3 : MonoBehaviour {
 	private int Piletonestotales;
 	public int nivel;
 	public int[] pointID;
+
+	//esperando un segundo
+	private float time=1;
+	//Audios
+	public AudioSource _audioTema;
+	public AudioClip[] winloseAudio;
+
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -52,37 +58,54 @@ public class AlmaJuego3 : MonoBehaviour {
 			if(Piletonestotales==0)
 			{
 				win=true;
+
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
+				BeginGame = false;
 				//timer.text = "you win!!!";
-				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 			}
-			else if (time <= 0) {
+			else if (_timeDown.isTimeOver) {
+
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
+				BeginGame = false;
 				//MyStateGame = stateGame.Perdio;
 				//timer.text = "you lost!!!";
-				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 			}
+
+
+		}
+		if (time<=0){
+			MenuWinLose.SetActive(true);
+			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(win == true ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
 
 	}
-
+	
 
 	IEnumerator countdown()
 	{
-		while (time > 0 && !win)
-		{
-			//timer.text = time.ToString();
-			time -= 1;
-			yield return new WaitForSeconds(1);
-		}
 
+		while (time >0)
+		{
+			yield return new WaitForSeconds(1.5f);
+			time -= 1;
+		}
 	}
 
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 
 		_timeDown.ActivateClock = true;
-		StartCoroutine (countdown());
+		//StartCoroutine (countdown());
 		BeginGame = true;
 	}
 	
