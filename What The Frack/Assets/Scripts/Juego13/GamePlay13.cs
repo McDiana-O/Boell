@@ -17,11 +17,11 @@ public class GamePlay13 : MonoBehaviour {
 	/// <summary>
 	/// The type state of the myGame13.
 	/// </summary>
-	public enum stateGame13{Begin,Earthquake,Pause,Win,Lose};
+	private enum stateGame13{Begin,Earthquake,Pause,Win,Lose};
 	/// <summary>
 	/// The state of this game.
 	/// </summary>
-	public stateGame13 myState;
+	private stateGame13 myState;
 	/// <summary>
 	/// The previous identifier button.0 is  nothing, 1 is Right and 2 is Left
 	/// </summary>

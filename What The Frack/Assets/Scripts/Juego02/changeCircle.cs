@@ -25,7 +25,7 @@ public class changeCircle : MonoBehaviour {
 
 	public void changeMachine(int idMachine){
 		if(!isTouchme){
-			_sfxSounds.ChangeAudio("Roca_Quebrandose(V2)");
+			_sfxSounds.ChangeAudio("ConstruccionRapida(V2)");
 			_sfxSounds.SFXLoop(false);
 			_sfxSounds.SFXPlay();
 			_spriteRenderer.sprite=_sprites[idMachine];
