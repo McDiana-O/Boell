@@ -21,6 +21,9 @@ public class GamePlayTen : MonoBehaviour {
 
 	public float[] tapSecond;
 	public int nivel=1;
+	//SFX audios
+
+	public AudioSource SFX_Audio;
 
 	//esperando un segundo
 	private float time=1;
@@ -40,24 +43,29 @@ public class GamePlayTen : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (agua.fillAmount == 0 &&( mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) 
+		if (agua.fillAmount == 0 &&mysate != stateGameMini10.Gano) 
 		{
 			mysate = stateGameMini10.Gano;
 			button.interactable = false; 
 			//MenuWinLose.SetActive(true);
 			_timeDown.ActivateClock=false;
 			_audioTema.Stop();
+			SFX_Audio.Stop();
+			_animBomba.speed=0;
 			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
 			StartCoroutine (countdown());
 			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 		} 
-		else if (_timeDown.isTimeOver && ( mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano))
+		else if (_timeDown.isTimeOver && mysate != stateGameMini10.Perdio )
 		{
 			_timeDown.ActivateClock=false;
 			mysate = stateGameMini10.Perdio;
 			_audioTema.Stop();
+			SFX_Audio.Stop();
+			_animBomba.speed=0;
 			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
 			StartCoroutine (countdown());
+
 			//MenuWinLose.SetActive(true);
 			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
@@ -70,7 +78,9 @@ public class GamePlayTen : MonoBehaviour {
 	}
 
 	public void CuentaPulsadas(){
-
+		if (!SFX_Audio.isPlaying) {
+			SFX_Audio.Play();
+		}
 		if (agua.fillAmount > 0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
 			mysate = stateGameMini10.Pulsando;
 			_animBomba.speed=1;

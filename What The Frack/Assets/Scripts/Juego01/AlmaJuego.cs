@@ -54,7 +54,7 @@ public class AlmaJuego : MonoBehaviour {
 			MyStateGame= stateGame.Taladora;
 			Audios[0].GetComponent<AudioSource>().Play();
 		}
-		if (_timeDown.isTimeOver && ( MyStateGame!=stateGame.Gano || MyStateGame!=stateGame.Perdio)) {
+		if (_timeDown.isTimeOver && MyStateGame!=stateGame.Perdio) {
 			Audios[0].GetComponent<AudioSource>().Stop();
 			Audios[1].GetComponent<AudioSource>().Stop();
 			Audios[2].GetComponent<AudioSource>().Stop();

@@ -106,7 +106,7 @@ public class GamePlay02 : MonoBehaviour {
 				//MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.Gano);
 			}
 		} 
-		else if (_timeDown.isTimeOver) 
+		else if (_timeDown.isTimeOver && myState != stateGame02.Lose) 
 		{
 
 			myState = stateGame02.Lose;
