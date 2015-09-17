@@ -3,14 +3,16 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class AlphaRed : MonoBehaviour {
-	Image _thisImage;
 	public bool animaDown=false;
 	public float waitTime = 1.0f;
 	public bool activateAnimacion = false;
 	private float time=1;
+	public AudioSource _SFX;
+	public AudioClip _Alarma;
+	public SpriteRenderer thisObjet;
 	// Use this for initialization
 	void Start () {
-		_thisImage = this.GetComponent<Image> ();
+		thisObjet = this.GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -18,14 +20,14 @@ public class AlphaRed : MonoBehaviour {
 		if (activateAnimacion) {
 			if (animaDown == true) {
 				//thisObjet.color.a=50;
-				_thisImage.material.color = new Color (1f, 1f, 1f, (_thisImage.material.color.a - (5.0f / waitTime * Time.deltaTime)));
+				thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a - (5.0f / waitTime * Time.deltaTime)));
 			} else {
-				_thisImage.material.color = new Color (1f, 1f, 1f, (_thisImage.material.color.a + (5.0f / waitTime * Time.deltaTime)));
+				thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a + (5.0f / waitTime * Time.deltaTime)));
 			}
 			
-			if (_thisImage.material.color.a < 0.3) {
+			if (thisObjet.material.color.a < 0.3) {
 				animaDown = false;
-			} else if (_thisImage.material.color.a > 1) {
+			} else if (thisObjet.material.color.a > 1) {
 				animaDown = true;
 			}
 		}
@@ -41,6 +43,7 @@ public class AlphaRed : MonoBehaviour {
 		gameObject.SetActive(true);
 		activateAnimacion = true;
 		StartCoroutine (countdown());
+		_SFX.PlayOneShot (_Alarma);
 	}
 	IEnumerator countdown()
 	{

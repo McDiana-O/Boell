@@ -10,7 +10,7 @@ public class GamePlay13 : MonoBehaviour {
 	//esperando un segundo para  mandar  el mensaje de  WINLOSE
 	private float time=1;
 
-
+	public GameObject _ParpadeoRojo;
 	// Variables para  el juego
 	private ChangeSprite _changeQuake;
 	private Animator _animatorQuake;
@@ -99,6 +99,7 @@ public class GamePlay13 : MonoBehaviour {
 				prevIDButton=IDButtonPress;
 				totaltaps++;
 				_animatorQuake.speed = 1;
+
 			}
 		}
 	}
@@ -116,6 +117,7 @@ public class GamePlay13 : MonoBehaviour {
 		CanvasTutorial.SetActive (false);
 		myState = stateGame13.Earthquake;
 		_timeDown.ActivateClock = true;
+		_ParpadeoRojo.GetComponent<AlphaRed>().SetActivateAlphaRed();
 	}
 	
 	public void HideTarjetaInformativa(){
