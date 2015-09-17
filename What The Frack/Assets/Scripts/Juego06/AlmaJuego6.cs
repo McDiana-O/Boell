@@ -41,15 +41,15 @@ public class AlmaJuego6 : MonoBehaviour {
 		switch (nivel) {
 		case 1:
 			//TotalRepeat=2;
-			totalCrack= 4;
+			totalCrack= 6;
 			break;
 		case 2:
 			//TotalRepeat=3;
-			totalCrack= 6;
+			totalCrack= 8;
 			break;
 		case 3:
 			//TotalRepeat=4;
-			totalCrack= 8;
+			totalCrack= 10;
 			break;
 		}
 	}

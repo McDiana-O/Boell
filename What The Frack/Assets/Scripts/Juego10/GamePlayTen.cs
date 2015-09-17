@@ -18,6 +18,8 @@ public class GamePlayTen : MonoBehaviour {
 	public GameObject CanvasTutorial;
 	public GameObject Bomba;
 	private Animator _animBomba;
+	public GameObject Aguagrietas;
+	private Animator _animAguaGrietas;
 
 	public float[] tapSecond;
 	public int nivel=1;
@@ -37,7 +39,9 @@ public class GamePlayTen : MonoBehaviour {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//_timeDown.waitTime = (float)time;
 		_animBomba = Bomba.GetComponent<Animator> ();
-		_animBomba.speed=0;
+		_animAguaGrietas = Aguagrietas.GetComponent<Animator> ();
+		_animBomba.speed = 0;
+		_animAguaGrietas.speed = 0;
 		mysate = stateGameMini10.Inicio;
 		button.interactable = false; 
 	}
@@ -52,6 +56,7 @@ public class GamePlayTen : MonoBehaviour {
 			_audioTema.Stop();
 			SFX_Audio.Stop();
 			_animBomba.speed=0;
+			_animAguaGrietas.speed = 0;
 			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
 			StartCoroutine (countdown());
 			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
@@ -63,6 +68,7 @@ public class GamePlayTen : MonoBehaviour {
 			_audioTema.Stop();
 			SFX_Audio.Stop();
 			_animBomba.speed=0;
+			_animAguaGrietas.speed = 0;
 			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
 			StartCoroutine (countdown());
 
@@ -84,6 +90,7 @@ public class GamePlayTen : MonoBehaviour {
 		if (agua.fillAmount > 0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
 			mysate = stateGameMini10.Pulsando;
 			_animBomba.speed=1;
+			_animAguaGrietas.speed = 1;
 			//recTransformAgua.localScale = new Vector3(1,recTransformAgua.localScale.y-0.05f,1);
 			//tempPulsos = (recTransformAgua.localScale.y *100)/2;
 			agua.fillAmount -= tapSecond[nivel-1];
