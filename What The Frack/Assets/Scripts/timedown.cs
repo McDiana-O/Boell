@@ -6,7 +6,7 @@ public class timedown : MonoBehaviour {
 
 	public Image cooldown;
 	public bool coolingDown;
-	public float waitTime = 30.0f;
+	public float waitTime = 0.0f;
 	//public GamePlay02 _gamePlay02;
 	public bool ActivateClock = false;
 	public bool isTimeOver;
