@@ -41,7 +41,7 @@ public class GamePlay09 : MonoBehaviour {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		//nivel=PlayerPrefs.GetInt ("Nivel");
 
-		timeGame = new float[]{0.0f,0.75f,0.45f,0.3f};
+		timeGame = new float[]{0.0f,0.75f,0.45f,0.325f};
 		totalExplosivos = new int[]{0,6,10,14};
 		iniPosition = new Vector2[]{new Vector2 (10.0f,-7.24f),new Vector2 (10.0f,7.24f)};
 		timeWaterAnim = new float[]{0,0.175f,0.35f,0.525f};
