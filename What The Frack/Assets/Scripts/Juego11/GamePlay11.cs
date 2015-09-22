@@ -4,7 +4,7 @@ using System.Collections;
 public class GamePlay11 : MonoBehaviour {
 	public float time,lowerLimit,upperLimit;
 	public int numMethane=20,numGas=5;
-	private int creados=0,pointID,tempCount=1,position,position2,createdMethane=0,createdGas=0;
+	private int creados=0,pointID,tempCount=1,position,position2;
 	private float[] posX=new float[6];
 	private float[] posX2=new float[6];
 	public enum stateGameMini11{Inicio,Jugando,Gano,Perdio};
@@ -16,10 +16,8 @@ public class GamePlay11 : MonoBehaviour {
 	public AudioSource audioClipMain;
 	public AudioSource audioWin;
 	public AudioSource audioLose;
-	bool win;
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
-	private bool BeginGame=false;
 
 	private timedown _timeDown;
 	//esta variable va ser  global
@@ -38,7 +36,6 @@ public class GamePlay11 : MonoBehaviour {
 		posX2 [1] = -0.3f;
 		posX2 [2] = 2.8f;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		win = false;
 		switch (level) {
 		case 1:
 			numGas=5;
@@ -103,7 +100,6 @@ public class GamePlay11 : MonoBehaviour {
 		StartCoroutine (SetElements());
 		StartCoroutine (SetWinLose());
 		mystate = stateGameMini11.Jugando;
-		BeginGame = true;
 	}
 	
 	public void HideTarjetaInformativa(){

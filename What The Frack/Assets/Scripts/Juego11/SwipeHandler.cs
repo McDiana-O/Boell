@@ -12,7 +12,7 @@ public class SwipeHandler : MonoBehaviour
 	public bool sendLeftMessage = true;
 	public bool sendRightMessage = true;
 	private Vector3[] Direcciones= new Vector3[6];
-	private Vector2 StartPos;
+	//private Vector2 StartPos;
 	private int SwipeID = -1;
 	public string afterNameRoad;
 	void Start(){
@@ -31,10 +31,10 @@ public class SwipeHandler : MonoBehaviour
 		if (Input.touches.Length>0) {
 			Touch T = Input.touches [0];
 			RaycastHit2D hitInfo = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (T.position), Vector2.zero);
-			var P = T.position;
+			//var P = T.position;
 			if (T.phase == TouchPhase.Began) {
 				SwipeID = T.fingerId;
-				StartPos = P;
+				//StartPos = P;
 				if (hitInfo) {
 					hitInfo.rigidbody.AddForce (Direcciones[Random.Range(0,6)]);
 					swipeSound.Play();
@@ -42,7 +42,7 @@ public class SwipeHandler : MonoBehaviour
 					//afterNameRoad=_changeSprite.nameOfFather;
 				}
 			} else if (T.fingerId == SwipeID) {
-				var delta = P - StartPos;
+				//var delta = P - StartPos;
 				if (T.phase == TouchPhase.Moved) {
 					if (hitInfo) {
 						//Debugtext2.text = "Objeto=" + hitInfo.transform.gameObject.tag;
