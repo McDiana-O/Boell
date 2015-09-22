@@ -36,6 +36,4 @@ public class AlphaAnimacion : MonoBehaviour {
 		thisObjet.material.color = new Color (1f, 1f, 1f, 1f);
 		activateAnimacion = false;
 	}
-
-
 }

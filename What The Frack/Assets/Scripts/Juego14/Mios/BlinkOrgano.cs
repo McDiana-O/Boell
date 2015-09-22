@@ -7,25 +7,26 @@ public class BlinkOrgano : MonoBehaviour {
 	public float waitTime = 1.0f;
 	public SpriteRenderer thisObjet;
 	public bool activateAnimacion = false;
-	public enum Estado{Sano,Enfermo};
+	public enum Estado{Begin,Sano,TimeForSick,Enfermo};
 	public Estado miEstado;
 	public Sprite[] _spritesOrganos;
 	public bool Enferma=false; 
-	public float timeForSick=0.8f;
-	bool FirstTime=false;
+	private float timeForSick=0.0f;
+	bool OnceTime=true;
+	float timePrev=0;
 	// Use this for initialization
 	void Start () {
 		thisObjet = this.GetComponent<SpriteRenderer> ();
+		StartCoroutine (countUp());
+		miEstado = Estado.Begin;
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Enferma) {
+		if (timeForSick-timePrev>=3.5 && miEstado==Estado.TimeForSick) {
 			SetEnfermo ();
-		} else {
-			miEstado=Estado.Sano;
-		}
+		} 
 		if (activateAnimacion && miEstado == Estado.Enfermo) {
 			thisObjet.sprite = _spritesOrganos[1];
 			if (animaDown == true) {
@@ -40,15 +41,12 @@ public class BlinkOrgano : MonoBehaviour {
 				animaDown = true;
 			}
 		}
-		else if (miEstado==Estado.Sano) {
+		else if (miEstado==Estado.Sano && OnceTime) {
 			activateAnimacion=false;
 			thisObjet.sprite = _spritesOrganos[0];
 			thisObjet.color = new Color(1f,1f,1f);
-			timeForSick=0.8f;
-			if(!FirstTime){
-				FirstTime=true;
-				StartCoroutine (countdown());
-			}
+			miEstado= Estado.TimeForSick;
+			OnceTime=false;
 		}
 	}
 
@@ -56,13 +54,19 @@ public class BlinkOrgano : MonoBehaviour {
 		activateAnimacion=true;
 		miEstado = Estado.Enfermo;
 	}
+	public void  SetSano(){
+		timePrev = timeForSick;
+		OnceTime=true;
+		miEstado = Estado.Sano;
+	}
 
-	IEnumerator countdown()
-	{
-		while (timeForSick >0 && miEstado==Estado.Sano)
+	IEnumerator countUp()
+	{	
+		while (timeForSick <35)
 		{
-			yield return new WaitForSeconds(0.2f);
-			timeForSick -= 0.2f;
+			yield return new WaitForSeconds(0.1f);
+			timeForSick += 0.1f;
 		}
+
 	}
 }
