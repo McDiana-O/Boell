@@ -12,11 +12,14 @@ public class BlinkOrgano : MonoBehaviour {
 	public Sprite[] _spritesOrganos;
 	public bool Enferma=false; 
 	private float timeForSick=0.0f;
+	private float[] timeToStartAgain;
+	private int IdToStart=0;
 	bool OnceTime=true;
 	float timePrev=0;
 	// Use this for initialization
 	void Start () {
 		thisObjet = this.GetComponent<SpriteRenderer> ();
+		timeToStartAgain = new float[]{3.5f,4.0f,4.5f,5.0f,5.25f}; 
 		StartCoroutine (countUp());
 		miEstado = Estado.Begin;
 	}
@@ -24,7 +27,7 @@ public class BlinkOrgano : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (timeForSick-timePrev>=3.5 && miEstado==Estado.TimeForSick) {
+		if (timeForSick-timePrev>=timeToStartAgain[IdToStart] && miEstado==Estado.TimeForSick) {
 			SetEnfermo ();
 		} 
 		if (activateAnimacion && miEstado == Estado.Enfermo) {
@@ -56,6 +59,7 @@ public class BlinkOrgano : MonoBehaviour {
 	}
 	public void  SetSano(){
 		timePrev = timeForSick;
+		IdToStart = Random.Range(0,5);
 		OnceTime=true;
 		miEstado = Estado.Sano;
 	}

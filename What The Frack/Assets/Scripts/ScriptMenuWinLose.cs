@@ -8,7 +8,9 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	public GameObject btn_salir;
 	public GameObject btn_repetir;
 	public GameObject btn_siguiente;
-	public enum tipoMensaje{Gano,Perdio};
+	public GameObject btn_Continuar;
+	public GameObject _BGNaranja;
+	public enum tipoMensaje{Gano,Perdio,Pause};
 	public int idMiniGame;
 	public Sprite[] SpriteRetroWin;
 	public Sprite[] SpriteRetroLose;
@@ -24,34 +26,50 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	}
 
 	public void Nextlevel(){
+
 		Application.LoadLevel(Application.loadedLevel+1);
 	}
 
 	public void RepetirLevel(){
 		if (idMiniGame < 9) {
+			Time.timeScale=1;
 			Application.LoadLevel ("Juego0"+(idMiniGame+1));
 		}
 		else {
+			Time.timeScale=1;
 			Application.LoadLevel ("Juego"+(idMiniGame+1));
 		}
 	}
 
 	public void GoToMenu(){
+		Time.timeScale=1;
 		Application.LoadLevel("MenuPrincipal");
+
 	}
 
+	void PauseHide(bool activate){
+		btn_Continuar.SetActive (activate);
+		_BGNaranja.SetActive (activate);
+	}
 	public void SetMenssageWinorLose(tipoMensaje typeMenssage){
 		if(typeMenssage == tipoMensaje.Gano){
 			textoWinLose.text="FRACK IT!";
 			btn_siguiente.SetActive(true);
+			PauseHide(false);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroWin[idMiniGame];
+
 			
 		}
 
 		else if(typeMenssage == tipoMensaje.Perdio){
 			textoWinLose.text="NO FRACK";
 			btn_siguiente.SetActive(false);
+			PauseHide(true);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
+		}
+		else if(typeMenssage == tipoMensaje.Pause){
+			textoWinLose.text="Pausa";
+			PauseHide(true);
 		}
 
 	}

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterFracking : MonoBehaviour {
 	private bool startGame;
-	private float waitTime=1.0f;
+	private float waitTime=3.0f;
 	public SpriteRenderer _spriteRenderer;
 	public Sprite[] _spritesCharacter;
 	public enum Genero{Hombre,Mujer};
@@ -13,7 +13,15 @@ public class CharacterFracking : MonoBehaviour {
 	void Start () {
 		startGame = false;
 		IntGenero =Random.Range (0,2);
-		miGenero = (IntGenero==0)? Genero.Hombre:Genero.Mujer;
+		if (IntGenero == 0) 
+		{
+			miGenero= Genero.Hombre;
+		}
+		else 
+		{
+			miGenero= Genero.Mujer;
+		}
+		//miGenero = (IntGenero==0)? Genero.Hombre:Genero.Mujer;
 		_spriteRenderer = GetComponent<SpriteRenderer> ();
 		_spriteRenderer.sprite = _spritesCharacter [IntGenero];
 	

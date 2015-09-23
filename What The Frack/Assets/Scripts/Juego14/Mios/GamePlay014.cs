@@ -12,6 +12,7 @@ public class GamePlay014 : MonoBehaviour {
 	private BlinkOrgano _BlinkOrganoTocado;
 	public GameObject[] Cuerpecito;
 	private int[] pointID;
+	private int IndexOrgano;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public bool isPausing=false;	/// 
@@ -24,35 +25,34 @@ public class GamePlay014 : MonoBehaviour {
 	private int tapCount;
 	//esperando un segundo
 	private timedown _timeDown;
-	private float time=1;
+	public float time=1.0f;
+	public float CountTime=0.0f;
+	private float timePrev;
 	//Audios
 	public AudioSource _audioTema;
+	public AudioSource _AudioBip;
+	public AudioSource _SFX;
 	public AudioClip[] winloseAudio;
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		_characterFracking = GameObject.Find ("CharacterMH").GetComponent<CharacterFracking>();
-
-		if (_characterFracking.miGenero == CharacterFracking.Genero.Hombre) {
-			pointID = NumerosRandom.randomArray (6);
-		} else {
-			pointID = NumerosRandom.randomArray (7);
-		}
+		IndexOrgano = 0;
 		myState = StateGame.Begin;
+		StartCoroutine(CountToSick());
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (isPausing) {
-			Time.timeScale=0;
-		} 
-		else 
+
+		if(!isPausing) 
 		{
-			Time.timeScale=1;
 			if (myState == StateGame.Introduccion && _characterFracking._spriteRenderer.color.a <= 0) {
 				_timeDown.ActivateClock = true;
 				myState = StateGame.InGame;
+				timePrev=CountTime;
+				_AudioBip.Play();
 			} 
 			else if (myState == StateGame.InGame) 
 			{
@@ -62,11 +62,22 @@ public class GamePlay014 : MonoBehaviour {
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[1],0.6f);
 					StartCoroutine (countdown());
+
+				}
+				else{
+					touchToOrgano();
+					if(CountTime-timePrev>=0.6f && IndexOrgano<pointID.Length){
+						Cuerpecito[pointID[IndexOrgano]].GetComponent<BlinkOrgano>().SetEnfermo();
+						timePrev=CountTime;
+						IndexOrgano++;
+					}
+
 				}
 			}
 			if(myState== StateGame.Lose && time<=0){
 				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+
 			}
 		}
 	}
@@ -89,12 +100,25 @@ public class GamePlay014 : MonoBehaviour {
 						_BlinkOrganoTocado= _OrganoTocado.GetComponent<BlinkOrgano>();
 						if(_BlinkOrganoTocado.miEstado == BlinkOrgano.Estado.Enfermo){
 							_BlinkOrganoTocado.SetSano();
+							_SFX.PlayOneShot(winloseAudio[2]);
 						}
 					}
 				}
 			}
 		}
 	}
+
+
+	IEnumerator CountToSick()
+	{	
+		while (CountTime <35)
+		{
+			yield return new WaitForSeconds(0.1f);
+			CountTime += 0.1f;
+		}
+		
+	}
+
 	IEnumerator countdown()
 	{
 		while (time >0)
@@ -102,6 +126,21 @@ public class GamePlay014 : MonoBehaviour {
 			yield return new WaitForSeconds(1.5f);
 			time -= 1;
 		}
+	}
+
+	//Funciones para  botones de la UI
+	public void InPause(){
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+		_AudioBip.Pause();
+	}
+	public void OutPause(){
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+		_AudioBip.UnPause();
 	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
@@ -112,6 +151,13 @@ public class GamePlay014 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_characterFracking.miGenero == CharacterFracking.Genero.Hombre) {
+			pointID = NumerosRandom.randomArray (6);
+			Cuerpecito[6].SetActive(false);
+		} else {
+			pointID = NumerosRandom.randomArray (7);
+			Cuerpecito[6].SetActive(true);
+		}
 		
 	}
 }
