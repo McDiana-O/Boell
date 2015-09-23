@@ -66,7 +66,7 @@ public class GamePlay014 : MonoBehaviour {
 				}
 				else{
 					touchToOrgano();
-					if(CountTime-timePrev>=0.6f && IndexOrgano<pointID.Length){
+					if(CountTime-timePrev>=0.8f && IndexOrgano<pointID.Length){
 						Cuerpecito[pointID[IndexOrgano]].GetComponent<BlinkOrgano>().SetEnfermo();
 						timePrev=CountTime;
 						IndexOrgano++;

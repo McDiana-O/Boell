@@ -4,7 +4,7 @@ using System.Collections;
 public class BlinkOrgano : MonoBehaviour {
 
 	public bool animaDown=false;
-	public float waitTime = 1.0f;
+	public float waitTime = 0.5f;
 	public SpriteRenderer thisObjet;
 	public bool activateAnimacion = false;
 	public enum Estado{Begin,Sano,TimeForSick,Enfermo};
@@ -19,7 +19,7 @@ public class BlinkOrgano : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		thisObjet = this.GetComponent<SpriteRenderer> ();
-		timeToStartAgain = new float[]{3.5f,4.0f,4.5f,5.0f,5.25f}; 
+		timeToStartAgain = new float[]{1.5f,2.0f,2.5f,3.0f,3.25f}; 
 		StartCoroutine (countUp());
 		miEstado = Estado.Begin;
 	}

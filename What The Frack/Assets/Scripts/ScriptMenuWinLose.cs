@@ -64,7 +64,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 		else if(typeMenssage == tipoMensaje.Perdio){
 			textoWinLose.text="NO FRACK";
 			btn_siguiente.SetActive(false);
-			PauseHide(true);
+			PauseHide(false);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
 		}
 		else if(typeMenssage == tipoMensaje.Pause){

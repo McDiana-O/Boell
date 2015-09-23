@@ -21,7 +21,7 @@ public class GamePlay09 : MonoBehaviour {
 
 	enum stateGame{Begin,InGame,Win,Lose,Pause};
 	stateGame myState;
-	public int nivel;
+	private int nivel;
 
 	//For the touch
 	private Touch myTouch;
@@ -39,7 +39,7 @@ public class GamePlay09 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		//nivel=PlayerPrefs.GetInt ("Nivel");
+		nivel=PlayerPrefs.GetInt ("Nivel");
 
 		timeGame = new float[]{0.0f,0.75f,0.45f,0.325f};
 		totalExplosivos = new int[]{0,6,10,14};
