@@ -14,8 +14,8 @@ public class GamePlay02 : MonoBehaviour {
 	public int totalMachines=0;
 	public GameObject MenuWinLose;
 
-	enum stateGame02{Begin,CreateRoads,TouchPoints,Win,Lose};
-	stateGame02 myState;
+	public enum stateGame02{Begin,CreateRoads,TouchPoints,Win,Lose};
+	public stateGame02 myState;
 
 	int total;
 	private timedown _timeDown;

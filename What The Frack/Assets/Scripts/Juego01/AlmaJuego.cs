@@ -29,6 +29,9 @@ public class AlmaJuego : MonoBehaviour {
 	//Audios
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
+	/// <summary>
+	/// Pause	/// </summary>
+	public bool isPausing=false;
 	// Use this for initialization
 	void Start () {
 		MyStateGame = stateGame.Inicio;
@@ -49,64 +52,67 @@ public class AlmaJuego : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (MyStateGame.Equals(stateGame.BeginGame)){
-			_timeDown.ActivateClock=true;
-			MyStateGame= stateGame.Taladora;
-			Audios[0].GetComponent<AudioSource>().Play();
-		}
-		if (_timeDown.isTimeOver && MyStateGame!=stateGame.Perdio) {
-			Audios[0].GetComponent<AudioSource>().Stop();
-			Audios[1].GetComponent<AudioSource>().Stop();
-			Audios[2].GetComponent<AudioSource>().Stop();
-			MyStateGame = stateGame.Perdio;
-			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
-			StartCoroutine (countdown());
-			_timeDown.ActivateClock=false;
-			//timer.text = "you lost!!!";
-			//MenuWinLose.SetActive(true);
-			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
-		}
-		else if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
-			Audios[0].GetComponent<AudioSource>().Stop();
-			Audios[1].GetComponent<AudioSource>().Play();
-			totalArboles=totalTree;
-			animCarrito1.speed = 0;
-			animCarrito2.speed = 1;
-			animCarrito3.speed = 0;
-			//animCarrito.SetBool("estaAplanando",true);
-			MyStateGame= stateGame.Aplanadora;
-		}
-		else if (MyStateGame.Equals (stateGame.Aplanadora) && totalArboles<=0) {
-			Audios[1].GetComponent<AudioSource>().Stop();
-			Audios[2].GetComponent<AudioSource>().Play();
-			totalArboles=totalTree;
-			animCarrito1.speed = 0;
-			animCarrito2.speed = 0;
-			animCarrito3.speed = 1;
-			//animCarrito.SetBool("estaCementado",true);
-			MyStateGame= stateGame.Mezcladora;
-		}
-		else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
-			MyStateGame= stateGame.Gano;
-			Audios[2].GetComponent<AudioSource>().Stop();
-			_timeDown.ActivateClock=false;
-			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
-			StartCoroutine (countdown());
-//			timer.text = "you win!!!";
-			//MenuWinLose.SetActive(true);
-			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
-			animCarrito1.speed = 0;
-			animCarrito2.speed = 0;
-			animCarrito3.speed = 0;
+		if (!isPausing) {
+			if (MyStateGame.Equals(stateGame.BeginGame)){
+				_timeDown.ActivateClock=true;
+				MyStateGame= stateGame.Taladora;
+				Audios[0].GetComponent<AudioSource>().Play();
+			}
+			if (_timeDown.isTimeOver && MyStateGame!=stateGame.Perdio) {
+				Audios[0].GetComponent<AudioSource>().Stop();
+				Audios[1].GetComponent<AudioSource>().Stop();
+				Audios[2].GetComponent<AudioSource>().Stop();
+				MyStateGame = stateGame.Perdio;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
+				_timeDown.ActivateClock=false;
+				//timer.text = "you lost!!!";
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+			}
+			else if (MyStateGame.Equals (stateGame.Taladora) && totalArboles<=0) {
+				Audios[0].GetComponent<AudioSource>().Stop();
+				Audios[1].GetComponent<AudioSource>().Play();
+				totalArboles=totalTree;
+				animCarrito1.speed = 0;
+				animCarrito2.speed = 1;
+				animCarrito3.speed = 0;
+				//animCarrito.SetBool("estaAplanando",true);
+				MyStateGame= stateGame.Aplanadora;
+			}
+			else if (MyStateGame.Equals (stateGame.Aplanadora) && totalArboles<=0) {
+				Audios[1].GetComponent<AudioSource>().Stop();
+				Audios[2].GetComponent<AudioSource>().Play();
+				totalArboles=totalTree;
+				animCarrito1.speed = 0;
+				animCarrito2.speed = 0;
+				animCarrito3.speed = 1;
+				//animCarrito.SetBool("estaCementado",true);
+				MyStateGame= stateGame.Mezcladora;
+			}
+			else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
+				MyStateGame= stateGame.Gano;
+				Audios[2].GetComponent<AudioSource>().Stop();
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
+				//			timer.text = "you win!!!";
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+				animCarrito1.speed = 0;
+				animCarrito2.speed = 0;
+				animCarrito3.speed = 0;
+			}
+			if ((MyStateGame == stateGame.Perdio || MyStateGame == stateGame.Gano) && time<=0) {
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(MyStateGame == stateGame.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				
+			}
 		}
 
-		if ((MyStateGame == stateGame.Perdio || MyStateGame == stateGame.Gano) && time<=0) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(MyStateGame == stateGame.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
-			
-		}
+
 	}
 	IEnumerator countdown()
 	{
@@ -118,7 +124,26 @@ public class AlmaJuego : MonoBehaviour {
 			//timer.text = time.ToString();
 		}
 	}
+	//Funciones para  botones de la UI
+	public void InPause(){
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+		Audios[0].GetComponent<AudioSource>().Pause ();
+		Audios[1].GetComponent<AudioSource>().Pause ();
+		Audios[2].GetComponent<AudioSource>().Pause ();
 
+	}
+	public void OutPause(){
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+		Audios[0].GetComponent<AudioSource>().UnPause ();
+		Audios[1].GetComponent<AudioSource>().UnPause ();
+		Audios[2].GetComponent<AudioSource>().UnPause ();
+
+	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
 	} 
