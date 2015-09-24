@@ -30,6 +30,7 @@ public class GamePlay09 : MonoBehaviour {
 	private GameObject _tempTouchGrieta;
 	private MoveExplosivo _moveExplosivo; 
 
+	public bool isPausing=false;	
 	//esperando un segundo
 	private timedown _timeDown;
 	private float time=1;
@@ -54,28 +55,29 @@ public class GamePlay09 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (myState == stateGame.InGame && totalExplosivos [nivel] > 0  && !_timeDown.isTimeOver) {
-			touchToBoomb ();
-		} 
-		else if (myState != stateGame.Win && totalExplosivos [nivel] == 0 && !_timeDown.isTimeOver) {
-			myState= stateGame.Win;
-			_timeDown.ActivateClock=false;
-			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
-			StartCoroutine (countdown());
+		if(!isPausing){
+			if (myState == stateGame.InGame && totalExplosivos [nivel] > 0  && !_timeDown.isTimeOver) {
+				touchToBoomb ();
+			} 
+			else if (myState != stateGame.Win && totalExplosivos [nivel] == 0 && !_timeDown.isTimeOver) {
+				myState= stateGame.Win;
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
+			}
+			else if (myState == stateGame.InGame && totalExplosivos [nivel] > 0 && _timeDown.isTimeOver) {
+				myState = stateGame.Lose;
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
+			}
+			if ((myState == stateGame.Lose || myState == stateGame.Win) && time<=0) {
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+			}
 		}
-		else if (myState == stateGame.InGame && totalExplosivos [nivel] > 0 && _timeDown.isTimeOver) {
-			myState = stateGame.Lose;
-			_timeDown.ActivateClock=false;
-			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
-			StartCoroutine (countdown());
-		}
-		if ((myState == stateGame.Lose || myState == stateGame.Win) && time<=0) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
-		}
-
 	}
 
 	IEnumerator CreaGrietas()
@@ -129,6 +131,18 @@ public class GamePlay09 : MonoBehaviour {
 		}
 	}
 
+	//Funciones para  botones de la UI
+	public void InPause(){
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 		myState = stateGame.InGame;

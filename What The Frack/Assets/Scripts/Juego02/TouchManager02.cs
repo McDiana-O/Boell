@@ -24,13 +24,15 @@ public class TouchManager02 : MonoBehaviour {
 	private SFX_Sounds _sfxSounds;
 	void Start(){
 		_gamePlay02 = this.GetComponent<GamePlay02> ();
-		_sfxSounds = GameObject.FindGameObjectWithTag ("SFXSounds").GetComponent<SFX_Sounds>();
+		_sfxSounds = GameObject.Find ("SFX_MinuJuego").GetComponent<SFX_Sounds>();
+			//GameObject.FindGameObjectWithTag ("SFXSounds").GetComponent<SFX_Sounds>();
 		_sfxSounds.ChangeAudio ("Motor_Silencioso");
 	}
 
 	void Update ()
 	{
-		if (_gamePlay02.myState == GamePlay02.stateGame02.CreateRoads || _gamePlay02.myState == GamePlay02.stateGame02.TouchPoints) {
+		if ((_gamePlay02.myState == GamePlay02.stateGame02.CreateRoads || _gamePlay02.myState == GamePlay02.stateGame02.TouchPoints) && !_gamePlay02.isPausing) 
+		{
 			if (MessageTarget == null) 
 			{
 				MessageTarget = gameObject;

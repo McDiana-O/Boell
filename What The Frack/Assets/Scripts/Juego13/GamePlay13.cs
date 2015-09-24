@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay13 : MonoBehaviour {
@@ -12,6 +13,8 @@ public class GamePlay13 : MonoBehaviour {
 
 	public GameObject _ParpadeoRojo;
 	// Variables para  el juego
+	public Button _btnleft;
+	public Button _btnRight;
 	private ChangeSprite _changeQuake;
 	private Animator _animatorQuake;
 	/// <summary>
@@ -30,10 +33,12 @@ public class GamePlay13 : MonoBehaviour {
 	public int nivel;
 	public int totaltaps;
 	public int[] tapsToDestroy;
-
+	public bool isPausing=false;
 	//Audios
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
+	public AudioClip[] _sfxClip;
+	public AudioSource _sfx;
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -50,56 +55,67 @@ public class GamePlay13 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if(_timeDown.isTimeOver && myState==stateGame13.Earthquake){
-			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
-			_timeDown.ActivateClock=false;
-			myState= stateGame13.Lose;
-			_animatorQuake.speed = 0;
-			StartCoroutine (countdown());
-		}
-
-		if(myState==stateGame13.Earthquake){
-			if(totaltaps==(1*tapsToDestroy[nivel-1])){
-				_changeQuake.ChangeImg(1);
-			}
-			else if(totaltaps==(2*tapsToDestroy[nivel-1])){
-				_changeQuake.ChangeImg(2);
-			}
-			else if(totaltaps==(3*tapsToDestroy[nivel-1])){
-				_changeQuake.ChangeImg(3);
-				myState= stateGame13.Win;
-				_timeDown.ActivateClock=false;
+		if (!isPausing) {
+			if(_timeDown.isTimeOver && myState==stateGame13.Earthquake){
+				_btnleft.enabled=false;
+				_btnRight.enabled=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				_timeDown.ActivateClock=false;
+				myState= stateGame13.Lose;
 				_animatorQuake.speed = 0;
 				StartCoroutine (countdown());
 			}
-		}
-		if ((myState == stateGame13.Lose || myState == stateGame13.Win) && time<=0) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame13.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 			
+			if(myState==stateGame13.Earthquake){
+				if(totaltaps==(1*tapsToDestroy[nivel-1])){
+					_changeQuake.ChangeImg(1);
+					_sfx.PlayOneShot(_sfxClip[0]);
+				}
+				else if(totaltaps==(2*tapsToDestroy[nivel-1])){
+					_changeQuake.ChangeImg(2);
+					_sfx.PlayOneShot(_sfxClip[0]);
+				}
+				else if(totaltaps==(3*tapsToDestroy[nivel-1])){
+					_changeQuake.ChangeImg(3);
+					_sfx.PlayOneShot(_sfxClip[0]);
+					_btnleft.enabled=false;
+					_btnRight.enabled=false;
+					myState= stateGame13.Win;
+					_timeDown.ActivateClock=false;
+					_audioTema.Stop();
+					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					_animatorQuake.speed = 0;
+					StartCoroutine (countdown());
+				}
+			}
+			if ((myState == stateGame13.Lose || myState == stateGame13.Win) && time<=0) {
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame13.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				
+			}
 		}
+
 
 	}
 
 
 	public void CountButton(int IDButtonPress){
-		if (myState == stateGame13.Earthquake) {
-			if (prevIDButton != 0) {
-				if(prevIDButton != IDButtonPress){
-					totaltaps++;
+		if (!isPausing) {
+			if (myState == stateGame13.Earthquake) {
+				if (prevIDButton != 0) {
+					if(prevIDButton != IDButtonPress){
+						totaltaps++;
+						prevIDButton=IDButtonPress;
+						Handheld.Vibrate();
+					}
+				} 
+				else {
 					prevIDButton=IDButtonPress;
-					Handheld.Vibrate();
+					totaltaps++;
+					_animatorQuake.speed = 1;
+					
 				}
-			} 
-			else {
-				prevIDButton=IDButtonPress;
-				totaltaps++;
-				_animatorQuake.speed = 1;
-
 			}
 		}
 	}
@@ -112,7 +128,20 @@ public class GamePlay13 : MonoBehaviour {
 			time -= 1;
 		}
 	}
-
+	//Funciones para  botones de la UI
+	public void InPause(){
+		_sfx.Pause ();
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		_sfx.UnPause ();
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);
 		myState = stateGame13.Earthquake;

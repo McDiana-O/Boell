@@ -20,13 +20,12 @@ public class GamePlayTen : MonoBehaviour {
 	private Animator _animBomba;
 	public GameObject Aguagrietas;
 	private Animator _animAguaGrietas;
-
 	public float[] tapSecond;
 	public int nivel=1;
 	//SFX audios
 
 	public AudioSource SFX_Audio;
-
+	public bool isPausing=false;
 	//esperando un segundo
 	private float time=1;
 	
@@ -47,54 +46,63 @@ public class GamePlayTen : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (agua.fillAmount == 0 &&mysate != stateGameMini10.Gano) 
-		{
-			mysate = stateGameMini10.Gano;
-			button.interactable = false; 
-			//MenuWinLose.SetActive(true);
-			_timeDown.ActivateClock=false;
-			_audioTema.Stop();
-			SFX_Audio.Stop();
-			_animBomba.speed=0;
-			_animAguaGrietas.speed = 0;
-			_audioTema.PlayOneShot(winloseAudio[0],0.6f);
-			StartCoroutine (countdown());
-			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
-		} 
-		else if (_timeDown.isTimeOver && mysate != stateGameMini10.Perdio )
-		{
-			_timeDown.ActivateClock=false;
-			mysate = stateGameMini10.Perdio;
-			_audioTema.Stop();
-			SFX_Audio.Stop();
-			_animBomba.speed=0;
-			_animAguaGrietas.speed = 0;
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
-			StartCoroutine (countdown());
+		if (!isPausing) {
+			if (agua.fillAmount == 0 &&mysate != stateGameMini10.Gano) 
+			{
+				mysate = stateGameMini10.Gano;
 
-			//MenuWinLose.SetActive(true);
-			//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
-		}
-
-		if ((mysate == stateGameMini10.Gano ||mysate ==  stateGameMini10.Perdio) && time<=0) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(mysate == stateGameMini10.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				button.interactable = false; 
+				button.enabled=false;
+				//MenuWinLose.SetActive(true);
+				_timeDown.ActivateClock=false;
+				_audioTema.Stop();
+				SFX_Audio.Stop();
+				_animBomba.speed=0;
+				_animAguaGrietas.speed = 0;
+				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				StartCoroutine (countdown());
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
+			} 
+			else if (_timeDown.isTimeOver && mysate != stateGameMini10.Perdio )
+			{
+				_timeDown.ActivateClock=false;
+				mysate = stateGameMini10.Perdio;
+				button.enabled=false;
+				_audioTema.Stop();
+				SFX_Audio.Stop();
+				_animBomba.speed=0;
+				_animAguaGrietas.speed = 0;
+				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				StartCoroutine (countdown());
+				
+				//MenuWinLose.SetActive(true);
+				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
+			}
 			
+			if ((mysate == stateGameMini10.Gano ||mysate ==  stateGameMini10.Perdio) && time<=0) {
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(mysate == stateGameMini10.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				
+			}
 		}
+
 	}
 
 	public void CuentaPulsadas(){
-		if (!SFX_Audio.isPlaying) {
-			SFX_Audio.Play();
+		if (!isPausing) {
+			if (!SFX_Audio.isPlaying) {
+				SFX_Audio.Play();
+			}
+			if (agua.fillAmount > 0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
+				mysate = stateGameMini10.Pulsando;
+				_animBomba.speed=1;
+				_animAguaGrietas.speed = 1;
+				//recTransformAgua.localScale = new Vector3(1,recTransformAgua.localScale.y-0.05f,1);
+				//tempPulsos = (recTransformAgua.localScale.y *100)/2;
+				agua.fillAmount -= tapSecond[nivel-1];
+			} 
 		}
-		if (agua.fillAmount > 0 && (mysate != stateGameMini10.Perdio || mysate != stateGameMini10.Gano)) {
-			mysate = stateGameMini10.Pulsando;
-			_animBomba.speed=1;
-			_animAguaGrietas.speed = 1;
-			//recTransformAgua.localScale = new Vector3(1,recTransformAgua.localScale.y-0.05f,1);
-			//tempPulsos = (recTransformAgua.localScale.y *100)/2;
-			agua.fillAmount -= tapSecond[nivel-1];
-		} 
+
 	}
 	IEnumerator countdown()
 	{
@@ -105,6 +113,20 @@ public class GamePlayTen : MonoBehaviour {
 			time -= 1;
 			//timer.text = time.ToString();
 		}
+	}
+	//Funciones para  botones de la UI
+	public void InPause(){
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+		SFX_Audio.Pause ();
+	}
+	public void OutPause(){
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+		SFX_Audio.UnPause();
 	}
 	public void HideCanvasTutorial(){
 		CanvasTutorial.SetActive (false);

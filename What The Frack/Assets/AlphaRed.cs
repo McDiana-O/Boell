@@ -17,25 +17,28 @@ public class AlphaRed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (activateAnimacion) {
-			if (animaDown == true) {
-				//thisObjet.color.a=50;
-				thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a - (5.0f / waitTime * Time.deltaTime)));
-			} else {
-				thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a + (5.0f / waitTime * Time.deltaTime)));
+		if (Time.timeScale != 0) {
+			if (activateAnimacion) {
+				if (animaDown == true) {
+					//thisObjet.color.a=50;
+					thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a - (5.0f / waitTime * Time.deltaTime)));
+				} else {
+					thisObjet.material.color = new Color (1f, 1f, 1f, (thisObjet.material.color.a + (5.0f / waitTime * Time.deltaTime)));
+				}
+				
+				if (thisObjet.material.color.a < 0.3) {
+					animaDown = false;
+				} else if (thisObjet.material.color.a > 1) {
+					animaDown = true;
+				}
 			}
-			
-			if (thisObjet.material.color.a < 0.3) {
-				animaDown = false;
-			} else if (thisObjet.material.color.a > 1) {
-				animaDown = true;
+			if (time <= 0) {
+				activateAnimacion=false;
+				gameObject.SetActive(false);
+				//gameObject.SetActive=false;
 			}
 		}
-		if (time <= 0) {
-			activateAnimacion=false;
-			gameObject.SetActive(false);
-			//gameObject.SetActive=false;
-		}
+
 	}
 	public void SetActivateAlphaRed(){
 		time = 1;

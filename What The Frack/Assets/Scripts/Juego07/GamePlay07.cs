@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay07 : MonoBehaviour {
@@ -20,7 +21,7 @@ public class GamePlay07 : MonoBehaviour {
 	public stateGame07 myState;
 	private float _tempy;
 
-
+	public Button _btnGame;
 	public int wait=3;
 
 	private float[] vertical = {0.0f,25.0f,15.0f,8.0f};
@@ -30,42 +31,50 @@ public class GamePlay07 : MonoBehaviour {
 	
 	//Audios
 	public AudioSource _audioTema;
+	public AudioSource _Sfxaudio;
 	public AudioClip[] winloseAudio;
-
+	public AudioClip sfxClip;
+	public bool isPausing=false;	
 	// Use this for initialization
 	void Start () {
 		temp = Random.Range (0, 3);
 		showPuntoObjetivo (temp);
 		myState = stateGame07.Begin;
 		nivel = PlayerPrefs.GetInt ("Nivel");
-
+		_btnGame.enabled = false;
 
 		_stopPerforacion = PerforacionDiagonal.GetComponent<StopPerforacion> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(wait<=0 && myState == stateGame07.Begin){
-			myState = stateGame07.AnimVertical;
-		}
-
-		if(myState != stateGame07.Lose && myState != stateGame07.Win)
-		{
-			if (_stopPerforacion.isTouchPoint) {
-				myState = stateGame07.Win;
-				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
-				StartCoroutine (countdown());
+		if (!isPausing) {
+			if(wait<=0 && myState == stateGame07.Begin){
+				_Sfxaudio.Play();
+				_Sfxaudio.loop=true;
+				myState = stateGame07.AnimVertical;
 			}
-			else if (myState == stateGame07.AnimVertical) {
-				animacionVertical ();
-				touchDetecting();
-			} 
-			else if(myState == stateGame07.AnimDiagonal) {
-				animacionDiagonal ();
+			
+			if(myState != stateGame07.Lose && myState != stateGame07.Win)
+			{
+				if (_stopPerforacion.isTouchPoint) {
+					_Sfxaudio.Stop();
+					_Sfxaudio.PlayOneShot(sfxClip);
+					myState = stateGame07.Win;
+					_audioTema.Stop();
+					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					StartCoroutine (countdown());
+				}
+				else if (myState == stateGame07.AnimVertical) {
+					animacionVertical ();
+					_btnGame.enabled = true;;
+					//touchDetecting();
+				} 
+				else if(myState == stateGame07.AnimDiagonal) {
+					animacionDiagonal ();
+				}
 			}
-		}
-		/*if (myState == stateGame07.Win) {
+			/*if (myState == stateGame07.Win) {
 			//myState = stateGame07.Win;
 			MenuWinLose.SetActive(true);
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
@@ -76,27 +85,29 @@ public class GamePlay07 : MonoBehaviour {
 			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Perdio);
 		}
 		*/
-		if ((myState == stateGame07.Lose || myState == stateGame07.Win) && time<=0) {
-			MenuWinLose.SetActive(true);
-			MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame07.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
-			
+			if ((myState == stateGame07.Lose || myState == stateGame07.Win) && time<=0) {
+				MenuWinLose.SetActive(true);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame07.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				
+			}
 		}
+
 	}
 
 	void showPuntoObjetivo(int i){
 		PuntosObjetivos[i].SetActive(true);
 	}
 
-	void touchDetecting(){
-		foreach (var T in Input.touches) {
+	public void touchDetecting(){
+		/*foreach (var T in Input.touches) {
 			if (T.phase == TouchPhase.Canceled || T.phase == TouchPhase.Ended)
-			{
+			{*/
 				//_isTouchScreen=true;
 				Debug.Log("entroaqui ");
 				myState = stateGame07.AnimDiagonal;
-				Debug.Log("entroaqui "+myState.ToString());
-			}
-		}
+				//Debug.Log("entroaqui "+myState.ToString());
+			//}
+		//}
 	}
 	
 	void animacionVertical(){
@@ -105,6 +116,7 @@ public class GamePlay07 : MonoBehaviour {
 		}
 		else {
 			myState = stateGame07.Lose;
+			_Sfxaudio.Stop();
 			_audioTema.Stop();
 			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
 			StartCoroutine (countdown());
@@ -118,6 +130,7 @@ public class GamePlay07 : MonoBehaviour {
 		}
 		else {
 			myState = stateGame07.Lose;
+			_Sfxaudio.Stop();
 			_audioTema.Stop();
 			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
 			StartCoroutine (countdown());
@@ -132,7 +145,6 @@ public class GamePlay07 : MonoBehaviour {
 			wait -= 1;
 			yield return new WaitForSeconds(1);
 		}
-		
 	}
 
 	IEnumerator countdown()
@@ -146,6 +158,22 @@ public class GamePlay07 : MonoBehaviour {
 		}
 	}
 
+
+	//Funciones para  botones de la UI
+	public void InPause(){
+		isPausing = true;
+		_Sfxaudio.Pause();
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		_Sfxaudio.UnPause();
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+
+	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
 

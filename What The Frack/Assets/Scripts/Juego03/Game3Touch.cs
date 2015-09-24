@@ -10,9 +10,11 @@ public class Game3Touch : MonoBehaviour {
 	private GameObject tempPileton;
 	public int tempidPileton;
 	public ScripPileton scriptpileton;
+	public AlmaJuego3 _GamePlay;
+	//public AudioSource _sfx;
 	// Use this for initialization
 	void Start () {
-	
+		_GamePlay = GetComponent<AlmaJuego3> ();
 	}
 	
 	// Update is called once per frame
