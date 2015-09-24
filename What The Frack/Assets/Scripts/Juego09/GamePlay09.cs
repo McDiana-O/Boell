@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay09 : MonoBehaviour {
@@ -38,9 +39,14 @@ public class GamePlay09 : MonoBehaviour {
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		nivel = _playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		nivel=PlayerPrefs.GetInt ("Nivel");
+		//nivel = _playerPrefs.NivelActual;
 
 		timeGame = new float[]{0.0f,0.75f,0.45f,0.325f};
 		totalExplosivos = new int[]{0,6,10,14};
@@ -60,6 +66,8 @@ public class GamePlay09 : MonoBehaviour {
 				touchToBoomb ();
 			} 
 			else if (myState != stateGame.Win && totalExplosivos [nivel] == 0 && !_timeDown.isTimeOver) {
+				_playerPrefs.SetNewLevel();
+				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 				myState= stateGame.Win;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
@@ -144,6 +152,7 @@ public class GamePlay09 : MonoBehaviour {
 		Time.timeScale=1;
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		myState = stateGame.InGame;
 		_waterAnimation.scrollSpeed = timeWaterAnim [nivel];
@@ -153,6 +162,13 @@ public class GamePlay09 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			myState = stateGame.InGame;
+			_waterAnimation.scrollSpeed = timeWaterAnim [nivel];
+			StartCoroutine (CreaGrietas());
+			_timeDown.ActivateClock = true;
+		}
 		
 	}
 }

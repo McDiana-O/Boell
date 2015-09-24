@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay08 : MonoBehaviour {
@@ -18,11 +19,15 @@ public class GamePlay08 : MonoBehaviour {
 	public AudioSource audioWin;
 	public AudioSource audioLose;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		mystate = stateGameMini08.Inicio;
-		level = PlayerPrefs.GetInt("Nivel");
+		level =_playerPrefs.NivelActual;
 		//level = 3;
 		_fondo.scrollSpeed=0.0f;
 		switch (level) {
@@ -66,8 +71,11 @@ public class GamePlay08 : MonoBehaviour {
 		audioClipMain.Stop();
 		audioPerforacion.Stop();
 		_fondo.scrollSpeed = 0.0f;
-		if(mystate == stateGameMini08.Gano)
+		if (mystate == stateGameMini08.Gano) {
+			_playerPrefs.SetNewLevel();
+			_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 			audioWin.Play ();
+		}
 		else
 			audioLose.Play ();
 		yield return new WaitForSeconds(1);
@@ -75,6 +83,7 @@ public class GamePlay08 : MonoBehaviour {
 		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate== stateGameMini08.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		_timeDown.waitTime = time;
 		_timeDown.ActivateClock = true;
@@ -85,5 +94,13 @@ public class GamePlay08 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.waitTime = time;
+			_timeDown.ActivateClock = true;
+			_fondo.scrollSpeed = velocidadFondo;
+			audioPerforacion.Play();
+			mystate = stateGameMini08.Iniciando;
+		}
 	}
 }

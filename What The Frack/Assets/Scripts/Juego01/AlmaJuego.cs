@@ -19,6 +19,7 @@ public class AlmaJuego : MonoBehaviour {
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
 	public GameObject MenuWinLose;
+	public Text _txtPuntos;
 	private timedown _timeDown;
 	public int[] timeLelvel;
 	public int nivel=1;
@@ -32,12 +33,19 @@ public class AlmaJuego : MonoBehaviour {
 	/// <summary>
 	/// Pause	/// </summary>
 	public bool isPausing=false;
+
+	private GamePlayerPrefs _playerPrefs;
+
 	// Use this for initialization
 	void Start () {
 		MyStateGame = stateGame.Inicio;
 
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
-		nivel = PlayerPrefs.GetInt ("Nivel");
+		//nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel =_playerPrefs.NivelActual;
 		_timeDown.waitTime = timeLelvel [nivel - 1];
 		//time = timeLelvel [nivel - 1];
 		totalArboles = totalTree;
@@ -93,6 +101,10 @@ public class AlmaJuego : MonoBehaviour {
 			}
 			else if (MyStateGame.Equals (stateGame.Mezcladora) && totalArboles<=0) {;
 				MyStateGame= stateGame.Gano;
+
+				_playerPrefs.SetNewLevel();
+				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 				Audios[2].GetComponent<AudioSource>().Stop();
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
@@ -146,10 +158,15 @@ public class AlmaJuego : MonoBehaviour {
 	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
+		if(_playerPrefs.Tutos[_playerPrefs.MiniGameActual-1]== 1){
+			CanvasTutorial.SetActive (false);
+			MyStateGame = stateGame.BeginGame;
+		}
 	} 
 	public void HideTutorial(){
-
 		CanvasTutorial.SetActive (false);
 		MyStateGame = stateGame.BeginGame;
+
+		_playerPrefs.seveTutorial ();
 	} 
 }

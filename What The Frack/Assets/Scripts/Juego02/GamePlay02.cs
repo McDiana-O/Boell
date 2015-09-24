@@ -35,10 +35,17 @@ public class GamePlay02 : MonoBehaviour {
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
 	public AudioSource _sfxSounds;
+
+	public Text _txtPuntos;
+	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		nivel=PlayerPrefs.GetInt ("Nivel");
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel =_playerPrefs.NivelActual;
+
 		myState = stateGame02.Begin;
 		switch (nivel) {
 		
@@ -98,6 +105,9 @@ public class GamePlay02 : MonoBehaviour {
 				if (totalMachines == numpoint) {
 					
 					myState = stateGame02.Win;
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
@@ -111,7 +121,6 @@ public class GamePlay02 : MonoBehaviour {
 			} 
 			else if (_timeDown.isTimeOver && myState != stateGame02.Lose) 
 			{
-				
 				myState = stateGame02.Lose;
 				Debug.Log("LoseTime");
 				_timeDown.ActivateClock=false;
@@ -137,7 +146,7 @@ public class GamePlay02 : MonoBehaviour {
 			else if(roadFull[idFather]<8)
 			{
 				myState = stateGame02.Lose;
-				Debug.Log("Lose1");
+				//Debug.Log("Lose1");
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
 				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
@@ -151,7 +160,7 @@ public class GamePlay02 : MonoBehaviour {
 			}
 			else if(roadFull[idFather]<9)
 			{
-				Debug.Log("Lose2");
+				//Debug.Log("Lose2");
 				myState = stateGame02.Lose;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
@@ -199,12 +208,17 @@ public class GamePlay02 : MonoBehaviour {
 
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		StartCoroutine (counToStart());
+
 	}
 
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			StartCoroutine (counToStart());
+		}
 	}
 }

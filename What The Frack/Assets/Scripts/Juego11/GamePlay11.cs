@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay11 : MonoBehaviour {
@@ -23,9 +24,14 @@ public class GamePlay11 : MonoBehaviour {
 	//esta variable va ser  global
 	public int level=1;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = _playerPrefs.NivelActual;
 		mystate = stateGameMini11.Inicio;
-		level=PlayerPrefs.GetInt("Nivel");
+		level= _playerPrefs.NivelActual;
 		posX [0] = -3.5f;
 		posX [1] = -2.2f;
 		posX [2] = -0.9f;
@@ -68,6 +74,8 @@ public class GamePlay11 : MonoBehaviour {
 		{
 			if (numGas<=0 && mystate!= stateGameMini11.Perdio && mystate!= stateGameMini11.Gano) {
 				mystate = stateGameMini11.Gano;
+				_playerPrefs.SetNewLevel();
+				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 				_timeDown.ActivateClock = false;
 			}
 			time -= 0.2f;
@@ -95,6 +103,7 @@ public class GamePlay11 : MonoBehaviour {
 	}
 
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		_timeDown.ActivateClock = true;
 		StartCoroutine (SetElements());
@@ -104,6 +113,13 @@ public class GamePlay11 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.ActivateClock = true;
+			StartCoroutine (SetElements());
+			StartCoroutine (SetWinLose());
+			mystate = stateGameMini11.Jugando;
+		}
 	}
 
 	IEnumerator SetWinLose()

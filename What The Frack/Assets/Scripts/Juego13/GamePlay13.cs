@@ -40,10 +40,14 @@ public class GamePlay13 : MonoBehaviour {
 	public AudioClip[] _sfxClip;
 	public AudioSource _sfx;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		myState = stateGame13.Begin;
-		nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel = _playerPrefs.NivelActual;
 		_changeQuake = GameObject.Find ("mj13_01").GetComponent<ChangeSprite>();
 		_animatorQuake = GameObject.Find ("mj13_01").GetComponent<Animator> ();
 		_animatorQuake.speed = 0;
@@ -82,6 +86,9 @@ public class GamePlay13 : MonoBehaviour {
 					_btnleft.enabled=false;
 					_btnRight.enabled=false;
 					myState= stateGame13.Win;
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
@@ -143,6 +150,7 @@ public class GamePlay13 : MonoBehaviour {
 		Time.timeScale=1;
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		myState = stateGame13.Earthquake;
 		_timeDown.ActivateClock = true;
@@ -151,6 +159,13 @@ public class GamePlay13 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			myState = stateGame13.Earthquake;
+			_timeDown.ActivateClock = true;
+			_ParpadeoRojo.GetComponent<AlphaRed>().SetActivateAlphaRed();
+		
+		}
 		
 	}
 

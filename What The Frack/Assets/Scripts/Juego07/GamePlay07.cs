@@ -34,13 +34,19 @@ public class GamePlay07 : MonoBehaviour {
 	public AudioSource _Sfxaudio;
 	public AudioClip[] winloseAudio;
 	public AudioClip sfxClip;
-	public bool isPausing=false;	
+	public bool isPausing=false;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel =_playerPrefs.NivelActual;
 		temp = Random.Range (0, 3);
 		showPuntoObjetivo (temp);
 		myState = stateGame07.Begin;
-		nivel = PlayerPrefs.GetInt ("Nivel");
+
 		_btnGame.enabled = false;
 
 		_stopPerforacion = PerforacionDiagonal.GetComponent<StopPerforacion> ();
@@ -58,6 +64,9 @@ public class GamePlay07 : MonoBehaviour {
 			if(myState != stateGame07.Lose && myState != stateGame07.Win)
 			{
 				if (_stopPerforacion.isTouchPoint) {
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 					_Sfxaudio.Stop();
 					_Sfxaudio.PlayOneShot(sfxClip);
 					myState = stateGame07.Win;
@@ -176,9 +185,14 @@ public class GamePlay07 : MonoBehaviour {
 	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			StartCoroutine (countdownBeginGame());
+			CanvasTutorial.SetActive (false);
+		}
 
 	} 
 	public void HideTutorial(){
+		_playerPrefs.seveTutorial ();
 		StartCoroutine (countdownBeginGame());
 		CanvasTutorial.SetActive (false);
 

@@ -24,10 +24,13 @@ public class AlmaJuego05 : MonoBehaviour {
 	public GameObject CanvasTutorial;
 	public int level;
 
-	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		level = PlayerPrefs.GetInt("Nivel");
+		level = _playerPrefs.NivelActual;
 		switch (level) {
 		case 1:
 			time = 8.0f;
@@ -77,6 +80,8 @@ public class AlmaJuego05 : MonoBehaviour {
 					coordenadasAnt = worldPos;
 					if (worldPos.y < -220.0f) {
 						mysate = stateGameMini05.Gano;
+						_playerPrefs.SetNewLevel();
+						_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 						//audioPerforacion.Stop();
 						audioClipWin.Play();
 					}
@@ -124,6 +129,7 @@ public class AlmaJuego05 : MonoBehaviour {
 		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mysate== stateGameMini05.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		_timeDown.waitTime = time;
 		_timeDown.ActivateClock = true;
@@ -132,5 +138,11 @@ public class AlmaJuego05 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.waitTime = time;
+			_timeDown.ActivateClock = true;
+			mysate = stateGameMini05.Inicio;
+		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay12 : MonoBehaviour {
@@ -27,14 +28,19 @@ public class GamePlay12 : MonoBehaviour {
 	public AudioSource audioClipMain;
 	public AudioSource audioWin;
 	public AudioSource audioLose;
-	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
+		level =_playerPrefs.NivelActual;
 		inicia = true;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		arrRand=NumerosRandom.randomArray(6);
 		arrRand2=NumerosRandom.randomArray(6);
 		mystate = stateGameMini12.Inicio;
-		level = PlayerPrefs.GetInt("Nivel");
+		//level = PlayerPrefs.GetInt("Nivel");
 		switch (level) {
 		case 1:
 			total=2;
@@ -86,6 +92,8 @@ public class GamePlay12 : MonoBehaviour {
 			if(movidos==total){
 				if(movidos==correctos){
 					mystate = stateGameMini12.Gano;
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 				}
 				else{
 					mystate = stateGameMini12.Perdio;
@@ -163,6 +171,7 @@ public class GamePlay12 : MonoBehaviour {
 		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate== stateGameMini12.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		_timeDown.waitTime = 12.0f;
 		_timeDown.ActivateClock = true;
@@ -171,5 +180,12 @@ public class GamePlay12 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.waitTime = 12.0f;
+			_timeDown.ActivateClock = true;
+			mystate = stateGameMini12.Jugando;
+		}
+
 	}
 }

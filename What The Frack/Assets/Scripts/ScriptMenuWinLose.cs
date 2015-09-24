@@ -15,9 +15,10 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	public Sprite[] SpriteRetroWin;
 	public Sprite[] SpriteRetroLose;
 
+	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
 	void Start () {
-
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +27,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	}
 
 	public void Nextlevel(){
-
+		_playerPrefs.MiniGameActual=_playerPrefs.MiniGameActual+1;
 		Application.LoadLevel(Application.loadedLevel+1);
 	}
 

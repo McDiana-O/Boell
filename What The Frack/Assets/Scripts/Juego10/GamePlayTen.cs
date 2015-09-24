@@ -33,8 +33,12 @@ public class GamePlayTen : MonoBehaviour {
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
-		nivel = PlayerPrefs.GetInt ("Nivel");
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		nivel = _playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//_timeDown.waitTime = (float)time;
 		_animBomba = Bomba.GetComponent<Animator> ();
@@ -50,7 +54,8 @@ public class GamePlayTen : MonoBehaviour {
 			if (agua.fillAmount == 0 &&mysate != stateGameMini10.Gano) 
 			{
 				mysate = stateGameMini10.Gano;
-
+				_playerPrefs.SetNewLevel();
+				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 				button.interactable = false; 
 				button.enabled=false;
 				//MenuWinLose.SetActive(true);
@@ -129,6 +134,7 @@ public class GamePlayTen : MonoBehaviour {
 		SFX_Audio.UnPause();
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		_timeDown.ActivateClock = true;
 		button.interactable = true; 
@@ -136,7 +142,13 @@ public class GamePlayTen : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.ActivateClock = true;
+			button.interactable = true; 
+		}
 	}
+		
+
 	
 }

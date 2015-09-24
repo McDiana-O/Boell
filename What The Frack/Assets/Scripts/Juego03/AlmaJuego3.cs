@@ -26,9 +26,15 @@ public class AlmaJuego3 : MonoBehaviour {
 	public AudioClip[] winloseAudio;
 	public bool isPausing=false;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		nivel=PlayerPrefs.GetInt ("Nivel");
+
 		win=false;
 		if(nivel==1){
 			Piletonestotales=2;
@@ -59,7 +65,9 @@ public class AlmaJuego3 : MonoBehaviour {
 				if(Piletonestotales==0)
 				{
 					win=true;
-					
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
@@ -116,8 +124,8 @@ public class AlmaJuego3 : MonoBehaviour {
 	}
 
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
-
 		_timeDown.ActivateClock = true;
 		//StartCoroutine (countdown());
 		BeginGame = true;
@@ -125,6 +133,12 @@ public class AlmaJuego3 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			_timeDown.ActivateClock = true;
+			//StartCoroutine (countdown());
+			BeginGame = true;
+		}
 	}
 
 	public void lessPiletones(){

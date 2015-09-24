@@ -32,12 +32,18 @@ public class AlmaJuego6 : MonoBehaviour {
 	public AudioClip[] winloseAudio;
 	public bool isPausing=false;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
+		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-	//	time= (int) _timeDown.waitTime;
+		//time= (int) _timeDown.waitTime;
 		MyStateGame = stateGame.Begin;
 		pointID = NumerosRandom.randomArray (12);
-		nivel = PlayerPrefs.GetInt ("Nivel");
+
 		switch (nivel) {
 		case 1:
 			//TotalRepeat=2;
@@ -72,7 +78,10 @@ public class AlmaJuego6 : MonoBehaviour {
 				else if(MyStateGame==stateGame.InGame && totalCrack<=0){
 					MyStateGame= stateGame.Gano;
 					_timeDown.ActivateClock = false;
-					
+
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
 					StartCoroutine (countdown());
@@ -136,6 +145,7 @@ public class AlmaJuego6 : MonoBehaviour {
 	}
 
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		MyStateGame = stateGame.InGame;
 		_timeDown.ActivateClock = true;
@@ -144,5 +154,12 @@ public class AlmaJuego6 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			MyStateGame = stateGame.InGame;
+			_timeDown.ActivateClock = true;
+			InitializeCracks();
+		}
+
 	}
 }

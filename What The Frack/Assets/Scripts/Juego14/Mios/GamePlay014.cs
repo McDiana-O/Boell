@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlay014 : MonoBehaviour {
@@ -34,7 +35,13 @@ public class GamePlay014 : MonoBehaviour {
 	public AudioSource _SFX;
 	public AudioClip[] winloseAudio;
 	// Use this for initialization
+	private GamePlayerPrefs _playerPrefs;
+	public Text _txtPuntos;
 	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
+
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		_characterFracking = GameObject.Find ("CharacterMH").GetComponent<CharacterFracking>();
 		IndexOrgano = 0;
@@ -58,6 +65,8 @@ public class GamePlay014 : MonoBehaviour {
 			{
 				if(_timeDown.isTimeOver ){
 					myState = StateGame.Lose;
+					_playerPrefs.SetNewLevel();
+					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[1],0.6f);
@@ -143,6 +152,7 @@ public class GamePlay014 : MonoBehaviour {
 		_AudioBip.UnPause();
 	}
 	public void HideCanvasTutorial(){
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		myState = StateGame.Introduccion;
 		_characterFracking.setStartBodyAplha();
@@ -158,6 +168,10 @@ public class GamePlay014 : MonoBehaviour {
 			pointID = NumerosRandom.randomArray (7);
 			Cuerpecito[6].SetActive(true);
 		}
-		
+		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+			CanvasTutorial.SetActive (false);
+			myState = StateGame.Introduccion;
+			_characterFracking.setStartBodyAplha();
+		}
 	}
 }
