@@ -12,6 +12,7 @@ public class GamePlay08 : MonoBehaviour {
 	private timedown _timeDown;
 	public float time=2,velocidadFondo;
 	public GameObject MenuWinLose;
+	public GameObject LineaPunteada;
 	public GameObject TarjetasInformativas; 
 	public GameObject CanvasTutorial;
 	public AudioSource audioPerforacion;
@@ -53,6 +54,8 @@ public class GamePlay08 : MonoBehaviour {
 			time = 6.0f;
 			break;
 		}
+		for(int i=0;i<24;i++)
+			Instantiate (LineaPunteada, new Vector3 (5.5f+i*1.5f, 0.0f, 0.0f), Quaternion.identity);
 		StartCoroutine (SetWinLose ());
 		//_timeDown.waitTime = time;
 		//_timeDown.ActivateClock = true;
