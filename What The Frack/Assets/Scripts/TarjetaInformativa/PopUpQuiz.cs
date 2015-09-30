@@ -78,6 +78,7 @@ public class PopUpQuiz : MonoBehaviour {
 			_playerPrefs.UpdatePuntos (-700);
 		}
 		txtPuntos.text = _playerPrefs.PuntosTotales.ToString()+" pts";
+		_playerPrefs.OpenedCards [Index] = 1;
 	}
 	/*
 	public void ActivaTarjeta(int numeroTarjeta){
