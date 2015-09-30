@@ -107,10 +107,10 @@ public class GamePlayerPrefs : MonoBehaviour {
 	void CreateCardsArray(){
 		for (int index=0; index<OpenedCards.Length; index++) {
 			if (PlayerPrefs.HasKey ("OpenCards"+(17+index)) ){
-				OpenedCards[index] = PlayerPrefs.GetInt ("OpenCard"+(17+index));
+				OpenedCards[index] = PlayerPrefs.GetInt ("OpenCards"+(17+index));
 			} 
 			else {
-				PlayerPrefs.SetInt("OpenCard"+(17+index),0);
+				PlayerPrefs.SetInt("OpenCards"+(17+index),0);
 				OpenedCards[index] = 0;
 			}
 		}
@@ -186,10 +186,11 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 	public void setOpenCard(int index){
 		PlayerPrefs.SetInt ("OpenCards"+(17+index),1);
-		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCard"+(17+index));
+		//Debug.Log ("EntroAqui"+PlayerPrefs.GetInt ("OpenCards" + (17 + index)).ToString());
+		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCards"+(17+index));
 	}
 	public void UpdatePuntos(int sumando){
-		PuntosTotales = PuntosTotales+ sumando;
+		PuntosTotales = PuntosTotales + sumando;
 		PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 
 	}

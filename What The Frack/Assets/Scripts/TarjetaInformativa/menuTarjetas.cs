@@ -21,7 +21,7 @@ public class menuTarjetas : MonoBehaviour {
 
 	}
 
-	void checkCardsActivadas(){
+	public void checkCardsActivadas(){
 		for (int index=0; index<14; index++) {
 			if(_playerPrefs.Tutos[index]>=1 && index<13)
 			{
@@ -56,6 +56,7 @@ public class menuTarjetas : MonoBehaviour {
 			}
 		}
 	}
+
 	public void activaTarjeta(int numeroTarjeta){
 		tarjetasCanvasHide (true);
 		tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);

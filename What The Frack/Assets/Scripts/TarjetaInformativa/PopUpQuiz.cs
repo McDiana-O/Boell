@@ -24,22 +24,29 @@ public class PopUpQuiz : MonoBehaviour {
 	private GamePlayerPrefs _playerPrefs;
 
 	public Text txtPuntos;
+	public menuTarjetas _menutarjetas;
 	// Use this for initialization
+	void Start () {
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+	}
 	public void minigameCardOn (int gameCardNum) {
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		//cards.IsActive (true);
 		//txt_countTarjetas.text = Text
 	}
 
 
 	public void TarjetaHide (int numeroTarjeta){
-		restarPuntos (numeroTarjeta);
-		idCartaActiva = numeroTarjeta;
-		tarjetaDisabled [numeroTarjeta].SetActive (false);
-		_playerPrefs.setOpenCard (numeroTarjeta);
-		popUpQuiz.SetActive (true);
-		InicializaQuiz (numeroTarjeta);
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		if (_playerPrefs.PuntosTotales > 400) {
+			restarPuntos (numeroTarjeta);
+			_playerPrefs.setOpenCard (numeroTarjeta);
+			_menutarjetas.checkCardsActivadas ();
+			idCartaActiva = numeroTarjeta;
+			tarjetaDisabled [numeroTarjeta].SetActive (false);
+			popUpQuiz.SetActive (true);
+			InicializaQuiz (numeroTarjeta);
+		}
 	}
 
 	public void InicializaQuiz(int numeroTarjeta){
@@ -61,6 +68,7 @@ public class PopUpQuiz : MonoBehaviour {
 		else{
 			Debug.Log("Loser");
 		}
+		;
 		popUpQuiz.SetActive (false);
 		tarjetaCanvas.SetActive (true);
 		tarjetaCanvas.GetComponent<TarjetaInformativa> ().InicializaTarjeta (idCartaActiva + 17);
@@ -71,6 +79,7 @@ public class PopUpQuiz : MonoBehaviour {
 	}
 
 	public void  restarPuntos(int Index){
+		Debug.Log (Index);
 		if (Index <= 5) {
 			_playerPrefs.UpdatePuntos (-400);
 		} 
@@ -78,7 +87,7 @@ public class PopUpQuiz : MonoBehaviour {
 			_playerPrefs.UpdatePuntos (-700);
 		}
 		txtPuntos.text = _playerPrefs.PuntosTotales.ToString()+" pts";
-		_playerPrefs.OpenedCards [Index] = 1;
+
 	}
 	/*
 	public void ActivaTarjeta(int numeroTarjeta){
