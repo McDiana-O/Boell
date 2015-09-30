@@ -136,6 +136,11 @@ public class GamePlay014 : MonoBehaviour {
 			time -= 1;
 		}
 	}
+	//
+	public void  nextLevel(){
+
+		Application.LoadLevel ("tarjetainformativa16");
+	}
 
 	//Funciones para  botones de la UI
 	public void InPause(){

@@ -6,11 +6,13 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int PuntosTotales;
 	public int NivelActual;
 	public int NivelMaximo;
+
 	public int OnMusic;
 	public int OnSFX;
 	public int MiniGameActual;
 	public int[] Minigame= new int[14];
 	public int[] Tutos = new int[14];
+	public int[] OpenedCards = new int[9];
 
 	public static GamePlayerPrefs _gamePlayerPrefs;
 	void Awake(){
@@ -31,6 +33,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 		CreateNumPoints ();
 		CreateNivelArray ();
 		CreateTutoArray ();
+		CreateCardsArray ();
 	}
 	
 	// Update is called once per frame
@@ -101,6 +104,18 @@ public class GamePlayerPrefs : MonoBehaviour {
 		}
 	}
 
+	void CreateCardsArray(){
+		for (int index=0; index<OpenedCards.Length; index++) {
+			if (PlayerPrefs.HasKey ("OpenCards"+(17+index)) ){
+				OpenedCards[index] = PlayerPrefs.GetInt ("OpenCard"+(17+index));
+			} 
+			else {
+				PlayerPrefs.SetInt("OpenCard"+(17+index),0);
+				OpenedCards[index] = 0;
+			}
+		}
+	}
+
 	void CreateTutoArray(){
 		for (int index=0; index<Tutos.Length; index++) {
 			if (PlayerPrefs.HasKey ("Tutoriales"+index)) {
@@ -140,17 +155,42 @@ public class GamePlayerPrefs : MonoBehaviour {
 				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 				PlayerPrefs.SetInt("MiniGame"+(MiniGameActual-1),4);
 			}
+
 			Minigame[MiniGameActual-1] = PlayerPrefs.GetInt ("MiniGame"+(MiniGameActual-1));
-			Minigame[MiniGameActual] = PlayerPrefs.GetInt ("MiniGame"+MiniGameActual);
+			if(MiniGameActual<14){
+				Minigame[MiniGameActual] = PlayerPrefs.GetInt ("MiniGame"+MiniGameActual);
+			}
+
 		}
 	}
-
-	public void CheckToNivel(){
+	public void addOneNivelMaximo(){
 		int index;
 		for(index=0; index<Minigame.Length;index++){
-			if((NivelMaximo+1)==Minigame[index]){
+			//Debug.Log ("Level: "+Minigame[index]+" NivelMaximo: "+NivelMaximo);
 
+			if((NivelMaximo+1)==Minigame[index]){
+				//Debug.Log("Continue");
+				//continue;
+			}
+			else{
+				//Debug.Log("break");
+				break;
+			}
+
+			//Debug.Log (index);
+			if (index == 13) {
+				PlayerPrefs.SetInt("NivelMaximo",(NivelMaximo+1));
+				NivelMaximo= PlayerPrefs.GetInt("NivelMaximo");
 			}
 		}
+	}
+	public void setOpenCard(int index){
+		PlayerPrefs.SetInt ("OpenCards"+(17+index),1);
+		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCard"+(17+index));
+	}
+	public void UpdatePuntos(int sumando){
+		PuntosTotales = PuntosTotales+ sumando;
+		PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+
 	}
 }

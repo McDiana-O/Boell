@@ -18,7 +18,7 @@ public class AlmaJuego6 : MonoBehaviour {
 	public int[] pointID;
 	public GameObject[] cracks;
 
-	private int TotalRepeat=2;
+//	private int TotalRepeat=2;
 	public int nivel = 0;
 	private int indexCracks=0;
 	private int countCrack=0;

@@ -6,7 +6,7 @@ public class CrackHide : MonoBehaviour {
 	public enum stateCrack{Hide,Grieta,Sellado};
 	public stateCrack myState;
 	private AlmaJuego6 juegosoul6;
-	private SpriteRenderer mySpriteRender;
+	//private SpriteRenderer mySpriteRender;
 	private Animator _animator;
 	public GameObject sello;
 	public AudioSource _cremallera;
@@ -15,7 +15,7 @@ public class CrackHide : MonoBehaviour {
 	void Start () {
 		juegosoul6 = GameObject.FindGameObjectWithTag ("almadelJuego").GetComponent<AlmaJuego6>();
 		myState=stateCrack.Hide;
-		mySpriteRender = gameObject.GetComponent<SpriteRenderer> ();
+		//mySpriteRender = gameObject.GetComponent<SpriteRenderer> ();
 		_animator = GetComponent<Animator> ();
 	}
 	

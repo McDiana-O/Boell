@@ -15,9 +15,10 @@ public class MenuGame : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_playerPrefs.MiniGameActual = 0;
 		_textPuntos.text=_playerPrefs.PuntosTotales.ToString()+" pts";
 		startWorld ();
-
+		_playerPrefs.addOneNivelMaximo ();
 		//_textPuntos.text="0 pts";
 		if (_playerPrefs.NivelMaximo == 4) {
 			nivelActual = PlayerPrefs.GetInt ("Nivel");
@@ -26,7 +27,7 @@ public class MenuGame : MonoBehaviour {
 			_playerPrefs.NivelActual=_playerPrefs.NivelMaximo;
 			//PlayerPrefs.SetInt("Nivel",_playerPrefs.NivelMaximo);
 		}
-		imgLelvel.sprite = spriteLevels [nivelActual - 1];
+		imgLelvel.sprite = spriteLevels [_playerPrefs.NivelActual- 1];
 	
 	}
 	

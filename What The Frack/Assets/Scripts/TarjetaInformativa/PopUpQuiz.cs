@@ -21,9 +21,12 @@ public class PopUpQuiz : MonoBehaviour {
 	public bool isInteractable;
 	public int interactableCards;
 	public int idCartaActiva;
+	private GamePlayerPrefs _playerPrefs;
 
+	public Text txtPuntos;
 	// Use this for initialization
 	public void minigameCardOn (int gameCardNum) {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 
 		//cards.IsActive (true);
 		//txt_countTarjetas.text = Text
@@ -31,8 +34,10 @@ public class PopUpQuiz : MonoBehaviour {
 
 
 	public void TarjetaHide (int numeroTarjeta){
+		restarPuntos (numeroTarjeta);
 		idCartaActiva = numeroTarjeta;
 		tarjetaDisabled [numeroTarjeta].SetActive (false);
+		_playerPrefs.setOpenCard (numeroTarjeta);
 		popUpQuiz.SetActive (true);
 		InicializaQuiz (numeroTarjeta);
 	}
@@ -63,6 +68,16 @@ public class PopUpQuiz : MonoBehaviour {
 		//tarjetaCanvas.GetComponent<TarjetaInformativa>().PlayNow=true;
 
 
+	}
+
+	public void  restarPuntos(int Index){
+		if (Index <= 5) {
+			_playerPrefs.UpdatePuntos (-400);
+		} 
+		else {
+			_playerPrefs.UpdatePuntos (-700);
+		}
+		txtPuntos.text = _playerPrefs.PuntosTotales.ToString()+" pts";
 	}
 	/*
 	public void ActivaTarjeta(int numeroTarjeta){

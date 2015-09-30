@@ -10,11 +10,10 @@ public class timedown : MonoBehaviour {
 	//public GamePlay02 _gamePlay02;
 	public bool ActivateClock = false;
 	public bool isTimeOver;
-	private float debugTime;
+
 	// Use this for initialization
 	// Use this for initialization
 	void Start () {
-		debugTime = this.waitTime;
 	}
 	// Update is called once per frame
 	void Update () 
@@ -23,7 +22,7 @@ public class timedown : MonoBehaviour {
 		{
 			if (coolingDown == true)
 			{
-				Debug.Log(waitTime * Time.deltaTime);
+				//Debug.Log(waitTime * Time.deltaTime);
 				//Reduce fill amount over 30 seconds
 				cooldown.fillAmount -= 1.0f/waitTime * Time.deltaTime;
 			}
