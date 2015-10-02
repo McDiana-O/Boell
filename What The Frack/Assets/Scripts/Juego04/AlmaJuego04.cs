@@ -72,11 +72,11 @@ public class AlmaJuego04 : MonoBehaviour {
 			}
 			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && mysate == stateGameMini04.Pulsando) {
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
-				if (worldPos.x < -28.0f || worldPos.x > 28.0f || coordenadasAnt.y <= worldPos.y) {
+				if (worldPos.x < -28.0f || worldPos.x > 28.0f) {
 					//textoPruebas.text = "Pierde por Salirse";
 					mysate = stateGameMini04.Perdio;
 					audioPerforacion.Stop();
-				} else {
+				} else if(coordenadasAnt.y > worldPos.y) {
 					Perforacion.transform.position = Vector3.up * (worldPos.y + 194.0f);
 					coordenadasAnt = worldPos;
 					if (worldPos.y < -200.0f) {
