@@ -50,17 +50,7 @@ public class AlmaJuego04 : MonoBehaviour {
 
 	void FixedUpdate(){
 		if (mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
-			#if UNITY_STANDALONE || UNITY_EDITOR
-			/*coordenadas = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			//textoPruebas.text = "x=" + coordenadas.x.ToString () + " y=" + coordenadas.y.ToString ();
-			if (Input.GetMouseButtonDown (0)) {
-				Perforacion.transform.position = Vector3.up * (coordenadas.y + 204.0f);
-				audioPerforacion.Play();
-			}*/
-			#endif
-		
 			#if UNITY_ANDROID
-
 			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && mysate == stateGameMini04.Inicio) {
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
 				if (worldPos.y > 160.0f && worldPos.y < 252.0f && worldPos.x > -28.0f && worldPos.x < 28.0f) {
@@ -73,7 +63,7 @@ public class AlmaJuego04 : MonoBehaviour {
 			if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && mysate == stateGameMini04.Pulsando) {
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
 				if (worldPos.x < -28.0f || worldPos.x > 28.0f) {
-					//textoPruebas.text = "Pierde por Salirse";
+					textoPruebas.text = "Se sale x="+worldPos.x;
 					mysate = stateGameMini04.Perdio;
 					audioPerforacion.Stop();
 				} else if(coordenadasAnt.y > worldPos.y) {
@@ -89,7 +79,7 @@ public class AlmaJuego04 : MonoBehaviour {
 				}
 			}
 			if (Input.touchCount > 0 && (Input.GetTouch (0).phase == TouchPhase.Canceled || Input.GetTouch (0).phase == TouchPhase.Ended) && mysate == stateGameMini04.Pulsando) {
-				//textoPruebas.text = "Pierde por Soltar";
+				textoPruebas.text = Input.GetTouch (0).phase.ToString();
 				mysate = stateGameMini04.Perdio;
 				audioPerforacion.Stop();
 			}
