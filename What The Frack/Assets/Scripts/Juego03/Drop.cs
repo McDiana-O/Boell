@@ -27,6 +27,7 @@ public class Drop : MonoBehaviour {
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			_sfx.Play();
 			scriptGameplay.lessPiletones();
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
 			tempPileton.transform.position= this.transform.position;
 		}
@@ -34,6 +35,7 @@ public class Drop : MonoBehaviour {
 			_sfx.Play();
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
 			tempPileton.transform.position= this.transform.position;
 			
@@ -42,6 +44,7 @@ public class Drop : MonoBehaviour {
 			_sfx.Play();
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
 			tempPileton.transform.position= this.transform.position;
 			
@@ -51,6 +54,7 @@ public class Drop : MonoBehaviour {
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			tempPileton.transform.position= this.transform.position;
 		}
 		else if (coll.gameObject.name == "Pileton5" && scriptPileton.idPileton== this.idDropping) {
@@ -58,6 +62,7 @@ public class Drop : MonoBehaviour {
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			tempPileton.transform.position= this.transform.position;
 			
 		}
@@ -66,6 +71,7 @@ public class Drop : MonoBehaviour {
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
+			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
 			tempPileton.transform.position= this.transform.position;
 			
 		}

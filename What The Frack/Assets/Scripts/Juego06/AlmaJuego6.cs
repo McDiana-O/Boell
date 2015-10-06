@@ -63,7 +63,7 @@ public class AlmaJuego6 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!isPausing) {
-			if (_timeDown.isTimeOver && MyStateGame!= stateGame.Gano) {
+			if (_timeDown.isTimeOver && MyStateGame!= stateGame.Perdio) {
 				MyStateGame = stateGame.Perdio;
 				_timeDown.ActivateClock = false;
 				
