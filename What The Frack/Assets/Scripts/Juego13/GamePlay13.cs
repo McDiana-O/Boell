@@ -98,7 +98,7 @@ public class GamePlay13 : MonoBehaviour {
 					Fuegos[8].SetActive(true);
 					Fuegos[9].SetActive(true);
 					Fuegos[10].SetActive(true);
-					Fuegos[11].SetActive(true);
+
 
 
 					_changeQuake.ChangeImg(3);
