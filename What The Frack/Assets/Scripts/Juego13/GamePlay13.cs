@@ -28,10 +28,10 @@ public class GamePlay13 : MonoBehaviour {
 	/// <summary>
 	/// The previous identifier button.0 is  nothing, 1 is Right and 2 is Left
 	/// </summary>
-	public int prevIDButton;
-
-	public int nivel;
-	public int totaltaps;
+	private int prevIDButton;
+	public GameObject[] Fuegos;
+	private int nivel;
+	private int totaltaps;
 	public int[] tapsToDestroy;
 	public bool isPausing=false;
 	//Audios
@@ -79,8 +79,28 @@ public class GamePlay13 : MonoBehaviour {
 				else if(totaltaps==(2*tapsToDestroy[nivel-1])){
 					_changeQuake.ChangeImg(2);
 					_sfx.PlayOneShot(_sfxClip[0]);
+					Fuegos[0].SetActive(true);
+					Fuegos[1].SetActive(true);
+					Fuegos[2].SetActive(true);
+
 				}
 				else if(totaltaps==(3*tapsToDestroy[nivel-1])){
+
+					Fuegos[0].SetActive(false);
+					Fuegos[1].SetActive(false);
+					Fuegos[2].SetActive(false);
+
+					Fuegos[3].SetActive(true);
+					Fuegos[4].SetActive(true);
+					Fuegos[5].SetActive(true);
+					Fuegos[6].SetActive(true);
+					Fuegos[7].SetActive(true);
+					Fuegos[8].SetActive(true);
+					Fuegos[9].SetActive(true);
+					Fuegos[10].SetActive(true);
+					Fuegos[11].SetActive(true);
+
+
 					_changeQuake.ChangeImg(3);
 					_sfx.PlayOneShot(_sfxClip[0]);
 					_btnleft.enabled=false;
