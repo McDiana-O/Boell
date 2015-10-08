@@ -17,8 +17,8 @@ public class SwipeHandler : MonoBehaviour
 	private int SwipeID = -1;
 	public string afterNameRoad;
 	void Start(){
-		Debugtext1.text="";
-		Debugtext2.text="";
+		//Debugtext1.text="";
+		//Debugtext2.text="";
 		Direcciones [0] = new Vector3(0.1f,0,0);
 		Direcciones [1] = new Vector3(-0.1f,0,0);
 		Direcciones [2] = new Vector3(0.1f,0.1f,0);
