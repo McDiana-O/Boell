@@ -62,7 +62,7 @@ public class Drop : MonoBehaviour {
 			//tempPileton.GetComponent<BoxCollider2D>().enabled=false;
 			scriptGameplay.lessPiletones();
 			scriptPileton.mystate=ScripPileton.statePileton.drop;
-			coll.gameObject.GetComponent<BoxCollider2D>().enabled=false;
+			coll.gameObject.GetComponent<CircleCollider2D>().enabled=false;
 			tempPileton.transform.position= this.transform.position;
 			
 		}

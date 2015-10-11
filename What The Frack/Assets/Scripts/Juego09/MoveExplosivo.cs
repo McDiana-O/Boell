@@ -26,7 +26,7 @@ public class MoveExplosivo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.timeScale != 0) {
+		if (Time.timeScale != 0.0f) {
 			transform.Translate (i==0?Vector3.zero:(Vector3.left/velocidad[i]));
 		}
 

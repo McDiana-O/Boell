@@ -7,12 +7,13 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int NivelActual;
 	public int NivelMaximo;
 
-	public int OnMusic;
-	public int OnSFX;
+	public int OnMuteMusic;
+	public int OnMuteSFX;
 	public int MiniGameActual;
 	public int[] Minigame= new int[14];
 	public int[] Tutos = new int[14];
 	public int[] OpenedCards = new int[9];
+
 
 	public static GamePlayerPrefs _gamePlayerPrefs;
 	void Awake(){
@@ -57,21 +58,21 @@ public class GamePlayerPrefs : MonoBehaviour {
 			NivelMaximo=1;
 		}
 
-		if (PlayerPrefs.HasKey ("OnMusic")) {
-			OnMusic = PlayerPrefs.GetInt ("OnMusic");
+		if (PlayerPrefs.HasKey ("OnMuteMusic")) {
+			OnMuteMusic = PlayerPrefs.GetInt ("OnMuteMusic");
 		} 
 		else {
-			PlayerPrefs.SetInt("OnMusic",1);
-			OnMusic= 1;
+			PlayerPrefs.SetInt("OnMuteMusic",0);
+			OnMuteMusic= 0;
 		}
 
 
-		if (PlayerPrefs.HasKey ("OnSFX")) {
-			OnSFX = PlayerPrefs.GetInt ("OnSFX");
+		if (PlayerPrefs.HasKey ("OnMuteSFX")) {
+			OnMuteSFX = PlayerPrefs.GetInt ("OnMuteSFX");
 		} 
 		else {
-			PlayerPrefs.SetInt("OnSFX",1);
-			OnSFX =1;
+			PlayerPrefs.SetInt("OnMuteSFX",0);
+			OnMuteSFX =0;
 		}
 
 	}
@@ -201,5 +202,36 @@ public class GamePlayerPrefs : MonoBehaviour {
 			pointsTemp = "0" + pointsTemp;
 		pointsTemp+=" pts";
 		return pointsTemp;
+	}
+	public void SetMusicSounds(){
+
+	}
+
+	public void SetSoundsFX(){
+		
+	}
+	public void SoundMuteApply(){
+		GameObject [] MusicSounds = GameObject.FindGameObjectsWithTag ("MainSounds");
+		GameObject [] SoundsFX = GameObject.FindGameObjectsWithTag ("SFXSounds");
+		if (OnMuteMusic == 1) {
+			for (int i=0; i<MusicSounds.Length; i++) {
+				MusicSounds [i].GetComponent<AudioSource> ().mute = true;
+			}
+		} 
+		else {
+			for (int i=0; i<MusicSounds.Length; i++) {
+				MusicSounds [i].GetComponent<AudioSource> ().mute = false;
+			}
+		}
+		if (OnMuteSFX == 1) {
+			for (int i=0; i<SoundsFX.Length; i++) {
+				SoundsFX [i].GetComponent<AudioSource> ().mute = true;
+			}
+		} 
+		else {
+			for (int i=0; i<SoundsFX.Length; i++) {
+				SoundsFX [i].GetComponent<AudioSource> ().mute = false;
+			}
+		}
 	}
 }

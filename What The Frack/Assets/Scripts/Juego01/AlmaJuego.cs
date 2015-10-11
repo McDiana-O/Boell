@@ -41,7 +41,7 @@ public class AlmaJuego : MonoBehaviour {
 		MyStateGame = stateGame.Inicio;
 
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
@@ -103,7 +103,7 @@ public class AlmaJuego : MonoBehaviour {
 				MyStateGame= stateGame.Gano;
 
 				_playerPrefs.SetNewLevel();
-				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+				_txtPuntos.text =_playerPrefs.getPointsTxt();
 
 				Audios[2].GetComponent<AudioSource>().Stop();
 				_timeDown.ActivateClock=false;
