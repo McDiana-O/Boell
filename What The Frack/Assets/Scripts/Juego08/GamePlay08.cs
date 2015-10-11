@@ -24,7 +24,7 @@ public class GamePlay08 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		mystate = stateGameMini08.Inicio;

@@ -28,7 +28,7 @@ public class AlmaJuego04 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text =_playerPrefs.getPointsTxt();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
 		//nivel =_playerPrefs.NivelActual;
 		mysate = stateGameMini04.Pausa;

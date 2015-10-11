@@ -28,7 +28,7 @@ public class AlmaJuego05 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		level = _playerPrefs.NivelActual;
 		mysate = stateGameMini05.Pausa;

@@ -30,7 +30,7 @@ public class GamePlay11 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text =_playerPrefs.getPointsTxt();
 		//nivel = _playerPrefs.NivelActual;
 		mystate = stateGameMini11.Pausa;
 		level= _playerPrefs.NivelActual;

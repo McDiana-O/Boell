@@ -54,7 +54,7 @@ public class GamePlay13 : MonoBehaviour {
 		prevIDButton = 0;
 		totaltaps = 0;
 
-		tapsToDestroy= new int[3] {15, 20, 25};
+		tapsToDestroy= new int[3] {10, 15, 20};
 	}
 	
 	// Update is called once per frame
