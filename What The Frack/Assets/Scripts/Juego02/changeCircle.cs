@@ -14,7 +14,7 @@ public class changeCircle : MonoBehaviour {
 	void Start () {
 		_spriteRenderer = this.GetComponent<SpriteRenderer> ();
 		_gamePlay02 =GameObject.FindGameObjectWithTag ("GamePlay").GetComponent<GamePlay02> ();
-		_sfxSounds = GameObject.FindGameObjectWithTag ("SFXSounds").GetComponent<SFX_Sounds>();
+		_sfxSounds = GameObject.Find ("SFX_MinuJuego").GetComponent<SFX_Sounds>();
 		_alpha = GetComponent<AlphaAnimacion> ();
 	}
 	
