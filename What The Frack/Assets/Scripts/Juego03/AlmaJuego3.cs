@@ -30,7 +30,8 @@ public class AlmaJuego3 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -66,7 +67,7 @@ public class AlmaJuego3 : MonoBehaviour {
 				{
 					win=true;
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
@@ -133,12 +134,12 @@ public class AlmaJuego3 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			CanvasTutorial.SetActive (false);
 			_timeDown.ActivateClock = true;
 			//StartCoroutine (countdown());
 			BeginGame = true;
-		}
+		}*/
 	}
 
 	public void lessPiletones(){

@@ -40,7 +40,8 @@ public class GamePlay07 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
 		temp = Random.Range (0, 3);
@@ -65,7 +66,7 @@ public class GamePlay07 : MonoBehaviour {
 			{
 				if (_stopPerforacion.isTouchPoint) {
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
 
 					_Sfxaudio.Stop();
 					_Sfxaudio.PlayOneShot(sfxClip);
@@ -185,10 +186,10 @@ public class GamePlay07 : MonoBehaviour {
 	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			StartCoroutine (countdownBeginGame());
 			CanvasTutorial.SetActive (false);
-		}
+		}*/
 
 	} 
 	public void HideTutorial(){

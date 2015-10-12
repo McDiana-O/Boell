@@ -36,7 +36,8 @@ public class AlmaJuego6 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -80,7 +81,8 @@ public class AlmaJuego6 : MonoBehaviour {
 					_timeDown.ActivateClock = false;
 
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
+					_playerPrefs.SoundMuteApply ();
 
 					_audioTema.Stop();
 					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
@@ -154,12 +156,12 @@ public class AlmaJuego6 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			CanvasTutorial.SetActive (false);
 			MyStateGame = stateGame.InGame;
 			_timeDown.ActivateClock = true;
 			InitializeCracks();
-		}
+		}*/
 
 	}
 }

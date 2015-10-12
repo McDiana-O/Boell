@@ -39,10 +39,13 @@ public class GamePlay02 : MonoBehaviour {
 	public Text _txtPuntos;
 	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
+	void Awake(){
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
 	void Start () {
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 		//nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
 
@@ -106,7 +109,8 @@ public class GamePlay02 : MonoBehaviour {
 					
 					myState = stateGame02.Win;
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
+
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
@@ -216,9 +220,9 @@ public class GamePlay02 : MonoBehaviour {
 
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			CanvasTutorial.SetActive (false);
 			StartCoroutine (counToStart());
-		}
+		}*/
 	}
 }

@@ -37,11 +37,14 @@ public class AlmaJuego : MonoBehaviour {
 	private GamePlayerPrefs _playerPrefs;
 
 	// Use this for initialization
+	void Awake(){
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
 	void Start () {
 		MyStateGame = stateGame.Inicio;
 
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
@@ -158,10 +161,10 @@ public class AlmaJuego : MonoBehaviour {
 	}
 	public void hideCards(){
 		TarjestasInformativas.SetActive (false);
-		if(_playerPrefs.Tutos[_playerPrefs.MiniGameActual-1]== 1){
+		/*if(_playerPrefs.Tutos[_playerPrefs.MiniGameActual-1]== 1){
 			CanvasTutorial.SetActive (false);
 			MyStateGame = stateGame.BeginGame;
-		}
+		}*/
 	} 
 	public void HideTutorial(){
 		CanvasTutorial.SetActive (false);

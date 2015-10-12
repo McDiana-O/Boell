@@ -44,7 +44,8 @@ public class GamePlay13 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		myState = stateGame13.Begin;
 		nivel = _playerPrefs.NivelActual;
@@ -107,7 +108,7 @@ public class GamePlay13 : MonoBehaviour {
 					_btnRight.enabled=false;
 					myState= stateGame13.Win;
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
@@ -179,13 +180,13 @@ public class GamePlay13 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			CanvasTutorial.SetActive (false);
 			myState = stateGame13.Earthquake;
 			_timeDown.ActivateClock = true;
 			_ParpadeoRojo.GetComponent<AlphaRed>().SetActivateAlphaRed();
 		
-		}
+		}*/
 		
 	}
 

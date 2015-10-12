@@ -28,7 +28,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		//PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteAll ();
 		NivelActual = 0;
 		CreateVariables ();
 		CreateNumPoints ();
@@ -203,12 +203,14 @@ public class GamePlayerPrefs : MonoBehaviour {
 		pointsTemp+=" pts";
 		return pointsTemp;
 	}
-	public void SetMusicSounds(){
-
+	public void SetMusicSounds(int value){
+		PlayerPrefs.SetInt("OnMuteMusic",value);
+		OnMuteMusic = value;
 	}
 
-	public void SetSoundsFX(){
-		
+	public void SetSoundsFX(int value){
+		PlayerPrefs.SetInt("OnMuteSFX",value);
+		OnMuteSFX = value;
 	}
 	public void SoundMuteApply(){
 		GameObject [] MusicSounds = GameObject.FindGameObjectsWithTag ("MainSounds");

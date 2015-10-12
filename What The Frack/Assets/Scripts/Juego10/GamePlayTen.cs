@@ -37,7 +37,8 @@ public class GamePlayTen : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		nivel = _playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//_timeDown.waitTime = (float)time;
@@ -55,7 +56,8 @@ public class GamePlayTen : MonoBehaviour {
 			{
 				mysate = stateGameMini10.Gano;
 				_playerPrefs.SetNewLevel();
-				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+				_txtPuntos.text = _playerPrefs.getPointsTxt ();
+
 				button.interactable = false; 
 				button.enabled=false;
 				//MenuWinLose.SetActive(true);
@@ -142,11 +144,11 @@ public class GamePlayTen : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
+		/*if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
 			CanvasTutorial.SetActive (false);
 			_timeDown.ActivateClock = true;
 			button.interactable = true; 
-		}
+		}*/
 	}
 		
 

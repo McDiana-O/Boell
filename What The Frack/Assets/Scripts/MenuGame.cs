@@ -11,12 +11,23 @@ public class MenuGame : MonoBehaviour {
 	public Text _textPuntos;
 	private GamePlayerPrefs _playerPrefs;
 	public Button[] _btnsMiniGames= new Button[14];
+	public Image ImgSFX;
+	public Sprite[] SpriteBtnSFX;
+	public Image ImgMusicSound;
+	public  Sprite[] SpriteBtnMusicSound;
 	//public int[] NivelesGames = new int[14];
 	// Use this for initialization
-	void Start () {
+	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_playerPrefs.SoundMuteApply ();
+	}
+	void Start () {
 		_playerPrefs.MiniGameActual = 0;
-		_textPuntos.text=_playerPrefs.PuntosTotales.ToString()+" pts";
+		_textPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+		ImgSFX.sprite = SpriteBtnSFX[_playerPrefs.OnMuteSFX];
+		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
+
 		startWorld ();
 		_playerPrefs.addOneNivelMaximo ();
 		//_textPuntos.text="0 pts";
@@ -62,6 +73,19 @@ public class MenuGame : MonoBehaviour {
 		imgCargando.SetActive (true);
 		Application.LoadLevel(level);
 
+	}
+
+	public void SetMuteSFX(){
+		_playerPrefs.SetSoundsFX (_playerPrefs.OnMuteSFX == 1 ? 0 : 1);
+		_playerPrefs.SoundMuteApply ();
+		ImgSFX.sprite = SpriteBtnSFX[_playerPrefs.OnMuteSFX];
+	}
+	public void SetMuteSoundMain(){
+		_playerPrefs.SetMusicSounds (_playerPrefs.OnMuteMusic == 1 ? 0 : 1);
+		_playerPrefs.SoundMuteApply ();
+		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
+	
+	//_playerPrefs.OnMuteMusic==1?btnSFX.:1
 	}
 	public void choseLevel(){
 		if (_playerPrefs.NivelMaximo == 1) 

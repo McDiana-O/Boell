@@ -45,7 +45,8 @@ public class GamePlay09 : MonoBehaviour {
 	public Text _txtPuntos;
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 		nivel = _playerPrefs.NivelActual;
 		//nivel = 3;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -70,7 +71,8 @@ public class GamePlay09 : MonoBehaviour {
 			} 
 			else if (myState != stateGame.Win && totalExplosivos [nivel] == 0 && !_timeDown.isTimeOver) {
 				_playerPrefs.SetNewLevel();
-				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+				_txtPuntos.text = _playerPrefs.getPointsTxt ();
+			
 				myState= stateGame.Win;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
