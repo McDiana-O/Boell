@@ -42,7 +42,7 @@ public class muevePerforacion : MonoBehaviour {
 			else if(rotation < -0.3)
 				this.gameObject.transform.rotation = new Quaternion(0,0,-0.28f,1.0f);
 			else*/
-			this.gameObject.transform.Rotate(Vector3.back*Input.acceleration.x*(level));
+			this.gameObject.transform.Rotate(Vector3.back*Input.acceleration.x*(2));
 			if(this.gameObject.transform.rotation.z > 0.17)
 				this.gameObject.transform.rotation = new Quaternion(0,0,0.17f,1.0f);
 			else if(this.gameObject.transform.rotation.z < -0.17)
@@ -52,15 +52,20 @@ public class muevePerforacion : MonoBehaviour {
 			//Debug.Log(mov);
 			this.gameObject.transform.parent.transform.Translate (Vector3.up*(this.gameObject.transform.rotation.z*0.5f+mov));
 			//this.gameObject.transform.Translate (Vector3.up*Input.acceleration.x);
-			if(this.gameObject.transform.parent.transform.position.y<-3 ||this.gameObject.transform.parent.transform.position.y>3)
-				_gamePlay.mystate=GamePlay08.stateGameMini08.Perdio;
+			//if(this.gameObject.transform.parent.transform.position.y<-3 ||this.gameObject.transform.parent.transform.position.y>3)
+			//	_gamePlay.mystate=GamePlay08.stateGameMini08.Perdio;
 		}
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (_gamePlay.mystate == GamePlay08.stateGameMini08.Jugando) {
+		if (_gamePlay.mystate == GamePlay08.stateGameMini08.Jugando ||_gamePlay.mystate == GamePlay08.stateGameMini08.Iniciando) {
 			if (coll.gameObject.name != "PuntoObjetivo") {
 				//Debug.Log(coll.gameObject.name);
-				Destroy (coll.gameObject);
+				if (coll.gameObject.tag == "crack") {
+					//Debug.Log(coll.gameObject.name);
+					_gamePlay.mystate = GamePlay08.stateGameMini08.Perdio;
+				}
+				else
+					Destroy (coll.gameObject);
 			} else {
 				succeeded = 1;
 				_gamePlay.mystate = GamePlay08.stateGameMini08.Gano;
@@ -70,7 +75,7 @@ public class muevePerforacion : MonoBehaviour {
 	IEnumerator SetMov()
 	{
 		while (_gamePlay.mystate!= GamePlay08.stateGameMini08.Gano||_gamePlay.mystate!= GamePlay08.stateGameMini08.Perdio) {
-			mov = Random.Range(-0.04f,0.04f)*level;
+			mov = Random.Range(-0.04f,0.04f)*1;
 			yield return new WaitForSeconds (2.0f);
 		}
 	}

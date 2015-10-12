@@ -134,13 +134,6 @@ public class GamePlay11 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
-			CanvasTutorial.SetActive (false);
-			_timeDown.ActivateClock = true;
-			StartCoroutine (SetElements());
-			StartCoroutine (SetWinLose());
-			mystate = stateGameMini11.Jugando;
-		}
 	}
 
 	IEnumerator SetWinLose()

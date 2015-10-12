@@ -142,11 +142,5 @@ public class AlmaJuego05 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjestasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
-			CanvasTutorial.SetActive (false);
-			_timeDown.waitTime = time;
-			_timeDown.ActivateClock = true;
-			mysate = stateGameMini05.Inicio;
-		}
 	}
 }

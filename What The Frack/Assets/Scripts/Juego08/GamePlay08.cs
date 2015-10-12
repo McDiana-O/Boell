@@ -27,6 +27,7 @@ public class GamePlay08 : MonoBehaviour {
 		_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
+		_timeDown.ActivateClock = false;
 		mystate = stateGameMini08.Inicio;
 		level =_playerPrefs.NivelActual;
 		//level = 3;
@@ -34,9 +35,9 @@ public class GamePlay08 : MonoBehaviour {
 		switch (level) {
 		case 1:
 			//_fondo.scrollSpeed=0.1f;
-			velocidadFondo=0.1f;
-			divisorVelPerfo=60f;
-			divisorVelLinea=19f;
+			velocidadFondo=0.2f;
+			divisorVelPerfo=30f;
+			divisorVelLinea=8.5f;
 			time = 12.0f;
 			break;
 		case 2:
@@ -48,9 +49,9 @@ public class GamePlay08 : MonoBehaviour {
 			break;
 		case 3:
 			//_fondo.scrollSpeed=0.2f;
-			velocidadFondo=0.2f;
-			divisorVelPerfo=30f;
-			divisorVelLinea=8.5f;
+			velocidadFondo=0.1f;
+			divisorVelPerfo=60f;
+			divisorVelLinea=19f;
 			time = 6.0f;
 			break;
 		}
@@ -70,7 +71,7 @@ public class GamePlay08 : MonoBehaviour {
 		while (mystate!= stateGameMini08.Perdio && mystate!= stateGameMini08.Gano) {
 			yield return new WaitForSeconds(0.7f);
 		}
-		_timeDown.ActivateClock = false;
+		//_timeDown.ActivateClock = false;
 		audioClipMain.Stop();
 		audioPerforacion.Stop();
 		_fondo.scrollSpeed = 0.0f;
@@ -88,8 +89,8 @@ public class GamePlay08 : MonoBehaviour {
 	public void HideCanvasTutorial(){
 		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
-		_timeDown.waitTime = time;
-		_timeDown.ActivateClock = true;
+		//_timeDown.waitTime = time;
+		//_timeDown.ActivateClock = true;
 		_fondo.scrollSpeed = velocidadFondo;
 		audioPerforacion.Play();
 		mystate = stateGameMini08.Iniciando;
@@ -97,13 +98,5 @@ public class GamePlay08 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
-			CanvasTutorial.SetActive (false);
-			_timeDown.waitTime = time;
-			_timeDown.ActivateClock = true;
-			_fondo.scrollSpeed = velocidadFondo;
-			audioPerforacion.Play();
-			mystate = stateGameMini08.Iniciando;
-		}
 	}
 }
