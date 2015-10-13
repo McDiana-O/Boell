@@ -45,6 +45,7 @@ public class CamionComportamiento : MonoBehaviour {
 		if (myState == stateCamion.Andando && camionEstado == 2 && (coll.gameObject.tag == "crack"||coll.gameObject.tag == "Nocivos")) {
 			if (coll.gameObject.tag == "Nocivos") {
 				myState = stateCamion.Vacio;
+				coll.gameObject.GetComponent<Animator> ().SetBool("Correcto",true);
 				_gameplay.correctos++;
 			} else {
 				myState = stateCamion.Error;

@@ -180,12 +180,5 @@ public class GamePlay12 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
-		if (_playerPrefs.Tutos [_playerPrefs.MiniGameActual - 1] == 1) {
-			CanvasTutorial.SetActive (false);
-			_timeDown.waitTime = 12.0f;
-			_timeDown.ActivateClock = true;
-			mystate = stateGameMini12.Jugando;
-		}
-
 	}
 }
