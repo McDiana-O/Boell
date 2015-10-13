@@ -13,7 +13,8 @@ public class menuTarjetas : MonoBehaviour {
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		checkCardsActivadas ();
-		Txtpuntos.text = _playerPrefs.PuntosTotales.ToString()+" pts";
+		Txtpuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
 	}
 	
 	// Update is called once per frame

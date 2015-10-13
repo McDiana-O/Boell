@@ -21,12 +21,14 @@ public class GamePlay014 : MonoBehaviour {
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
 	public GameObject MenuWinLose;
+	//
+	public GameObject ScreenBlak;
 	//For the touch
 	private Touch myTouch;
 	private int tapCount;
 	//esperando un segundo
 	private timedown _timeDown;
-	public float time=1.0f;
+	public float time=3.0f;
 	public float CountTime=0.0f;
 	private float timePrev;
 	//Audios
@@ -71,7 +73,8 @@ public class GamePlay014 : MonoBehaviour {
 					_playerPrefs.SoundMuteApply ();
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+					//_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+					ScreenBlak.SetActive(true);
 					StartCoroutine (countdown());
 
 				}
@@ -134,8 +137,8 @@ public class GamePlay014 : MonoBehaviour {
 	{
 		while (time >0)
 		{
-			yield return new WaitForSeconds(1.5f);
-			time -= 1;
+			yield return new WaitForSeconds(0.5f);
+			time -= 0.5f;
 		}
 	}
 	//

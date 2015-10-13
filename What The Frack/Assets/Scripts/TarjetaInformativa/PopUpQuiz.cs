@@ -86,7 +86,7 @@ public class PopUpQuiz : MonoBehaviour {
 		else {
 			_playerPrefs.UpdatePuntos (-700);
 		}
-		txtPuntos.text = _playerPrefs.PuntosTotales.ToString()+" pts";
+		txtPuntos.text = _playerPrefs.getPointsTxt();
 
 	}
 	/*

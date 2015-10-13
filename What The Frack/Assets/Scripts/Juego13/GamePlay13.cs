@@ -39,6 +39,7 @@ public class GamePlay13 : MonoBehaviour {
 	public AudioClip[] winloseAudio;
 	public AudioClip[] _sfxClip;
 	public AudioSource _sfx;
+	public AudioSource _sfx2;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
@@ -118,6 +119,7 @@ public class GamePlay13 : MonoBehaviour {
 				}
 			}
 			if ((myState == stateGame13.Lose || myState == stateGame13.Win) && time<=0) {
+				_sfx2.Stop();
 				MenuWinLose.SetActive(true);
 				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame13.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
 				
@@ -142,6 +144,7 @@ public class GamePlay13 : MonoBehaviour {
 					prevIDButton=IDButtonPress;
 					totaltaps++;
 					_animatorQuake.speed = 1;
+					_sfx2.Play();
 					
 				}
 			}
