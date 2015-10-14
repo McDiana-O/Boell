@@ -6,6 +6,7 @@ public class FirstCard : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_playerPrefs.SoundMuteApply ();
 	}
 	

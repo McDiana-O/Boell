@@ -7,7 +7,7 @@ public class PopUpQuiz : MonoBehaviour {
 	public GameObject[] tarjetaDisabled;
 	public GameObject[] tarjetaActive;
 	public int[] correctAnswer;
-	public int[] cardCost;  //ESTE ES EL ARREGLO CON EL COSTO DE LAS TARJETAS 
+	//public int[] cardCost;  //ESTE ES EL ARREGLO CON EL COSTO DE LAS TARJETAS 
 	public GameObject popUpQuiz;
 	public GameObject btnTrue;
 	public GameObject btnFalse;
@@ -27,7 +27,7 @@ public class PopUpQuiz : MonoBehaviour {
 	public menuTarjetas _menutarjetas;
 	// Use this for initialization
 	void Start () {
-		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 	}
 	public void minigameCardOn (int gameCardNum) {
 		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
@@ -37,8 +37,8 @@ public class PopUpQuiz : MonoBehaviour {
 
 
 	public void TarjetaHide (int numeroTarjeta){
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		if (_playerPrefs.PuntosTotales > 400) {
+
+		if (_playerPrefs.PuntosTotales >= 700) {
 			restarPuntos (numeroTarjeta);
 			_playerPrefs.setOpenCard (numeroTarjeta);
 			_menutarjetas.checkCardsActivadas ();
@@ -46,7 +46,28 @@ public class PopUpQuiz : MonoBehaviour {
 			tarjetaDisabled [numeroTarjeta].SetActive (false);
 			popUpQuiz.SetActive (true);
 			InicializaQuiz (numeroTarjeta);
+		} 
+		else if (_playerPrefs.PuntosTotales >= 400) {
+			restarPuntos (numeroTarjeta);
+			_playerPrefs.setOpenCard (numeroTarjeta);
+			_menutarjetas.checkCardsActivadas ();
+			idCartaActiva = numeroTarjeta;
+			tarjetaDisabled [numeroTarjeta].SetActive (false);
+			popUpQuiz.SetActive (true);
+			InicializaQuiz (numeroTarjeta);
+		} 
+		else {
+			Debug.Log("No Tienes puntos Suficientes");
 		}
+		/*if (_playerPrefs.PuntosTotales > 400) {
+			restarPuntos (numeroTarjeta);
+			_playerPrefs.setOpenCard (numeroTarjeta);
+			_menutarjetas.checkCardsActivadas ();
+			idCartaActiva = numeroTarjeta;
+			tarjetaDisabled [numeroTarjeta].SetActive (false);
+			popUpQuiz.SetActive (true);
+			InicializaQuiz (numeroTarjeta);
+		}*/
 	}
 
 	public void InicializaQuiz(int numeroTarjeta){

@@ -8,6 +8,7 @@ public class menuTarjetas : MonoBehaviour {
 	private GamePlayerPrefs _playerPrefs;
 	public GameObject[] Cards;
 	public GameObject[] CardsBuy;
+	Button u;
 	public Text Txtpuntos;
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class menuTarjetas : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+	
 	}
 
 	public void checkCardsActivadas(){
