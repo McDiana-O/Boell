@@ -12,7 +12,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int MiniGameActual;
 	public int[] Minigame= new int[14];
 	public int[] Tutos = new int[14];
-	public int[] OpenedCards = new int[9];
+	public int[] OpenedCards = new int[25];
 
 
 	public static GamePlayerPrefs _gamePlayerPrefs;
@@ -28,7 +28,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		//PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteAll ();
 		NivelActual = 0;
 		CreateVariables ();
 		CreateNumPoints ();
@@ -104,14 +104,19 @@ public class GamePlayerPrefs : MonoBehaviour {
 			}
 		}
 	}
-
+	/*
+	 * 0 Buton y Tarjeta Bloqueada (Requiere puntos para Desbloquear)
+	 * 1 Buton Desbloquado 
+	 */
 	void CreateCardsArray(){
-		for (int index=0; index<OpenedCards.Length; index++) {
-			if (PlayerPrefs.HasKey ("OpenCards"+(17+index)) ){
-				OpenedCards[index] = PlayerPrefs.GetInt ("OpenCards"+(17+index));
+		PlayerPrefs.SetInt("OpenCards0",1);
+		OpenedCards[0] = 1;
+		for (int index=1; index<OpenedCards.Length; index++) {
+			if (PlayerPrefs.HasKey ("OpenCards"+index) ){
+				OpenedCards[index] = PlayerPrefs.GetInt ("OpenCards"+index);
 			} 
 			else {
-				PlayerPrefs.SetInt("OpenCards"+(17+index),0);
+				PlayerPrefs.SetInt("OpenCards"+index,0);
 				OpenedCards[index] = 0;
 			}
 		}
@@ -130,9 +135,12 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 
 	public void seveTutorial(){
+		setOpenCard (MiniGameActual, 1);
 		PlayerPrefs.SetInt("Tutoriales"+(MiniGameActual-1),1);
 		Tutos [MiniGameActual - 1] = 1;
 	}
+
+
 	public void SetNewLevel(){
 		if ((NivelMaximo) == Minigame [MiniGameActual-1]) {
 			//Minigame[MiniGameActual-1]=(Minigame[MiniGameActual-1]+1);
@@ -185,10 +193,10 @@ public class GamePlayerPrefs : MonoBehaviour {
 			}
 		}
 	}
-	public void setOpenCard(int index){
-		PlayerPrefs.SetInt ("OpenCards"+(17+index),1);
+	public void setOpenCard(int index,int value){
+		PlayerPrefs.SetInt ("OpenCards"+index,value);
 		//Debug.Log ("EntroAqui"+PlayerPrefs.GetInt ("OpenCards" + (17 + index)).ToString());
-		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCards"+(17+index));
+		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCards"+index);
 	}
 	public void UpdatePuntos(int sumando){
 		PuntosTotales = PuntosTotales + sumando;

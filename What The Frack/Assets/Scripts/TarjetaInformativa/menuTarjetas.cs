@@ -5,10 +5,11 @@ using System.Collections;
 public class menuTarjetas : MonoBehaviour {
 
 	public GameObject tarjetaCanvas;
+	public Sprite[] ButonsSpritesTarjetas;
 	private GamePlayerPrefs _playerPrefs;
 	public GameObject[] Cards;
 	public GameObject[] CardsBuy;
-	Button u;
+
 	public Text Txtpuntos;
 	// Use this for initialization
 	void Start () {
@@ -20,21 +21,27 @@ public class menuTarjetas : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//Debug.Log ("Time: " + Time.time);
 	}
 
 	public void checkCardsActivadas(){
+//		changeButtonActivate (Cards[0].GetComponent<Button>(),false); 
+		changeButtonActivate (Cards[0].GetComponent<Button>(),true); 
 		for (int index=0; index<14; index++) {
+
 			if(_playerPrefs.Tutos[index]>=1 && index<13)
 			{
-				Cards[index+1].GetComponent<Button>().interactable=true;
+				changeButtonActivate (Cards[index+1].GetComponent<Button>(),true); 
+				//Cards[index+1].GetComponent<Button>().interactable=true;
 			}
 			else if (_playerPrefs.Tutos[index]>=1 && index>=13){
-				Cards[index+1].GetComponent<Button>().interactable=true;
-				Cards[index+2].GetComponent<Button>().interactable=true;
+				//Cards[index+1].GetComponent<Button>().interactable=true;
+				//Cards[index+2].GetComponent<Button>().interactable=true;
+				changeButtonActivate (Cards[index+1].GetComponent<Button>(),true); 
+				changeButtonActivate (Cards[index+2].GetComponent<Button>(),true); 
 			}
 		}	
-
+		/*
 		if (_playerPrefs.PuntosTotales >= 400) {
 			Cards[16].GetComponent<Button>().interactable=true;
 			Cards[17].GetComponent<Button>().interactable=true;
@@ -56,14 +63,46 @@ public class menuTarjetas : MonoBehaviour {
 				Cards[index+16].SetActive(false);
 				CardsBuy[index].SetActive(true);
 			}
+		}*/
+	}
+
+	public void changeButtonActivate(Button ButtonTarjeta,bool valueCompare){
+		SpriteState SpriteStateButton = new SpriteState ();
+		//SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
+		if (valueCompare) {
+			SpriteStateButton.highlightedSprite= ButonsSpritesTarjetas[1];
+			SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
+			ButtonTarjeta.image.sprite = ButonsSpritesTarjetas[1];
+			//ButtonTarjeta.spriteState.pressedSprite =SpriteStateButton.pressedSprite;
+		} 
+		else {
+			SpriteStateButton.highlightedSprite= ButonsSpritesTarjetas[0];
+			SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[0];
+			ButtonTarjeta.image.sprite = ButonsSpritesTarjetas[0];
+			//ButtonTarjeta.spriteState.pressedSprite = ButonsSpritesTarjetas[0];
 		}
-	}
+		ButtonTarjeta.spriteState = SpriteStateButton;
 
+	}
 	public void activaTarjeta(int numeroTarjeta){
-		tarjetasCanvasHide (true);
-		tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
+		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) {
+			Debug.Log("Puntos insuficientes");
+		}
+		else if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 1) {
+			tarjetasCanvasHide (true);
+			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
+		}
+
 
 	}
+
+	public void CompraTarjeta(int numeroTarjeta){
+		if ((numeroTarjeta>=23||numeroTarjeta<=25) && _playerPrefs.PuntosTotales >= 700) {
+		}
+		
+		
+	}
+
 	public void tarjetasCanvasHide(bool isHide){
 		tarjetaCanvas.SetActive (isHide);
 

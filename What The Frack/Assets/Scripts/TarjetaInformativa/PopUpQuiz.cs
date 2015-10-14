@@ -21,13 +21,13 @@ public class PopUpQuiz : MonoBehaviour {
 	public bool isInteractable;
 	public int interactableCards;
 	public int idCartaActiva;
-	private GamePlayerPrefs _playerPrefs;
+	//private GamePlayerPrefs _playerPrefs;
 
 	public Text txtPuntos;
 	public menuTarjetas _menutarjetas;
 	// Use this for initialization
 	void Start () {
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+	//	_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 	}
 	public void minigameCardOn (int gameCardNum) {
 		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
@@ -37,7 +37,7 @@ public class PopUpQuiz : MonoBehaviour {
 
 
 	public void TarjetaHide (int numeroTarjeta){
-
+		/*
 		if (_playerPrefs.PuntosTotales >= 700) {
 			restarPuntos (numeroTarjeta);
 			_playerPrefs.setOpenCard (numeroTarjeta);
@@ -58,7 +58,7 @@ public class PopUpQuiz : MonoBehaviour {
 		} 
 		else {
 			Debug.Log("No Tienes puntos Suficientes");
-		}
+		}*/
 		/*if (_playerPrefs.PuntosTotales > 400) {
 			restarPuntos (numeroTarjeta);
 			_playerPrefs.setOpenCard (numeroTarjeta);
@@ -99,7 +99,7 @@ public class PopUpQuiz : MonoBehaviour {
 
 	}
 
-	public void  restarPuntos(int Index){
+	/*public void  restarPuntos(int Index){
 		Debug.Log (Index);
 		if (Index <= 5) {
 			_playerPrefs.UpdatePuntos (-400);
@@ -109,7 +109,7 @@ public class PopUpQuiz : MonoBehaviour {
 		}
 		txtPuntos.text = _playerPrefs.getPointsTxt();
 
-	}
+	}*/
 	/*
 	public void ActivaTarjeta(int numeroTarjeta){
 		switch (numeroTarjeta) {
