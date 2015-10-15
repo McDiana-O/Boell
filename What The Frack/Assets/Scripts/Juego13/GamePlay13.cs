@@ -121,7 +121,7 @@ public class GamePlay13 : MonoBehaviour {
 			if ((myState == stateGame13.Lose || myState == stateGame13.Win) && time<=0) {
 				_sfx2.Stop();
 				MenuWinLose.SetActive(true);
-				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame13.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+				MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(myState == stateGame13.Win ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
 				
 			}
 		}

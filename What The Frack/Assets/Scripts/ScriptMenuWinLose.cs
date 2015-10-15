@@ -10,7 +10,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	public GameObject btn_siguiente;
 	public GameObject btn_Continuar;
 	public GameObject _BGNaranja;
-	public enum tipoMensaje{Gano,Perdio,Pause};
+	public enum tipoMensaje{Gano,Perdio,PerdioFrackit,Pause};
 	public int idMiniGame;
 	public Sprite[] SpriteRetroWin;
 	public Sprite[] SpriteRetroLose;
@@ -19,6 +19,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		idMiniGame = _playerPrefs.MiniGameActual - 1;
 	}
 	
 	// Update is called once per frame
@@ -58,12 +59,17 @@ public class ScriptMenuWinLose : MonoBehaviour {
 			btn_siguiente.SetActive(true);
 			PauseHide(false);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroWin[idMiniGame];
-
-			
 		}
 
 		else if(typeMenssage == tipoMensaje.Perdio){
 			textoWinLose.text="NO FRACK";
+			btn_siguiente.SetActive(false);
+			PauseHide(false);
+			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
+		}
+
+		else if(typeMenssage == tipoMensaje.PerdioFrackit){
+			textoWinLose.text="FRACK IT!";
 			btn_siguiente.SetActive(false);
 			PauseHide(false);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
