@@ -214,7 +214,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 		int ptsLen = 4-pointsTemp.Length;
 		for (int i=0; i<ptsLen; i++)
 			pointsTemp = "0" + pointsTemp;
-		pointsTemp+=" pts";
+		pointsTemp+="pt";
 		return pointsTemp;
 	}
 	public void SetMusicSounds(int value){
