@@ -5,11 +5,12 @@ using System.Collections;
 public class menuTarjetas : MonoBehaviour {
 
 	public GameObject tarjetaCanvas;
+	public GameObject tarjetaMensajeQuiz;
 	public Sprite[] ButonsSpritesTarjetas;
 	private GamePlayerPrefs _playerPrefs;
 	public GameObject[] Cards;
-	public GameObject[] CardsBuy;
-
+	public GameObject[] TextCardsBuy;
+	public SFX_Sounds SoundBotones;
 	public Text Txtpuntos;
 	// Use this for initialization
 	void Start () {
@@ -21,49 +22,25 @@ public class menuTarjetas : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log ("Time: " + Time.time);
+
 	}
 
 	public void checkCardsActivadas(){
-//		changeButtonActivate (Cards[0].GetComponent<Button>(),false); 
+
 		changeButtonActivate (Cards[0].GetComponent<Button>(),true); 
-		for (int index=0; index<14; index++) {
+		for (int index=1; index<25; index++) {
 
-			if(_playerPrefs.Tutos[index]>=1 && index<13)
+			if(_playerPrefs.OpenedCards[index]>=1)
 			{
-				changeButtonActivate (Cards[index+1].GetComponent<Button>(),true); 
+				changeButtonActivate (Cards[index].GetComponent<Button>(),true);
+				if(index>=16){
+					TextCardsBuy[index-16].SetActive(false);
+				}
 				//Cards[index+1].GetComponent<Button>().interactable=true;
 			}
-			else if (_playerPrefs.Tutos[index]>=1 && index>=13){
-				//Cards[index+1].GetComponent<Button>().interactable=true;
-				//Cards[index+2].GetComponent<Button>().interactable=true;
-				changeButtonActivate (Cards[index+1].GetComponent<Button>(),true); 
-				changeButtonActivate (Cards[index+2].GetComponent<Button>(),true); 
-			}
+
 		}	
-		/*
-		if (_playerPrefs.PuntosTotales >= 400) {
-			Cards[16].GetComponent<Button>().interactable=true;
-			Cards[17].GetComponent<Button>().interactable=true;
-			Cards[18].GetComponent<Button>().interactable=true;
-			Cards[19].GetComponent<Button>().interactable=true;
-			Cards[20].GetComponent<Button>().interactable=true;
-			Cards[21].GetComponent<Button>().interactable=true;
-		}
 
-		if (_playerPrefs.PuntosTotales >= 700) {
-			Cards[22].GetComponent<Button>().interactable=true;
-			Cards[23].GetComponent<Button>().interactable=true;
-			Cards[24].GetComponent<Button>().interactable=true;
-		}
-
-		for (int index=0; index<_playerPrefs.OpenedCards.Length; index++) {
-			if(_playerPrefs.OpenedCards[index]==1)
-			{
-				Cards[index+16].SetActive(false);
-				CardsBuy[index].SetActive(true);
-			}
-		}*/
 	}
 
 	public void changeButtonActivate(Button ButtonTarjeta,bool valueCompare){
@@ -84,11 +61,20 @@ public class menuTarjetas : MonoBehaviour {
 		ButtonTarjeta.spriteState = SpriteStateButton;
 
 	}
+	public void ActivateButton(int idcardInfo){
+		changeButtonActivate (Cards[idcardInfo].GetComponent<Button>(),true); 
+		TextCardsBuy[idcardInfo-16].SetActive(false);
+	}
+
 	public void activaTarjeta(int numeroTarjeta){
 		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) {
-			Debug.Log("Puntos insuficientes");
+			SoundBotones.SFXPlayShot(2);
+			tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+			//tarjetaMensajeQuiz.GetComponent<PopUpQuiz>().ShowMensaje("Incrementa tu puntaje para <br> desbloquear esta tarjeta.");
+			//Debug.Log("Entro a este If de Menu de tarjetas");
 		}
 		else if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 1) {
+			SoundBotones.SFXPlayShot(3);
 			tarjetasCanvasHide (true);
 			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
 		}
@@ -96,11 +82,37 @@ public class menuTarjetas : MonoBehaviour {
 
 	}
 
+
+
 	public void CompraTarjeta(int numeroTarjeta){
-		if ((numeroTarjeta>=23||numeroTarjeta<=25) && _playerPrefs.PuntosTotales >= 700) {
+
+		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) 
+		{
+			if ((numeroTarjeta >= 23 && numeroTarjeta <= 25) && _playerPrefs.PuntosTotales >= 700) {
+				//Debug.Log ("Tarjeta del rango Oro:" + numeroTarjeta);
+				SoundBotones.SFXPlayShot(3);
+				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
+				_playerPrefs.UpdatePuntos (-700);
+			}
+			else if ((numeroTarjeta >= 17 && numeroTarjeta <= 22) && _playerPrefs.PuntosTotales >= 400) 
+			{
+				SoundBotones.SFXPlayShot(3);
+				//Debug.Log ("Tarjeta del rango plata:" + numeroTarjeta);
+				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
+				_playerPrefs.UpdatePuntos (-400);
+			}
+			else 
+			{
+				SoundBotones.SFXPlayShot(2);
+				tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+			}
+			Txtpuntos.text = _playerPrefs.getPointsTxt();
 		}
-		
-		
+		else if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 1) {
+			SoundBotones.SFXPlayShot(3);
+			tarjetasCanvasHide (true);
+			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
+		}
 	}
 
 	public void tarjetasCanvasHide(bool isHide){

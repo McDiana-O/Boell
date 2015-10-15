@@ -51,6 +51,10 @@ public class SFX_Sounds : MonoBehaviour {
 	public void SFXPlay(){
 		_audioSuorce.Play ();
 	}
+
+	public void SFXPlayShot(int i){
+		_audioSuorce.PlayOneShot (efectos[i]);
+	}
 	public void SFXStop(){
 		_audioSuorce.Stop ();
 	}
