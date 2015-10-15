@@ -197,6 +197,12 @@ public class GamePlayerPrefs : MonoBehaviour {
 		PlayerPrefs.SetInt ("OpenCards"+index,value);
 		//Debug.Log ("EntroAqui"+PlayerPrefs.GetInt ("OpenCards" + (17 + index)).ToString());
 		OpenedCards [index] = PlayerPrefs.GetInt ("OpenCards"+index);
+		if (index == 14) {
+			PlayerPrefs.SetInt ("OpenCards"+(index+1),value);
+			//Debug.Log ("EntroAqui"+PlayerPrefs.GetInt ("OpenCards" + (17 + index)).ToString());
+			OpenedCards [index] = PlayerPrefs.GetInt ("OpenCards"+(index+1));
+
+		}
 	}
 	public void UpdatePuntos(int sumando){
 		PuntosTotales = PuntosTotales + sumando;

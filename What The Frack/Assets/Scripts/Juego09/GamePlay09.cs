@@ -170,7 +170,7 @@ public class GamePlay09 : MonoBehaviour {
 		Time.timeScale=1;
 	}
 	public void HideCanvasTutorial(){
-		//_playerPrefs.seveTutorial ();
+		_playerPrefs.seveTutorial ();
 		CanvasTutorial.SetActive (false);
 		myState = stateGame.InGame;
 		_waterAnimation.scrollSpeed = timeWaterAnim [nivel];
