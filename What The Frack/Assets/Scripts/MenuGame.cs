@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MenuGame : MonoBehaviour {
 	float contador=3;
+	public GotoEnd _gotoEnd;
 	public GameObject imgCargando;
 	public Image imgLelvel; 
 	public Sprite[] spriteLevels;
@@ -40,7 +41,7 @@ public class MenuGame : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{	 
-			Application.Quit(); 
+			_gotoEnd.AksToQuit();
 		}
 
 	}

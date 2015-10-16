@@ -2,6 +2,12 @@
 using System.Collections;
 
 public class WaitToMenu : MonoBehaviour {
+	private GamePlayerPrefs _playerPrefs;
+	void Awake(){
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_playerPrefs.SoundMuteApply ();
+	}
+
 	public void nextoTarjeta(){
 		Application.LoadLevel ("tarjetainformativa");
 	}
