@@ -142,7 +142,8 @@ public class GamePlayerPrefs : MonoBehaviour {
 
 
 	public void SetNewLevel(){
-		if ((NivelMaximo) == Minigame [MiniGameActual-1]) {
+		//Debug.Log ("NivelActual="+NivelActual+" Minigame [MiniGameActual-1]="+Minigame [MiniGameActual-1]);
+		if ((NivelActual) == Minigame [MiniGameActual-1]) {
 			//Minigame[MiniGameActual-1]=(Minigame[MiniGameActual-1]+1);
 			if(NivelMaximo==1){
 				PuntosTotales=PuntosTotales+30;
@@ -175,7 +176,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public void addOneNivelMaximo(){
 		int index;
 		for(index=0; index<Minigame.Length;index++){
-			//Debug.Log ("Level: "+Minigame[index]+" NivelMaximo: "+NivelMaximo);
+			Debug.Log ("Level: "+Minigame[index]+" NivelMaximo: "+NivelMaximo);
 
 			if((NivelMaximo+1)==Minigame[index]){
 				//Debug.Log("Continue");
@@ -190,6 +191,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 			if (index == 13) {
 				PlayerPrefs.SetInt("NivelMaximo",(NivelMaximo+1));
 				NivelMaximo= PlayerPrefs.GetInt("NivelMaximo");
+				PlayerPrefs.SetInt("Nivel",NivelMaximo);
 			}
 		}
 	}

@@ -31,15 +31,9 @@ public class MenuGame : MonoBehaviour {
 		startWorld ();
 		_playerPrefs.addOneNivelMaximo ();
 		//_textPuntos.text="0 pts";
-		if (_playerPrefs.NivelMaximo == 4) {
-			nivelActual = PlayerPrefs.GetInt ("Nivel");
-		} 
-		else {
-			_playerPrefs.NivelActual=_playerPrefs.NivelMaximo;
-			//PlayerPrefs.SetInt("Nivel",_playerPrefs.NivelMaximo);
-		}
+		_playerPrefs.NivelActual=PlayerPrefs.GetInt("Nivel");
+		nivelActual = _playerPrefs.NivelActual;
 		imgLelvel.sprite = spriteLevels [_playerPrefs.NivelActual- 1];
-	
 	}
 	
 	// Update is called once per frame
@@ -91,19 +85,21 @@ public class MenuGame : MonoBehaviour {
 		if (_playerPrefs.NivelMaximo == 1) 
 		{
 			PlayerPrefs.SetInt("Nivel",nivelActual);
-			
 		}
 		else if (_playerPrefs.NivelMaximo == 2) 
 		{
-			PlayerPrefs.SetInt("Nivel",nivelActual);
-
+			if (nivelActual<=1) {
+				nivelActual++;
+				imgLelvel.sprite = spriteLevels [nivelActual-1];
+				PlayerPrefs.SetInt("Nivel",nivelActual);
+			}
+			else if (nivelActual==2){
+				nivelActual=1;
+				imgLelvel.sprite = spriteLevels [nivelActual-1];
+				PlayerPrefs.SetInt("Nivel",nivelActual);
+			}
 		}
-		else if (_playerPrefs.NivelMaximo == 3) 
-		{
-			PlayerPrefs.SetInt("Nivel",nivelActual);
-			
-		}
-		else if (_playerPrefs.NivelMaximo == 4) 
+		else if (_playerPrefs.NivelMaximo == 3 || _playerPrefs.NivelMaximo == 4)
 		{
 			if (nivelActual<=2) {
 				nivelActual++;
@@ -116,5 +112,6 @@ public class MenuGame : MonoBehaviour {
 				PlayerPrefs.SetInt("Nivel",nivelActual);
 			}
 		}
+		_playerPrefs.NivelActual = nivelActual;
 	}
 }

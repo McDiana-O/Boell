@@ -113,7 +113,7 @@ public class GamePlay07 : MonoBehaviour {
 			if (T.phase == TouchPhase.Canceled || T.phase == TouchPhase.Ended)
 			{*/
 				//_isTouchScreen=true;
-				Debug.Log("entroaqui ");
+				//Debug.Log("entroaqui ");
 				myState = stateGame07.AnimDiagonal;
 				//Debug.Log("entroaqui "+myState.ToString());
 			//}
