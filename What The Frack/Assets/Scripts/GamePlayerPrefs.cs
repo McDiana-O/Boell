@@ -252,4 +252,23 @@ public class GamePlayerPrefs : MonoBehaviour {
 			}
 		}
 	}
+	/// <summary>
+	/// Sounds the pause apply.
+	/// </summary>
+	/// <param name="value">If set to <c>true</c> value when mute is on.</param>
+	public void SoundPauseApply(bool value){
+		GameObject [] MusicSounds = GameObject.FindGameObjectsWithTag ("MainSounds");
+		GameObject [] SoundsFX = GameObject.FindGameObjectsWithTag ("SFXSounds");
+		if (OnMuteMusic == 0) {
+			for (int i=0; i<MusicSounds.Length; i++) {
+				MusicSounds [i].GetComponent<AudioSource> ().mute = value;
+			}
+		}
+		if (OnMuteSFX == 0) {
+			for (int i=0; i<SoundsFX.Length; i++) {
+				SoundsFX [i].GetComponent<AudioSource> ().mute = value;
+			}
+		} 
+
+	}
 }

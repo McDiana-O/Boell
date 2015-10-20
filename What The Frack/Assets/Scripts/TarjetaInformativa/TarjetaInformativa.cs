@@ -11,8 +11,10 @@ public class TarjetaInformativa : MonoBehaviour {
 	public string[] titulos;
 	public Sprite[] ImgCards;
 	public AudioSource _soundCard;
+	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
 	void Start () {
+
 		if(PlayNow){
 			InicializaTarjeta(idCard);
 		}
@@ -24,8 +26,11 @@ public class TarjetaInformativa : MonoBehaviour {
 	}
 
 	public void InicializaTarjeta(int numeroTarjeta){
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		if (_playerPrefs.OnMuteSFX == 0) {
+			_soundCard.Play ();
+		}
 
-		_soundCard.Play ();
 		if (numeroTarjeta < 10) {
 			txt_numTerjeta.text = "0" + numeroTarjeta.ToString();
 		} else {

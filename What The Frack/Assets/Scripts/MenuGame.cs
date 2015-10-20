@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class MenuGame : MonoBehaviour {
-	float contador=3;
+
 	public GotoEnd _gotoEnd;
 	public GameObject imgCargando;
 	public Image imgLelvel; 
@@ -30,7 +30,9 @@ public class MenuGame : MonoBehaviour {
 		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
 
 		startWorld ();
-		_playerPrefs.addOneNivelMaximo ();
+		if (_playerPrefs.NivelMaximo < 3) {
+			_playerPrefs.addOneNivelMaximo ();
+		}
 		//_textPuntos.text="0 pts";
 		_playerPrefs.NivelActual=PlayerPrefs.GetInt("Nivel");
 		nivelActual = _playerPrefs.NivelActual;

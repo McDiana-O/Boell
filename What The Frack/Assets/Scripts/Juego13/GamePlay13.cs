@@ -161,6 +161,7 @@ public class GamePlay13 : MonoBehaviour {
 	}
 	//Funciones para  botones de la UI
 	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
 		_sfx.Pause ();
 		isPausing = true;
 		Time.timeScale=0;
@@ -168,6 +169,7 @@ public class GamePlay13 : MonoBehaviour {
 		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
 	}
 	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
 		_sfx.UnPause ();
 		isPausing = false;
 		MenuWinLose.SetActive(false);

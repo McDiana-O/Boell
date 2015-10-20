@@ -197,6 +197,7 @@ public class GamePlay02 : MonoBehaviour {
 	}
 	//Funciones para  botones de la UI
 	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
 		_sfxSounds.Pause ();
 		isPausing = true;
 		Time.timeScale=0;
@@ -205,6 +206,7 @@ public class GamePlay02 : MonoBehaviour {
 
 	}
 	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
 		_sfxSounds.Pause ();
 		isPausing = false;
 		MenuWinLose.SetActive(false);

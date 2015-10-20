@@ -159,12 +159,14 @@ public class GamePlay09 : MonoBehaviour {
 	}
 	//Funciones para  botones de la UI
 	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
 		isPausing = true;
 		Time.timeScale=0;
 		MenuWinLose.SetActive(true);
 		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
 	}
 	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
 		isPausing = false;
 		MenuWinLose.SetActive(false);
 		Time.timeScale=1;
