@@ -9,6 +9,7 @@ public class WaitToMenu : MonoBehaviour {
 	}
 
 	public void nextoTarjeta(){
+		_playerPrefs.SoundMuteApply ();
 		Application.LoadLevel ("tarjetainformativa");
 	}
 

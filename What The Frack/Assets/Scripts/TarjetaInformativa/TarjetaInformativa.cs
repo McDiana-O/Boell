@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class TarjetaInformativa : MonoBehaviour {
 	public bool PlayNow;
+	/// <summary>
+	/// The identifier card. Va deacuerdo al Numero real de la tarejta
+	/// </summary>
 	public int idCard;
 	public Text txt_contenido,txt_titulo,txt_numTerjeta;
 	public Image imgCard;

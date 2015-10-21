@@ -146,23 +146,23 @@ public class GamePlayerPrefs : MonoBehaviour {
 		if ((NivelActual) == Minigame [MiniGameActual-1]) {
 			//Minigame[MiniGameActual-1]=(Minigame[MiniGameActual-1]+1);
 			if(NivelMaximo==1){
-				PuntosTotales=PuntosTotales+30;
-				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+				//PuntosTotales=PuntosTotales+30;
+				//PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 				if(MiniGameActual<14){
 					PlayerPrefs.SetInt("MiniGame"+MiniGameActual,1);
 				}
 				PlayerPrefs.SetInt("MiniGame"+(MiniGameActual-1),2);
 			}
 			else if(NivelMaximo==2){
-				PuntosTotales=PuntosTotales+50;
-				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+				//PuntosTotales=PuntosTotales+50;
+				//PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 				//PlayerPrefs.SetInt("MiniGame"+MiniGameActual,2);
 				PlayerPrefs.SetInt("MiniGame"+(MiniGameActual-1),3);
 			}
 			else if(NivelMaximo==3){
-				PuntosTotales=PuntosTotales+70;
+				//PuntosTotales=PuntosTotales+70;
 				//PlayerPrefs.SetInt("MiniGame"+MiniGameActual,3);
-				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+				//PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 				PlayerPrefs.SetInt("MiniGame"+(MiniGameActual-1),4);
 			}
 
@@ -172,6 +172,23 @@ public class GamePlayerPrefs : MonoBehaviour {
 			}
 
 		}
+
+		switch(NivelActual){
+			case 1:
+				PuntosTotales=PuntosTotales+30;
+				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+			break;
+			case 2:
+				PuntosTotales=PuntosTotales+50;
+				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+			break;
+			case 3:
+				PuntosTotales=PuntosTotales+70;
+				PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
+			break;
+
+		}
+
 	}
 	public void addOneNivelMaximo(){
 		int index;
