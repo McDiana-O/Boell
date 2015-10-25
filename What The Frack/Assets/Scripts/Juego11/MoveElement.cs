@@ -17,7 +17,7 @@ public class MoveElement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if (_gamePlay11.mystate != GamePlay11.stateGameMini11.Pausa && _gamePlay11.mystate != GamePlay11.stateGameMini11.Gano && _gamePlay11.mystate != GamePlay11.stateGameMini11.Perdio) {
+		if (!_gamePlay11.isPausing) {
 			if (this.transform.position.x > 8.0f || this.transform.position.x < -8.0f) {
 				_gamePlay11.numGas--;
 				Destroy (this.gameObject);
@@ -26,6 +26,6 @@ public class MoveElement : MonoBehaviour {
 				Destroy (this.gameObject);
 			}
 			this.gameObject.transform.Translate (0.0f, translation, 0.0f);
-		//}
+		}
 	} 
 }

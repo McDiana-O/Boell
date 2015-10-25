@@ -10,7 +10,7 @@ public class mueveLineaPunteada : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (_gamePlay.mystate == GamePlay08.stateGameMini08.Jugando) {
+		if (!_gamePlay.isPausing && _gamePlay.mystate == GamePlay08.stateGameMini08.Jugando) {
 			this.gameObject.transform.Translate (Vector3.left /_gamePlay.divisorVelLinea);
 		}
 	}

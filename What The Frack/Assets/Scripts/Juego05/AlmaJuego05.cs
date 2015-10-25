@@ -23,12 +23,17 @@ public class AlmaJuego05 : MonoBehaviour {
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
 	public int level;
-
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
-	void Start () {
+	public bool isPausing=false;
+	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.getPointsTxt();
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
+	void Start () {
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		//_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		level = _playerPrefs.NivelActual;
 		mysate = stateGameMini05.Pausa;
@@ -48,7 +53,7 @@ public class AlmaJuego05 : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (mysate != stateGameMini05.Pausa) {
+		if (mysate != stateGameMini05.Pausa && !isPausing) {
 			if (mysate != stateGameMini05.Gano && mysate != stateGameMini05.Perdio) {
 				#if UNITY_STANDALONE || UNITY_EDITOR
 				/*coordenadas = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -83,7 +88,7 @@ public class AlmaJuego05 : MonoBehaviour {
 						if (worldPos.y < -220.0f) {
 							mysate = stateGameMini05.Gano;
 							_playerPrefs.SetNewLevel ();
-							_txtPuntos.text = _playerPrefs.PuntosTotales.ToString () + " pts";
+							_txtPuntos.text = _playerPrefs.getPointsTxt ();
 							//audioPerforacion.Stop();
 							audioClipWin.Play ();
 						}
@@ -100,13 +105,24 @@ public class AlmaJuego05 : MonoBehaviour {
 					//textoPruebas.text = "Pierde por Tiempo";
 					//Debug.Log ("Pierde por Tiempo");
 					mysate = stateGameMini05.Perdio;
-					;
 					//audioPerforacion.Stop();
 				}
 			}
 		}
 	}
-
+	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+	}
 	IEnumerator countdown()
 	{
 		//timer.text = time.ToString();

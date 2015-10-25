@@ -28,9 +28,15 @@ public class GamePlay11 : MonoBehaviour {
 	// Use this for initialization
 	public GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
-	void Start () {
+	public bool isPausing=false;
+	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.getPointsTxt();
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
+	void Start () {
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		//_txtPuntos.text =_playerPrefs.getPointsTxt();
 		//nivel = _playerPrefs.NivelActual;
 		mystate = stateGameMini11.Pausa;
 		level= _playerPrefs.NivelActual;
@@ -96,7 +102,7 @@ public class GamePlay11 : MonoBehaviour {
 			if (numGas<=0 && mystate!= stateGameMini11.Perdio && mystate!= stateGameMini11.Gano) {
 				mystate = stateGameMini11.Gano;
 				_playerPrefs.SetNewLevel();
-				_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+				_txtPuntos.text = _playerPrefs.getPointsTxt ();
 				_timeDown.ActivateClock = false;
 			}
 			time -= 0.2f;
@@ -148,7 +154,20 @@ public class GamePlay11 : MonoBehaviour {
 			audioLose.Play ();
 		yield return new WaitForSeconds(1);
 		MenuWinLose.SetActive (true);
-		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate== stateGameMini11.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.Perdio);
+		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
+	}
+	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
 	}
 	IEnumerator SetElements2(){
 		while (!_timeDown.isTimeOver) {

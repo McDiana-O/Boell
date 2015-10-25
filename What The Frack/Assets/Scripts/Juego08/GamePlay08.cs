@@ -22,9 +22,15 @@ public class GamePlay08 : MonoBehaviour {
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
-	void Start () {
+	public bool isPausing=false;
+	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.getPointsTxt();
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
+	void Start () {
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		//_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		_timeDown.ActivateClock = false;
@@ -66,6 +72,19 @@ public class GamePlay08 : MonoBehaviour {
 	void Update () {
 		
 	}
+	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+	}
+	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+	}
 	IEnumerator SetWinLose()
 	{
 		while (mystate!= stateGameMini08.Perdio && mystate!= stateGameMini08.Gano) {
@@ -77,7 +96,7 @@ public class GamePlay08 : MonoBehaviour {
 		_fondo.scrollSpeed = 0.0f;
 		if (mystate == stateGameMini08.Gano) {
 			_playerPrefs.SetNewLevel();
-			_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+			_txtPuntos.text = _playerPrefs.getPointsTxt ();
 			audioWin.Play ();
 		}
 		else

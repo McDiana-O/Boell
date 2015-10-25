@@ -30,7 +30,7 @@ public class SwipeHandler : MonoBehaviour
 
 	void Update ()
 	{
-		if (_gamePlay11.mystate == GamePlay11.stateGameMini11.Jugando) {
+		if (_gamePlay11.mystate == GamePlay11.stateGameMini11.Jugando && !_gamePlay11.isPausing) {
 			if (Input.touches.Length > 0) {
 				Touch T = Input.touches [0];
 				RaycastHit2D hitInfo = Physics2D.Raycast (Camera.main.ScreenToWorldPoint (T.position), Vector2.zero);
