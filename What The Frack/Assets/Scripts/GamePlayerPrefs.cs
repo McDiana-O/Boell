@@ -286,6 +286,11 @@ public class GamePlayerPrefs : MonoBehaviour {
 				SoundsFX [i].GetComponent<AudioSource> ().mute = value;
 			}
 		} 
-
+	}
+	public void CustomSoundMuteApply(string Tag,bool value){
+		GameObject [] SoundsTag = GameObject.FindGameObjectsWithTag (Tag);
+		for (int i=0; i<SoundsTag.Length; i++) {
+			SoundsTag [i].GetComponent<AudioSource> ().mute = value;
+		}
 	}
 }

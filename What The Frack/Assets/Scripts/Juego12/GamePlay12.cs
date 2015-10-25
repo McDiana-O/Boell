@@ -35,6 +35,8 @@ public class GamePlay12 : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CustomSoundMuteApply ("Carro",_playerPrefs.OnMuteSFX == 1);
+		_playerPrefs.CustomSoundMuteApply ("Carro2",_playerPrefs.OnMuteSFX == 1);
 	}
 	void Start () {
 		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
@@ -91,6 +93,8 @@ public class GamePlay12 : MonoBehaviour {
 		}
 		StartCoroutine (SetWinLose ());
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CustomSoundMuteApply ("Carro",_playerPrefs.OnMuteSFX == 1);
+		_playerPrefs.CustomSoundMuteApply ("Carro2",_playerPrefs.OnMuteSFX == 1);
 	}
 	
 	// Update is called once per frame
@@ -168,17 +172,15 @@ public class GamePlay12 : MonoBehaviour {
 	}
 	public void InPause(){
 		_playerPrefs.SoundPauseApply (true);
+		_playerPrefs.CustomSoundMuteApply ("Carro",true);
 		isPausing = true;
 		Time.timeScale=0;
 		MenuWinLose.SetActive(true);
 		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
-		//Audios[0].GetComponent<AudioSource>().Pause ();
-		//Audios[1].GetComponent<AudioSource>().Pause ();
-		//Audios[2].GetComponent<AudioSource>().Pause ();
-		
 	}
 	public void OutPause(){
 		_playerPrefs.SoundPauseApply (false);
+		_playerPrefs.CustomSoundMuteApply ("Carro",false);
 		isPausing = false;
 		MenuWinLose.SetActive(false);
 		Time.timeScale=1;
