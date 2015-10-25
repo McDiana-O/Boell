@@ -16,6 +16,7 @@ public class MenuGame : MonoBehaviour {
 	public Sprite[] SpriteBtnSFX;
 	public Image ImgMusicSound;
 	public  Sprite[] SpriteBtnMusicSound;
+	public GameObject tarjetaMensajeQuiz;
 	//public int[] NivelesGames = new int[14];
 	// Use this for initialization
 	void Awake(){
@@ -88,6 +89,7 @@ public class MenuGame : MonoBehaviour {
 		if (_playerPrefs.NivelMaximo == 1) 
 		{
 			PlayerPrefs.SetInt("Nivel",nivelActual);
+			tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Completa todos los retos en el Nivel actual para desbloquear una dificultad mayor.");
 		}
 		else if (_playerPrefs.NivelMaximo == 2) 
 		{
