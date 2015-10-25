@@ -30,9 +30,15 @@ public class GamePlay12 : MonoBehaviour {
 	public AudioSource audioLose;
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
-	void Start () {
+	public bool isPausing=false;
+	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+		_txtPuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
+	void Start () {
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		//_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
 		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
 		level =_playerPrefs.NivelActual;
 		inicia = true;
@@ -52,31 +58,31 @@ public class GamePlay12 : MonoBehaviour {
 			total=6;
 			break;
 		}
-		CarrY[0]= 8.47f;
-		CarrY[1]= 4.87f;
-		CarrY[2]= 1.27f;
-		CarrY[3]= -2.33f;
-		CarrY[4]= -5.93f;
-		CarrY[5]= -9.53f;
-		DestY[0]= 8.8f;
-		DestY[1]= 5.2f;
-		DestY[2]= 1.6f;
-		DestY[3]= -2f;
-		DestY[4]= -5.6f;
-		DestY[5]= -9.2f;
+		CarrY[0]= 7.2f;
+		CarrY[1]= 3.6f;
+		CarrY[2]= 0f;
+		CarrY[3]= -3.5f;
+		CarrY[4]= -7.1f;
+		CarrY[5]= -10.7f;
+		DestY[0]= 7.2f;
+		DestY[1]= 3.6f;
+		DestY[2]= 0f;
+		DestY[3]= -3.5f;
+		DestY[4]= -7.1f;
+		DestY[5]= -10.7f;
 		if (total == 2) {
-			Instantiate (CarrType [0], new Vector3 (-4.6f, CarrY[arrRand[0]], 0.0f), Quaternion.identity);
-			Instantiate (CarrType [1], new Vector3 (-4.6f, CarrY[arrRand[1]], 0.0f), Quaternion.identity);
+			Instantiate (CarrType [0], new Vector3 (-2.8f, CarrY[arrRand[0]], 0.0f), Quaternion.identity);
+			Instantiate (CarrType [1], new Vector3 (-2.8f, CarrY[arrRand[1]], 0.0f), Quaternion.identity);
 			Instantiate (PlantaType [0], new Vector3 (4.64f, DestY[arrRand2[0]], 0.0f), Quaternion.identity);
 			Instantiate (CiudadType [1], new Vector3 (4.64f, DestY[arrRand2[1]], 0.0f), Quaternion.identity);
 		} else {
-			Instantiate (CarrType [0], new Vector3 (-4.6f, CarrY[arrRand[0]], 0.0f), Quaternion.identity);
-			Instantiate (CarrType [1], new Vector3 (-4.6f, CarrY[arrRand[1]], 0.0f), Quaternion.identity);
+			Instantiate (CarrType [0], new Vector3 (-2.8f, CarrY[arrRand[0]], 0.0f), Quaternion.identity);
+			Instantiate (CarrType [1], new Vector3 (-2.8f, CarrY[arrRand[1]], 0.0f), Quaternion.identity);
 			Instantiate (PlantaType [0], new Vector3 (4.64f, DestY[arrRand2[0]], 0.0f), Quaternion.identity);
 			Instantiate (CiudadType [1], new Vector3 (4.64f, DestY[arrRand2[1]], 0.0f), Quaternion.identity);
 			for (int i=2; i<total; i++) {
 				int tipo=Random.Range(0,2);
-				Instantiate(CarrType[tipo],new Vector3(-4.6f, CarrY[arrRand[i]], 0.0f),Quaternion.identity);
+				Instantiate(CarrType[tipo],new Vector3(-2.8f, CarrY[arrRand[i]], 0.0f),Quaternion.identity);
 				if(tipo==0)
 					Instantiate (PlantaType [0], new Vector3 (4.64f, DestY[arrRand2[i]], 0.0f), Quaternion.identity);
 				else
@@ -84,6 +90,7 @@ public class GamePlay12 : MonoBehaviour {
 			}
 		}
 		StartCoroutine (SetWinLose ());
+		_playerPrefs.SoundMuteApply ();
 	}
 	
 	// Update is called once per frame
@@ -93,7 +100,7 @@ public class GamePlay12 : MonoBehaviour {
 				if(movidos==correctos){
 					mystate = stateGameMini12.Gano;
 					_playerPrefs.SetNewLevel();
-					_txtPuntos.text =_playerPrefs.PuntosTotales.ToString()+" pts";
+					_txtPuntos.text = _playerPrefs.getPointsTxt ();
 				}
 				else{
 					mystate = stateGameMini12.Perdio;
@@ -104,56 +111,80 @@ public class GamePlay12 : MonoBehaviour {
 					mystate = stateGameMini12.Perdio;
 				}
 				else{
-					#if UNITY_ANDROID
-					if(Input.touchCount>0){
-						myTouch = Input.GetTouch(0);
-						if( myTouch.phase == TouchPhase.Began || myTouch.phase == TouchPhase.Moved || myTouch.phase == TouchPhase.Stationary){
-							RaycastHit2D hitInfo=Physics2D.Raycast(Camera.main.ScreenToWorldPoint(myTouch.position),Vector2.zero);
-							if(hitInfo){
-								if ((hitInfo.transform.gameObject.tag=="Carro"||hitInfo.transform.gameObject.tag=="Carro2") && inicia){
-									coche  = hitInfo.transform.gameObject;
-									if(coche.tag=="Carro"){
-										cocheComportamiento = coche.GetComponent<CamionComportamiento>();
-										//Debug.Log(cocheComportamiento.myState);
-										if(cocheComportamiento.myState==CamionComportamiento.stateCamion.Idle){
-											cocheComportamiento.myState=CamionComportamiento.stateCamion.Inactivo;
-											inicia=false;
-										}
-									}
-									else{
-										cisternaComportamiento = coche.GetComponent<CisternaComportamiento>();
-										//Debug.Log(cisternaComportamiento.myState);
-										if(cisternaComportamiento.myState==CisternaComportamiento.stateCamion.Idle){
-											cisternaComportamiento.myState=CisternaComportamiento.stateCamion.Inactivo;
-											inicia=false;
-										}
-									}
-								}else if((hitInfo.transform.gameObject.tag=="crack" || hitInfo.transform.gameObject.tag=="Nocivos")&& !inicia){
-									destino=hitInfo.transform.gameObject;
-									destinoComportamiento=destino.GetComponent<ciudadComportamiento>();
-									if(!destinoComportamiento.ocupado){
+					if(!isPausing){
+						#if UNITY_ANDROID
+						if(Input.touchCount>0){
+							myTouch = Input.GetTouch(0);
+							if( myTouch.phase == TouchPhase.Began || myTouch.phase == TouchPhase.Moved || myTouch.phase == TouchPhase.Stationary){
+								RaycastHit2D hitInfo=Physics2D.Raycast(Camera.main.ScreenToWorldPoint(myTouch.position),Vector2.zero);
+								if(hitInfo){
+									if ((hitInfo.transform.gameObject.tag=="Carro"||hitInfo.transform.gameObject.tag=="Carro2") && inicia){
+										coche  = hitInfo.transform.gameObject;
 										if(coche.tag=="Carro"){
-											cocheComportamiento.xMov=0.01f*(destino.transform.position.x-1.7f-coche.transform.position.x);
-											cocheComportamiento.yMov=0.01f*(destino.transform.position.y-coche.transform.position.y);
-											cocheComportamiento.myState=CamionComportamiento.stateCamion.Andando;
-											inicia=true;
-											destinoComportamiento.ocupado=true;
-										}else{
-											cisternaComportamiento.xMov=0.01f*(destino.transform.position.x-1.7f-coche.transform.position.x);
-											cisternaComportamiento.yMov=0.01f*(destino.transform.position.y-coche.transform.position.y);
-											cisternaComportamiento.myState=CisternaComportamiento.stateCamion.Andando;
-											inicia=true;
-											destinoComportamiento.ocupado=true;
+											cocheComportamiento = coche.GetComponent<CamionComportamiento>();
+											//Debug.Log(cocheComportamiento.myState);
+											if(cocheComportamiento.myState==CamionComportamiento.stateCamion.Idle){
+												cocheComportamiento.myState=CamionComportamiento.stateCamion.Inactivo;
+												inicia=false;
+											}
+										}
+										else{
+											cisternaComportamiento = coche.GetComponent<CisternaComportamiento>();
+											//Debug.Log(cisternaComportamiento.myState);
+											if(cisternaComportamiento.myState==CisternaComportamiento.stateCamion.Idle){
+												cisternaComportamiento.myState=CisternaComportamiento.stateCamion.Inactivo;
+												inicia=false;
+											}
+										}
+									}else if((hitInfo.transform.gameObject.tag=="crack" || hitInfo.transform.gameObject.tag=="Nocivos")&& !inicia){
+										destino=hitInfo.transform.gameObject;
+										destinoComportamiento=destino.GetComponent<ciudadComportamiento>();
+										if(!destinoComportamiento.ocupado){
+											if(coche.tag=="Carro"){
+												cocheComportamiento.xMov=0.01f*(destino.transform.position.x-coche.transform.position.x);
+												cocheComportamiento.yMov=0.01f*(destino.transform.position.y-coche.transform.position.y);
+												cocheComportamiento.myState=CamionComportamiento.stateCamion.Andando;
+												inicia=true;
+												destinoComportamiento.ocupado=true;
+												destinoComportamiento.GetComponent<Animator> ().SetInteger("Estado",1);
+											}else{
+												cisternaComportamiento.xMov=0.01f*(destino.transform.position.x-coche.transform.position.x);
+												cisternaComportamiento.yMov=0.01f*(destino.transform.position.y-coche.transform.position.y);
+												cisternaComportamiento.myState=CisternaComportamiento.stateCamion.Andando;
+												inicia=true;
+												destinoComportamiento.ocupado=true;
+												destinoComportamiento.GetComponent<Animator> ().SetInteger("Estado",1);
+											}
 										}
 									}
 								}
 							}
 						}
+					#endif
 					}
-				#endif
 				}
 			}
 		}
+	}
+	public void InPause(){
+		_playerPrefs.SoundPauseApply (true);
+		isPausing = true;
+		Time.timeScale=0;
+		MenuWinLose.SetActive(true);
+		MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Pause);
+		//Audios[0].GetComponent<AudioSource>().Pause ();
+		//Audios[1].GetComponent<AudioSource>().Pause ();
+		//Audios[2].GetComponent<AudioSource>().Pause ();
+		
+	}
+	public void OutPause(){
+		_playerPrefs.SoundPauseApply (false);
+		isPausing = false;
+		MenuWinLose.SetActive(false);
+		Time.timeScale=1;
+		//Audios[0].GetComponent<AudioSource>().UnPause ();
+		//Audios[1].GetComponent<AudioSource>().UnPause ();
+		//Audios[2].GetComponent<AudioSource>().UnPause ();
 	}
 	IEnumerator SetWinLose()
 	{

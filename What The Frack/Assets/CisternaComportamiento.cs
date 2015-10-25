@@ -4,7 +4,7 @@ using System.Collections;
 public class CisternaComportamiento : MonoBehaviour {
 	public enum stateCamion{Idle,Inactivo,Andando,Vacio,Error};
 	public stateCamion myState;
-	private int camionEstado=0;
+	public int camionEstado=0;
 	public float xMov=0,yMov=0;
 	private Animator anim;
 	private GamePlay12 _gameplay;
