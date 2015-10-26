@@ -20,7 +20,7 @@ public class Game3Touch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		#if UNITY_ANDROID || UNITY_EDITOR
+		#if UNITY_ANDROID || UNITY_EDITOR || UNITY_IOS
 		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
 
 			Vector2 pos =Input.GetTouch(0).position;

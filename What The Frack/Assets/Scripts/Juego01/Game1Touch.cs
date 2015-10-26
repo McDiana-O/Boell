@@ -35,7 +35,7 @@ public class Game1Touch : MonoBehaviour {
 		}
 #endif
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
 		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
 			//	Vector2 pos =Input.GetTouch(0).position;
 			//RaycastHit2D hitInfo=Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos),Vector2.zero);
