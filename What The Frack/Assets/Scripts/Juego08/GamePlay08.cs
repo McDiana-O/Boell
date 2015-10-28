@@ -19,6 +19,7 @@ public class GamePlay08 : MonoBehaviour {
 	public AudioSource audioClipMain;
 	public AudioSource audioWin;
 	public AudioSource audioLose;
+	private GameObject temp;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
@@ -29,14 +30,11 @@ public class GamePlay08 : MonoBehaviour {
 		_playerPrefs.SoundMuteApply ();
 	}
 	void Start () {
-		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		//_txtPuntos.text =_playerPrefs.getPointsTxt();
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		_timeDown.ActivateClock = false;
 		mystate = stateGameMini08.Inicio;
 		level =_playerPrefs.NivelActual;
-		//level = 3;
 		_fondo.scrollSpeed=0.0f;
 		switch (level) {
 		case 1:
@@ -61,11 +59,12 @@ public class GamePlay08 : MonoBehaviour {
 			time = 6.0f;
 			break;
 		}
-		for(int i=0;i<24;i++)
-			Instantiate (LineaPunteada, new Vector3 (5.5f+i*1.5f, 0.0f, 0.0f), Quaternion.identity);
 		StartCoroutine (SetWinLose ());
-		//_timeDown.waitTime = time;
-		//_timeDown.ActivateClock = true;
+		for (int i=0; i<24; i++) {
+			temp=(GameObject)Instantiate (LineaPunteada, new Vector3 (5.5f + i * 1.5f, 0.0f, 0.0f), Quaternion.identity);
+			//Debug.Log(5.5f+i*1.5f);
+			temp.GetComponent<mueveLineaPunteada>().xPos = 5.5f+i*1.5f;
+		}
 	}
 	
 	// Update is called once per frame

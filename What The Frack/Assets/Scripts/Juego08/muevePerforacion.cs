@@ -3,15 +3,15 @@ using System.Collections;
 
 public class muevePerforacion : MonoBehaviour {
 	public int succeeded=0;
-	private float rotation=0,mov=0,rangeMove=0.0f;
+	private float mov=0;
 	private GamePlay08 _gamePlay;
-	private int level=0;
+	//private int level=0;
 	// Use this for initialization
 	void Start () {
 		_gamePlay = GameObject.FindGameObjectWithTag ("almadelJuego").GetComponent<GamePlay08> ();
-		level = PlayerPrefs.GetInt("Nivel");
+		//level = PlayerPrefs.GetInt("Nivel");
 		//level = 3;
-		switch (level) {
+		/*switch (level) {
 		case 1:
 			rangeMove=0.4f;
 			break;
@@ -21,7 +21,7 @@ public class muevePerforacion : MonoBehaviour {
 		case 3:
 			rangeMove=0.8f;
 			break;
-		}
+		}*/
 		StartCoroutine (SetMov ());
 	}
 	

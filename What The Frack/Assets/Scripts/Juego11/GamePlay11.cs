@@ -5,7 +5,7 @@ using System.Collections;
 public class GamePlay11 : MonoBehaviour {
 	public float time,lowerLimit,upperLimit;
 	public int numMethane=20,numGas=5;
-	private int creados=0,pointID,tempCount=1,position,position2,positionY;
+	private int creados=0,pointID,position,position2,positionY;
 	private float[] posX=new float[6];
 	private float[] posX2=new float[6];
 	private float[] posY=new float[6];
@@ -79,7 +79,6 @@ public class GamePlay11 : MonoBehaviour {
 			position = Random.Range (0, 6);
 			positionY = Random.Range (0, 5);
 			Instantiate (GasArray [pointID], new Vector3 (posX [position], posY [positionY], 0.0f), Quaternion.identity);
-			tempCount = 1;
 			creados++;
 			//Debug.Log(creados);
 			pointID = Random.Range (0, 4);
@@ -174,7 +173,6 @@ public class GamePlay11 : MonoBehaviour {
 			pointID = Random.Range (0, 3);
 			position = Random.Range (0, 6);
 			Instantiate (GasArray [pointID], new Vector3 (posX [position], -14.0f, 0.0f), Quaternion.identity);
-			tempCount = 1;
 			creados++;
 			//Debug.Log(creados);
 			pointID = Random.Range (0, 4);
