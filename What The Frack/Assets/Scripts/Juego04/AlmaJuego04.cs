@@ -57,7 +57,7 @@ public class AlmaJuego04 : MonoBehaviour {
 	void FixedUpdate(){
 		if (mysate != stateGameMini04.Pausa && !isPausing) {
 			if (mysate != stateGameMini04.Gano && mysate != stateGameMini04.Perdio) {
-				#if UNITY_ANDROID
+				#if UNITY_ANDROID || UNITY_IOS
 				if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && mysate == stateGameMini04.Inicio) {
 					Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
 					if (worldPos.y > 160.0f && worldPos.y < 252.0f && worldPos.x > -28.0f && worldPos.x < 28.0f) {

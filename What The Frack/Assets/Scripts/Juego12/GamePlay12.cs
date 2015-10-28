@@ -116,7 +116,7 @@ public class GamePlay12 : MonoBehaviour {
 				}
 				else{
 					if(!isPausing){
-						#if UNITY_ANDROID
+						#if UNITY_ANDROID || UNITY_IOS
 						if(Input.touchCount>0){
 							myTouch = Input.GetTouch(0);
 							if( myTouch.phase == TouchPhase.Began || myTouch.phase == TouchPhase.Moved || myTouch.phase == TouchPhase.Stationary){

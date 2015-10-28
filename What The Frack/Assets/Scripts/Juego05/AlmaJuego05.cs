@@ -64,7 +64,7 @@ public class AlmaJuego05 : MonoBehaviour {
 			}*/
 				#endif
 		
-				#if UNITY_ANDROID
+				#if UNITY_ANDROID || UNITY_IOS
 
 				if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && mysate == stateGameMini05.Inicio) {
 					Vector3 worldPos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
