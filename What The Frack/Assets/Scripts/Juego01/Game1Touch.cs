@@ -15,7 +15,6 @@ public class Game1Touch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 #if UNITY_STANDALONE || UNITY_EDITOR
 		coordenadas= Camera.main.ScreenToWorldPoint( Input.mousePosition);
 

@@ -201,7 +201,7 @@ public class GamePlay12 : MonoBehaviour {
 			audioLose.Play ();
 		yield return new WaitForSeconds(1);
 		MenuWinLose.SetActive (true);
-		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
+		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate== stateGameMini12.Gano  ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
 	}
 	public void HideCanvasTutorial(){
 		_playerPrefs.seveTutorial ();

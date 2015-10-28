@@ -154,7 +154,7 @@ public class GamePlay11 : MonoBehaviour {
 			audioLose.Play ();
 		yield return new WaitForSeconds(1);
 		MenuWinLose.SetActive (true);
-		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
+		MenuWinLose.GetComponent<ScriptMenuWinLose> ().SetMenssageWinorLose (mystate==stateGameMini11.Gano ? ScriptMenuWinLose.tipoMensaje.Gano : ScriptMenuWinLose.tipoMensaje.PerdioFrackit);
 	}
 	public void InPause(){
 		_playerPrefs.SoundPauseApply (true);
