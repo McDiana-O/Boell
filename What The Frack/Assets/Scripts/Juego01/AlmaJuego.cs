@@ -15,7 +15,8 @@ public class AlmaJuego : MonoBehaviour {
 	private Animator animCarrito2;
 	private Animator animCarrito3;
 	public GameObject[] Audios;
-
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public GameObject TarjestasInformativas; 
 	public GameObject CanvasTutorial;
 	public GameObject MenuWinLose;
@@ -29,7 +30,7 @@ public class AlmaJuego : MonoBehaviour {
 	private float time=1;
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
 	/// <summary>
 	/// Pause	/// </summary>
 	public bool isPausing=false;
@@ -75,7 +76,7 @@ public class AlmaJuego : MonoBehaviour {
 				Audios[2].GetComponent<AudioSource>().Stop();
 				MyStateGame = stateGame.Perdio;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 				_timeDown.ActivateClock=false;
 				//timer.text = "you lost!!!";
@@ -111,7 +112,7 @@ public class AlmaJuego : MonoBehaviour {
 				Audios[2].GetComponent<AudioSource>().Stop();
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				audioWin.Play();
 				StartCoroutine (countdown());
 				//			timer.text = "you win!!!";
 				//MenuWinLose.SetActive(true);
