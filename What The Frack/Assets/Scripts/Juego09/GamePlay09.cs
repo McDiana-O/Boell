@@ -40,6 +40,7 @@ public class GamePlay09 : MonoBehaviour {
 	//Audios
 	public AudioSource _audioTema;
 	public AudioClip[] winloseAudio;
+	public bool salioExplosivo=false;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
@@ -54,7 +55,7 @@ public class GamePlay09 : MonoBehaviour {
 
 		timeGame = new float[]{0.0f,1.4f,0.9f,0.68f};
 		totalExplosivos = new int[]{0,12,18,24};
-		iniPosition = new Vector2[]{new Vector2 (10.0f,-7.24f),new Vector2 (10.0f,7.24f)};
+		iniPosition = new Vector2[]{new Vector2 (10.0f,-6.3f),new Vector2 (10.0f,6.0f)};
 		timeWaterAnim = new float[]{0,0.35f,0.35f,0.35f};
 		_textureTube = GameObject.Find ("TextureTube");
 		_waterAnimation = _textureTube.GetComponent<WaterAnimacion> ();
@@ -80,7 +81,7 @@ public class GamePlay09 : MonoBehaviour {
 				StartCoroutine (countdown());
 				StartCoroutine (countdown2());
 			}
-			else if (myState == stateGame.InGame && totalExplosivos [nivel] > 0 && _timeDown.isTimeOver) {
+			if (myState == stateGame.InGame && ((totalExplosivos [nivel] > 0 && _timeDown.isTimeOver)||salioExplosivo)) {
 				myState = stateGame.Lose;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
@@ -126,7 +127,7 @@ public class GamePlay09 : MonoBehaviour {
 
 				if (hitInfo){
 					_tempTouchGrieta  = hitInfo.transform.gameObject;
-					Debug.Log (_tempTouchGrieta.tag);
+					//Debug.Log (_tempTouchGrieta.tag);
 					if(_tempTouchGrieta.tag =="crack" /*&& tempCrackHide.myState ==CrackHide.stateCrack.Grieta && juegosoul6.MyStateGame== AlmaJuego6.stateGame.InGame*/)
 					{
 						_moveExplosivo = _tempTouchGrieta.GetComponent<MoveExplosivo>();

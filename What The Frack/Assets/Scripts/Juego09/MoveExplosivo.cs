@@ -10,7 +10,7 @@ public class MoveExplosivo : MonoBehaviour {
 	private Animator _animExplosion;
 	public AudioSource _SFX;
 	public AudioClip[] _SoundSFX;
-
+	private GamePlay09 _gameplay09;
 	public bool touched;
 	// Use this for initialization
 	void Start () {
@@ -22,6 +22,7 @@ public class MoveExplosivo : MonoBehaviour {
 		_animaGrieta.speed = 0;
 		_animExplosion.speed = 0;
 		touched = false;
+		_gameplay09 = GameObject.FindGameObjectWithTag ("almadelJuego").GetComponent<GamePlay09> ();
 	}
 	
 	// Update is called once per frame
@@ -29,7 +30,9 @@ public class MoveExplosivo : MonoBehaviour {
 		if (Time.timeScale != 0.0f) {
 			transform.Translate (i==0?Vector3.zero:(Vector3.left/velocidad[i]));
 		}
-
+		if (this.gameObject.transform.position.x < -13.0f && !touched) {
+			_gameplay09.salioExplosivo = true;
+		}
 	}
 
 	public void RunExplosivo(int index){

@@ -225,14 +225,16 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 	public void UpdatePuntos(int sumando){
 		PuntosTotales = PuntosTotales + sumando;
+		if (PuntosTotales > 9999)
+			PuntosTotales = 9999;
 		PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 
 	}
 	public string getPointsTxt(){
 		string pointsTemp=PlayerPrefs.GetInt("PuntosTotales").ToString();
-		int ptsLen = 4-pointsTemp.Length;
+		/*int ptsLen = 4-pointsTemp.Length;
 		for (int i=0; i<ptsLen; i++)
-			pointsTemp = "0" + pointsTemp;
+			pointsTemp = "0" + pointsTemp;*/
 		pointsTemp+="pt";
 		return pointsTemp;
 	}
