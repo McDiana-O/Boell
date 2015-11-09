@@ -8,6 +8,8 @@ public class PopUpQuiz : MonoBehaviour {
 
 	public Image popUpQuiz;
 	public Image ImgGris;
+	public Image FondoNaranja;
+	public Image AnimRed;
 	public Button btnTrue;
 	public Button btnFalse;
 	public Text Mensaje;
@@ -74,6 +76,7 @@ public class PopUpQuiz : MonoBehaviour {
 		}
 		else{
 			//Debug.Log("Loser");
+			AnimRed.gameObject.SetActive(true);
 			SoundBotones.SFXPlayShot(0);
 			timeStartLife = Time.time;
 			IsActivateQuizBad = true;
@@ -96,17 +99,22 @@ public class PopUpQuiz : MonoBehaviour {
 		btnTrue.gameObject.SetActive(true);
 		btnFalse.gameObject.SetActive(true);
 		Quiz.gameObject.SetActive(true);
-		Mensaje.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]);
+		FondoNaranja.gameObject.SetActive(true);
+		Quiz.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]+" "+idCard);
 		idCartaActiva = idCard;
 	}
 
+
 	void SetActivatePopMensaje(bool value){ 
 		popUpQuiz.gameObject.SetActive(value);
+
 		ImgGris.gameObject.SetActive(value);
 		btnTrue.gameObject.SetActive(value);
 		btnFalse.gameObject.SetActive(value);
 		Mensaje.gameObject.SetActive(value);
 		Quiz.gameObject.SetActive(value);
+		FondoNaranja.gameObject.SetActive(value);
+		AnimRed.gameObject.SetActive(value);
 	}
 
 }
