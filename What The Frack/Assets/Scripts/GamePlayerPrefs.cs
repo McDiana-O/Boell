@@ -6,6 +6,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int PuntosTotales;
 	public int NivelActual;
 	public int NivelMaximo;
+
 	/// <summary>
 	/// Primera vez que el jugador pasa el juego 0 no lo ha pasado, 1 Ya acabo el juego, 2 lo paso y salio del menu principal
 	/// </summary>
@@ -80,7 +81,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 		}
 
 		if (PlayerPrefs.HasKey ("MyFirstTime")) {
-			OnMuteSFX = PlayerPrefs.GetInt ("MyFirstTime");
+			MyFirstTime = PlayerPrefs.GetInt ("MyFirstTime");
 		} 
 		else {
 			PlayerPrefs.SetInt("MyFirstTime",0);
@@ -227,7 +228,12 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public bool IsMyFirstTime(){
 		int index;
 		for(index=0; index<Minigame.Length;index++){
-			if(2!=Minigame[index]){
+			if(2==Minigame[index]){
+				//Debug.Log("Continue");
+				//continue;
+			}
+			else{
+				//Debug.Log("break");
 				break;
 			}
 			if (index == 13) {
@@ -325,4 +331,5 @@ public class GamePlayerPrefs : MonoBehaviour {
 			SoundsTag [i].GetComponent<AudioSource> ().mute = value;
 		}
 	}
+
 }

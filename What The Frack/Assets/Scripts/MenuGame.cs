@@ -17,6 +17,7 @@ public class MenuGame : MonoBehaviour {
 	public Image ImgMusicSound;
 	public  Sprite[] SpriteBtnMusicSound;
 	public GameObject tarjetaMensajeQuiz;
+	public GameObject resplandor;
 	//public int[] NivelesGames = new int[14];
 	// Use this for initialization
 	void Awake(){
@@ -29,8 +30,9 @@ public class MenuGame : MonoBehaviour {
 		_playerPrefs.SoundMuteApply ();
 		ImgSFX.sprite = SpriteBtnSFX[_playerPrefs.OnMuteSFX];
 		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
-		if (_playerPrefs.MyFirstTime != 2 && _playerPrefs.IsMyFirstTime()) {
-			//do something
+		//Debug.Log (_playerPrefs.IsMyFirstTime ().ToString ());
+		if (_playerPrefs.MyFirstTime==0 && _playerPrefs.IsMyFirstTime()) {
+			resplandor.SetActive(true);
 		}
 
 		startWorld ();
@@ -122,9 +124,14 @@ public class MenuGame : MonoBehaviour {
 		}
 		_playerPrefs.NivelActual = nivelActual;
 	}
+	public void GotoUrl(string url){
+		Application.OpenURL (url);
+	}
+
 	void OnDestroy() {
-		if (_playerPrefs.MyFirstTime != 2) {
+		if (_playerPrefs.MyFirstTime == 1) {
 			_playerPrefs.setMyFirstTime ();
+			resplandor.SetActive(false);
 		}
 
 	}
