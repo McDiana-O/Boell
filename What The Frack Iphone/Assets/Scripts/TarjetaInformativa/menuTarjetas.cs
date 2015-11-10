@@ -1,0 +1,126 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class menuTarjetas : MonoBehaviour {
+
+	public GameObject tarjetaCanvas;
+	public GameObject tarjetaMensajeQuiz;
+	public Sprite[] ButonsSpritesTarjetas;
+	private GamePlayerPrefs _playerPrefs;
+	public GameObject[] Cards;
+	public GameObject[] TextCardsBuy;
+	public SFX_Sounds SoundBotones;
+	public Text Txtpuntos;
+	// Use this for initialization
+	void Start () {
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		checkCardsActivadas ();
+		Txtpuntos.text = _playerPrefs.getPointsTxt ();
+		_playerPrefs.SoundMuteApply ();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+	public void checkCardsActivadas(){
+
+		changeButtonActivate (Cards[0].GetComponent<Button>(),true); 
+		for (int index=1; index<25; index++) {
+
+			if(_playerPrefs.OpenedCards[index]>=1)
+			{
+				changeButtonActivate (Cards[index].GetComponent<Button>(),true);
+				if(index>=16){
+					TextCardsBuy[index-16].SetActive(false);
+				}
+				//Cards[index+1].GetComponent<Button>().interactable=true;
+			}
+
+		}	
+
+	}
+
+	public void changeButtonActivate(Button ButtonTarjeta,bool valueCompare){
+		SpriteState SpriteStateButton = new SpriteState ();
+		//SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
+		if (valueCompare) {
+			SpriteStateButton.highlightedSprite= ButonsSpritesTarjetas[1];
+			SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
+			ButtonTarjeta.image.sprite = ButonsSpritesTarjetas[1];
+			//ButtonTarjeta.spriteState.pressedSprite =SpriteStateButton.pressedSprite;
+		} 
+		else {
+			SpriteStateButton.highlightedSprite= ButonsSpritesTarjetas[0];
+			SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[0];
+			ButtonTarjeta.image.sprite = ButonsSpritesTarjetas[0];
+			//ButtonTarjeta.spriteState.pressedSprite = ButonsSpritesTarjetas[0];
+		}
+		ButtonTarjeta.spriteState = SpriteStateButton;
+
+	}
+	public void ActivateButton(int idcardInfo){
+		changeButtonActivate (Cards[idcardInfo].GetComponent<Button>(),true); 
+		TextCardsBuy[idcardInfo-16].SetActive(false);
+	}
+
+	public void activaTarjeta(int numeroTarjeta){
+		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) {
+			SoundBotones.SFXPlayShot(2);
+			tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+			//tarjetaMensajeQuiz.GetComponent<PopUpQuiz>().ShowMensaje("Incrementa tu puntaje para <br> desbloquear esta tarjeta.");
+			//Debug.Log("Entro a este If de Menu de tarjetas");
+		}
+		else if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 1) {
+			SoundBotones.SFXPlayShot(3);
+			tarjetasCanvasHide (true);
+			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
+		}
+
+
+	}
+
+
+
+	public void CompraTarjeta(int numeroTarjeta){
+
+		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) 
+		{
+			if ((numeroTarjeta >= 23 && numeroTarjeta <= 25) && _playerPrefs.PuntosTotales >= 700) {
+				//Debug.Log ("Tarjeta del rango Oro:" + numeroTarjeta);
+				SoundBotones.SFXPlayShot(3);
+				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
+				_playerPrefs.UpdatePuntos (-700);
+			}
+			else if ((numeroTarjeta >= 17 && numeroTarjeta <= 22) && _playerPrefs.PuntosTotales >= 400) 
+			{
+				SoundBotones.SFXPlayShot(3);
+				//Debug.Log ("Tarjeta del rango plata:" + numeroTarjeta);
+				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
+				_playerPrefs.UpdatePuntos (-400);
+			}
+			else 
+			{
+				SoundBotones.SFXPlayShot(2);
+				tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+			}
+			Txtpuntos.text = _playerPrefs.getPointsTxt();
+		}
+		else if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 1) {
+			SoundBotones.SFXPlayShot(3);
+			tarjetasCanvasHide (true);
+			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
+		}
+	}
+
+	public void tarjetasCanvasHide(bool isHide){
+		tarjetaCanvas.SetActive (isHide);
+
+	}
+
+	public void goToMenu(){
+		Application.LoadLevel ("MenuPrincipal");
+	}
+}
