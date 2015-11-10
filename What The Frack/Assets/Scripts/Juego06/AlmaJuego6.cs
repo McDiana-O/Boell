@@ -29,7 +29,9 @@ public class AlmaJuego6 : MonoBehaviour {
 	
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public bool isPausing=false;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
@@ -69,7 +71,7 @@ public class AlmaJuego6 : MonoBehaviour {
 				_timeDown.ActivateClock = false;
 				
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 			}
 			if (countCrack==2){
@@ -85,7 +87,7 @@ public class AlmaJuego6 : MonoBehaviour {
 					_playerPrefs.SoundMuteApply ();
 
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					audioWin.Play();
 					StartCoroutine (countdown());
 					///timer.text= "You Win!!!";
 					//MenuWinLose.SetActive(true);

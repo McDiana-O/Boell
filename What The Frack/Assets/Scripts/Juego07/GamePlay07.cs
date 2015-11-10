@@ -32,7 +32,9 @@ public class GamePlay07 : MonoBehaviour {
 	//Audios
 	public AudioSource _audioTema;
 	public AudioSource _Sfxaudio;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public AudioClip sfxClip;
 	public bool isPausing=false;
 	// Use this for initialization
@@ -72,7 +74,7 @@ public class GamePlay07 : MonoBehaviour {
 					_Sfxaudio.PlayOneShot(sfxClip);
 					myState = stateGame07.Win;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					audioWin.Play();
 					StartCoroutine (countdown());
 				}
 				else if (myState == stateGame07.AnimVertical) {
@@ -128,7 +130,7 @@ public class GamePlay07 : MonoBehaviour {
 			myState = stateGame07.Lose;
 			_Sfxaudio.Stop();
 			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			audioLose.Play();
 			StartCoroutine (countdown());
 		}
 	}
@@ -142,7 +144,7 @@ public class GamePlay07 : MonoBehaviour {
 			myState = stateGame07.Lose;
 			_Sfxaudio.Stop();
 			_audioTema.Stop();
-			_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+			audioLose.Play ();
 			StartCoroutine (countdown());
 		}
 	}

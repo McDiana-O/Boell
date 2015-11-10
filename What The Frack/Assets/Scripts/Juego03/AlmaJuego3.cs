@@ -23,7 +23,9 @@ public class AlmaJuego3 : MonoBehaviour {
 	private float time=1;
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public bool isPausing=false;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
@@ -71,7 +73,7 @@ public class AlmaJuego3 : MonoBehaviour {
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					audioWin.Play();
 					StartCoroutine (countdown());
 					BeginGame = false;
 					//timer.text = "you win!!!";
@@ -82,7 +84,7 @@ public class AlmaJuego3 : MonoBehaviour {
 					
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+					audioLose.Play();
 					StartCoroutine (countdown());
 					BeginGame = false;
 					//MyStateGame = stateGame.Perdio;

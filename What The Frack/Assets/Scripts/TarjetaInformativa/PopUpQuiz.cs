@@ -100,7 +100,7 @@ public class PopUpQuiz : MonoBehaviour {
 		btnFalse.gameObject.SetActive(true);
 		Quiz.gameObject.SetActive(true);
 		FondoNaranja.gameObject.SetActive(true);
-		Quiz.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]+" "+idCard);
+		Quiz.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]);
 		idCartaActiva = idCard;
 	}
 

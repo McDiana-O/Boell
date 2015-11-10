@@ -36,7 +36,9 @@ public class GamePlay13 : MonoBehaviour {
 	public bool isPausing=false;
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public AudioClip[] _sfxClip;
 	public AudioSource _sfx;
 	public AudioSource _sfx2;
@@ -66,7 +68,7 @@ public class GamePlay13 : MonoBehaviour {
 				_btnleft.enabled=false;
 				_btnRight.enabled=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				_timeDown.ActivateClock=false;
 				myState= stateGame13.Lose;
 				_animatorQuake.speed = 0;
@@ -113,7 +115,7 @@ public class GamePlay13 : MonoBehaviour {
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					audioWin.Play();
 					_animatorQuake.speed = 0;
 					StartCoroutine (countdown());
 				}

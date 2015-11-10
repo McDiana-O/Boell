@@ -33,7 +33,9 @@ public class GamePlay02 : MonoBehaviour {
 	public bool isPausing=false;
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public AudioSource _sfxSounds;
 
 	public Text _txtPuntos;
@@ -114,7 +116,7 @@ public class GamePlay02 : MonoBehaviour {
 
 					_timeDown.ActivateClock=false;
 					_audioTema.Stop();
-					_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+					audioWin.Play();
 					StartCoroutine (countdown());
 					
 					/*if(!couroutineStarted)
@@ -129,7 +131,7 @@ public class GamePlay02 : MonoBehaviour {
 				Debug.Log("LoseTime");
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 				
 			}
@@ -153,7 +155,7 @@ public class GamePlay02 : MonoBehaviour {
 				//Debug.Log("Lose1");
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 			}
 		} 
@@ -168,7 +170,7 @@ public class GamePlay02 : MonoBehaviour {
 				myState = stateGame02.Lose;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 			}
 		}

@@ -39,7 +39,9 @@ public class GamePlay09 : MonoBehaviour {
 	private float timeToWin=0.7f;
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	public bool salioExplosivo=false;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
@@ -85,11 +87,11 @@ public class GamePlay09 : MonoBehaviour {
 				myState = stateGame.Lose;
 				_timeDown.ActivateClock=false;
 				_audioTema.Stop();
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 			}
 			if((myState == stateGame.Lose || myState == stateGame.Win) && timeToWin<=0 && !oneTime){
-				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				audioWin.Play();
 				oneTime= true;
 			}
 			if ((myState == stateGame.Lose || myState == stateGame.Win) && time<=0) {

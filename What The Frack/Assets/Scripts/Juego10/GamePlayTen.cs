@@ -31,7 +31,9 @@ public class GamePlayTen : MonoBehaviour {
 	
 	//Audios
 	public AudioSource _audioTema;
-	public AudioClip[] winloseAudio;
+	//public AudioClip[] winloseAudio;
+	public AudioSource audioWin;
+	public AudioSource audioLose;
 	// Use this for initialization
 	private GamePlayerPrefs _playerPrefs;
 	public Text _txtPuntos;
@@ -66,7 +68,7 @@ public class GamePlayTen : MonoBehaviour {
 				SFX_Audio.Stop();
 				_animBomba.speed=0;
 				_animAguaGrietas.speed = 0;
-				_audioTema.PlayOneShot(winloseAudio[0],0.6f);
+				audioWin.Play();
 				StartCoroutine (countdown());
 				//MenuWinLose.GetComponent<ScriptMenuWinLose>().SetMenssageWinorLose(ScriptMenuWinLose.tipoMensaje.Gano);
 			} 
@@ -79,7 +81,7 @@ public class GamePlayTen : MonoBehaviour {
 				SFX_Audio.Stop();
 				_animBomba.speed=0;
 				_animAguaGrietas.speed = 0;
-				_audioTema.PlayOneShot(winloseAudio[1],0.6f);
+				audioLose.Play();
 				StartCoroutine (countdown());
 				
 				//MenuWinLose.SetActive(true);
