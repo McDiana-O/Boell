@@ -29,6 +29,9 @@ public class MenuGame : MonoBehaviour {
 		_playerPrefs.SoundMuteApply ();
 		ImgSFX.sprite = SpriteBtnSFX[_playerPrefs.OnMuteSFX];
 		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
+		if (_playerPrefs.MyFirstTime != 2 && _playerPrefs.IsMyFirstTime()) {
+			//do something
+		}
 
 		startWorld ();
 		if (_playerPrefs.NivelMaximo < 3) {
@@ -118,5 +121,11 @@ public class MenuGame : MonoBehaviour {
 			}
 		}
 		_playerPrefs.NivelActual = nivelActual;
+	}
+	void OnDestroy() {
+		if (_playerPrefs.MyFirstTime != 2) {
+			_playerPrefs.setMyFirstTime ();
+		}
+
 	}
 }

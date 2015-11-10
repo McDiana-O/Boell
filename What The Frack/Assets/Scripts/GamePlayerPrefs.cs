@@ -6,6 +6,10 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int PuntosTotales;
 	public int NivelActual;
 	public int NivelMaximo;
+	/// <summary>
+	/// Primera vez que el jugador pasa el juego 0 no lo ha pasado, 1 Ya acabo el juego, 2 lo paso y salio del menu principal
+	/// </summary>
+	public int MyFirstTime;
 
 	public int OnMuteMusic;
 	public int OnMuteSFX;
@@ -75,6 +79,13 @@ public class GamePlayerPrefs : MonoBehaviour {
 			OnMuteSFX =0;
 		}
 
+		if (PlayerPrefs.HasKey ("MyFirstTime")) {
+			OnMuteSFX = PlayerPrefs.GetInt ("MyFirstTime");
+		} 
+		else {
+			PlayerPrefs.SetInt("MyFirstTime",0);
+			MyFirstTime =0;
+		}
 	}
 	void CreateNumPoints(){
 		if (PlayerPrefs.HasKey ("PuntosTotales")) {
@@ -193,7 +204,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public void addOneNivelMaximo(){
 		int index;
 		for(index=0; index<Minigame.Length;index++){
-			Debug.Log ("Level: "+Minigame[index]+" NivelMaximo: "+NivelMaximo);
+			//Debug.Log ("Level: "+Minigame[index]+" NivelMaximo: "+NivelMaximo);
 
 			if((NivelMaximo+1)==Minigame[index]){
 				//Debug.Log("Continue");
@@ -211,6 +222,25 @@ public class GamePlayerPrefs : MonoBehaviour {
 				PlayerPrefs.SetInt("Nivel",NivelMaximo);
 			}
 		}
+	}
+
+	public bool IsMyFirstTime(){
+		int index;
+		for(index=0; index<Minigame.Length;index++){
+			if(2!=Minigame[index]){
+				break;
+			}
+			if (index == 13) {
+				PlayerPrefs.SetInt("MyFirstTime",1);
+				MyFirstTime =1;
+				return true;
+			}
+		}
+		return false;
+	}
+	public void setMyFirstTime(){
+		PlayerPrefs.SetInt("MyFirstTime",2);
+		MyFirstTime =2;
 	}
 	public void setOpenCard(int index,int value){
 		PlayerPrefs.SetInt ("OpenCards"+index,value);
