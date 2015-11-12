@@ -12,6 +12,7 @@ public class MoveExplosivo : MonoBehaviour {
 	public AudioClip[] _SoundSFX;
 	private GamePlay09 _gameplay09;
 	public bool touched;
+	public float variable;
 	// Use this for initialization
 	void Start () {
 		_SFX = GameObject.Find ("SFX_Audio").GetComponent<AudioSource>();
@@ -28,7 +29,8 @@ public class MoveExplosivo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.timeScale != 0.0f) {
-			transform.Translate (i==0?Vector3.zero:(Vector3.left/velocidad[i]));
+			transform.Translate (i==0?Vector3.zero:((Vector3.left/velocidad[i]))*Time.deltaTime*60.0f);
+
 		}
 		if (this.gameObject.transform.position.x < -13.0f && !touched) {
 			_gameplay09.salioExplosivo = true;
