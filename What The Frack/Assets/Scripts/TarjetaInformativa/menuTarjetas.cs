@@ -12,10 +12,12 @@ public class menuTarjetas : MonoBehaviour {
 	public GameObject[] TextCardsBuy;
 	public SFX_Sounds SoundBotones;
 	public Text Txtpuntos;
+	public Text TxtContCards;
 	// Use this for initialization
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		checkCardsActivadas ();
+		CountCardsActivadas ();
 		Txtpuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
 	}
@@ -43,6 +45,24 @@ public class menuTarjetas : MonoBehaviour {
 
 	}
 
+	public void CountCardsActivadas(){
+		int count=0;
+		string tempString = "";
+		for (int index=0; index<_playerPrefs.OpenedCards.Length; index++) {
+			
+			if(_playerPrefs.OpenedCards[index]>=1)
+			{
+				count++;
+			}
+		}	
+		//Debug.Log (count);
+		tempString = count.ToString(); 
+		if (count < 10) {
+			tempString = "0"+tempString;
+		}
+		TxtContCards.text = tempString + "/25";
+	}
+
 	public void changeButtonActivate(Button ButtonTarjeta,bool valueCompare){
 		SpriteState SpriteStateButton = new SpriteState ();
 		//SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
@@ -59,9 +79,10 @@ public class menuTarjetas : MonoBehaviour {
 			//ButtonTarjeta.spriteState.pressedSprite = ButonsSpritesTarjetas[0];
 		}
 		ButtonTarjeta.spriteState = SpriteStateButton;
-
 	}
+
 	public void ActivateButton(int idcardInfo){
+		CountCardsActivadas ();
 		changeButtonActivate (Cards[idcardInfo].GetComponent<Button>(),true); 
 		TextCardsBuy[idcardInfo-16].SetActive(false);
 	}
