@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class limitesMJ8 : MonoBehaviour {
-	public float yPos = 0.0f;
+	public float yPos = 100.0f;
 	// Use this for initialization
 	void Start () {
 	

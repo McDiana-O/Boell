@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mueveLineaPunteada : MonoBehaviour {
 	private GamePlay08 _gamePlay;
-	public float xPos=0.0f;
+	public float xPos=500.0f;
 	// Use this for initialization
 	void Start () {
 		_gamePlay = GameObject.FindGameObjectWithTag ("almadelJuego").GetComponent<GamePlay08> ();

@@ -84,11 +84,12 @@ public class GamePlay12 : MonoBehaviour {
 			Instantiate (CiudadType [1], new Vector3 (4.64f, DestY[arrRand2[1]], 0.0f), Quaternion.identity);
 			for (int i=2; i<total; i++) {
 				int tipo=Random.Range(0,2);
+				int elem=Random.Range(0,2);
 				Instantiate(CarrType[tipo],new Vector3(-2.8f, CarrY[arrRand[i]], 0.0f),Quaternion.identity);
 				if(tipo==0)
-					Instantiate (PlantaType [0], new Vector3 (4.64f, DestY[arrRand2[i]], 0.0f), Quaternion.identity);
+					Instantiate (PlantaType [elem], new Vector3 (4.64f, DestY[arrRand2[i]], 0.0f), Quaternion.identity);
 				else
-					Instantiate (CiudadType [0], new Vector3 (4.64f, DestY[arrRand2[i]], 0.0f), Quaternion.identity);
+					Instantiate (CiudadType [elem], new Vector3 (4.64f, DestY[arrRand2[i]], 0.0f), Quaternion.identity);
 			}
 		}
 		StartCoroutine (SetWinLose ());

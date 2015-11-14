@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GamePlay08 : MonoBehaviour {
 	public enum stateGameMini08{Inicio,Iniciando,Jugando,Gano,Perdio};
-	public stateGameMini08 mystate;
+	public stateGameMini08 mystate = stateGameMini08.Inicio;
 	public int level;
 	public WaterAnimacion _fondo;
 	public float divisorVelPerfo=60f;

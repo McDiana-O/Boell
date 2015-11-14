@@ -46,6 +46,7 @@ public class CisternaComportamiento : MonoBehaviour {
 			if (coll.gameObject.tag == "crack") {
 				myState = stateCamion.Vacio;
 				coll.gameObject.GetComponent<Animator> ().SetInteger("Estado",2);
+				Debug.Log("Entra:"+coll.gameObject.GetComponent<Animator> ().tag);
 				_gameplay.correctos++;
 			} else {
 				myState = stateCamion.Error;
