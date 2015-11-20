@@ -68,6 +68,7 @@ public class PopUpQuiz : MonoBehaviour {
 
 		if(btnAnswer==correctAnswer[idCartaActiva-17]){
 			//Debug.Log("Correcto");
+			_MenuTarjetaCanvas.CountCardsActivadas();
 			SoundBotones.SFXPlayShot(1);
 			SetActivatePopMensaje(false);
 			tarjetaCanvas.SetActive (true);
@@ -78,13 +79,14 @@ public class PopUpQuiz : MonoBehaviour {
 		}
 		else{
 			//Debug.Log("Loser");
+			_MenuTarjetaCanvas.CountCardsActivadas(1);
 			AnimRed.gameObject.SetActive(true);
 			SoundBotones.SFXPlayShot(0);
 			timeStartLife = Time.time;
 			IsActivateQuizBad = true;
 
 		}
-		_MenuTarjetaCanvas.CountCardsActivadas();
+
 		_playerPrefs.setOpenCard(idCartaActiva - 1,1);
 
 	}

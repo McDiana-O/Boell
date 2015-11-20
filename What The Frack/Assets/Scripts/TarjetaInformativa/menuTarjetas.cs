@@ -62,7 +62,24 @@ public class menuTarjetas : MonoBehaviour {
 		}
 		TxtContCards.text = tempString + "/25";
 	}
-
+	public void CountCardsActivadas(int tempValue){
+		int count=0;
+		string tempString = "";
+		for (int index=0; index<_playerPrefs.OpenedCards.Length; index++) {
+			
+			if(_playerPrefs.OpenedCards[index]>=1)
+			{
+				count++;
+			}
+		}
+		count+=tempValue;
+		//Debug.Log (count);
+		tempString = count.ToString(); 
+		if (count < 10) {
+			tempString = "0"+tempString;
+		}
+		TxtContCards.text = tempString + "/25";
+	}
 	public void changeButtonActivate(Button ButtonTarjeta,bool valueCompare){
 		SpriteState SpriteStateButton = new SpriteState ();
 		//SpriteStateButton.pressedSprite= ButonsSpritesTarjetas[2];
