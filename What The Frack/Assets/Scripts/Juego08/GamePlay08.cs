@@ -117,4 +117,7 @@ public class GamePlay08 : MonoBehaviour {
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
 	}
+	public void repeatLevel(){
+		Application.LoadLevel ("Juego08mirror");
+	}
 }
