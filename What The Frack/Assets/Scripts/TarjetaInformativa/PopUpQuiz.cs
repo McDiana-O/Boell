@@ -73,6 +73,8 @@ public class PopUpQuiz : MonoBehaviour {
 			tarjetaCanvas.SetActive (true);
 			tarjetaCanvas.GetComponent<TarjetaInformativa> ().InicializaTarjeta (idCartaActiva);
 			_MenuTarjetaCanvas.ActivateButton (idCartaActiva-1);
+			//_MenuTarjetaCanvas.CountCardsActivadas();
+
 		}
 		else{
 			//Debug.Log("Loser");
@@ -80,7 +82,9 @@ public class PopUpQuiz : MonoBehaviour {
 			SoundBotones.SFXPlayShot(0);
 			timeStartLife = Time.time;
 			IsActivateQuizBad = true;
+
 		}
+		_MenuTarjetaCanvas.CountCardsActivadas();
 		_playerPrefs.setOpenCard(idCartaActiva - 1,1);
 
 	}
