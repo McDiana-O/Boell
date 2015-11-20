@@ -113,8 +113,10 @@ public class PopUpQuiz : MonoBehaviour {
 		btnFalse.gameObject.SetActive(value);
 		Mensaje.gameObject.SetActive(value);
 		Quiz.gameObject.SetActive(value);
-		FondoNaranja.gameObject.SetActive(value);
-		AnimRed.gameObject.SetActive(value);
+		if(FondoNaranja)
+			FondoNaranja.gameObject.SetActive(value);
+		if (AnimRed)
+			AnimRed.gameObject.SetActive(value);
 	}
 
 }
