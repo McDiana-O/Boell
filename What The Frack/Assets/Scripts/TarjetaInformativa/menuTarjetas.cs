@@ -114,6 +114,7 @@ public class menuTarjetas : MonoBehaviour {
 				SoundBotones.SFXPlayShot(3);
 				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
 				_playerPrefs.UpdatePuntos (-700);
+				CountCardsActivadas ();
 			}
 			else if ((numeroTarjeta >= 17 && numeroTarjeta <= 22) && _playerPrefs.PuntosTotales >= 400) 
 			{
@@ -121,6 +122,7 @@ public class menuTarjetas : MonoBehaviour {
 				//Debug.Log ("Tarjeta del rango plata:" + numeroTarjeta);
 				tarjetaMensajeQuiz.SendMessage("ShowQuiz",numeroTarjeta);
 				_playerPrefs.UpdatePuntos (-400);
+				CountCardsActivadas ();
 			}
 			else 
 			{
