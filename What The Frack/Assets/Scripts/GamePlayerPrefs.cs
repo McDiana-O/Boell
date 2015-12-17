@@ -33,7 +33,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		//PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteAll ();
 		NivelActual = 0;
 		CreateVariables ();
 		CreateNumPoints ();

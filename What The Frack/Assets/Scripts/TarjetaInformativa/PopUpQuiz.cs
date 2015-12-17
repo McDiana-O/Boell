@@ -74,7 +74,7 @@ public class PopUpQuiz : MonoBehaviour {
 			tarjetaCanvas.SetActive (true);
 			tarjetaCanvas.GetComponent<TarjetaInformativa> ().InicializaTarjeta (idCartaActiva);
 			_MenuTarjetaCanvas.ActivateButton (idCartaActiva-1);
-			//_MenuTarjetaCanvas.CountCardsActivadas();
+			_MenuTarjetaCanvas.CountCardsActivadas(1);
 
 		}
 		else{
