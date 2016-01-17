@@ -12,7 +12,7 @@ public class RotateElement : MonoBehaviour {
 		if (randomVel)
 			while (rotation==0) {
 			rango = Random.Range (-1, 2) ;
-			rotation = Random.value * rango/ 5;
+			rotation = Random.value * rango;
 			}
 			//rotation = 0.1f+Random.Range(-1,2)/8;
 		else

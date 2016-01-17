@@ -11,6 +11,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	/// Primera vez que el jugador pasa el juego 0 no lo ha pasado, 1 Ya acabo el juego, 2 lo paso y salio del menu principal
 	/// </summary>
 	public int MyFirstTime;
+	public int Language;
 
 	public int OnMuteMusic;
 	public int OnMuteSFX;
@@ -79,13 +80,21 @@ public class GamePlayerPrefs : MonoBehaviour {
 			PlayerPrefs.SetInt("OnMuteSFX",0);
 			OnMuteSFX =0;
 		}
-
+		
 		if (PlayerPrefs.HasKey ("MyFirstTime")) {
 			MyFirstTime = PlayerPrefs.GetInt ("MyFirstTime");
 		} 
 		else {
 			PlayerPrefs.SetInt("MyFirstTime",0);
 			MyFirstTime =0;
+		}
+		
+		if (PlayerPrefs.HasKey ("Language")) {
+			Language = PlayerPrefs.GetString ("Language");
+		} 
+		else {
+			PlayerPrefs.SetString("Language","English");
+			Language ="English";
 		}
 	}
 	void CreateNumPoints(){
