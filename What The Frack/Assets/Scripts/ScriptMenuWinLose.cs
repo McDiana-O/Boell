@@ -52,6 +52,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	void PauseHide(bool activate){
 		btn_Continuar.SetActive (activate);
 		_BGNaranja.SetActive (activate);
+		btn_siguiente.SetActive(false);
 	}
 	public void SetMenssageWinorLose(tipoMensaje typeMenssage){
 		if(typeMenssage == tipoMensaje.Gano){
@@ -75,7 +76,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
 		}
 		else if(typeMenssage == tipoMensaje.Pause){
-			textoWinLose.text="Pausa";
+			textoWinLose.text="PAUSA";
 			PauseHide(true);
 		}
 
