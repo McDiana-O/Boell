@@ -11,7 +11,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 	/// Primera vez que el jugador pasa el juego 0 no lo ha pasado, 1 Ya acabo el juego, 2 lo paso y salio del menu principal
 	/// </summary>
 	public int MyFirstTime;
-	public int Language;
+	public string Language;
 
 	public int OnMuteMusic;
 	public int OnMuteSFX;
