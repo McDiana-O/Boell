@@ -45,18 +45,18 @@ public class GamePlay08 : MonoBehaviour {
 			time = 12.0f;
 			break;
 		case 2:
-			//_fondo.scrollSpeed=0.15f;
-			velocidadFondo=0.15f;
-			divisorVelPerfo=45f;
-			divisorVelLinea=13.75f;
-			time = 9.0f;
+			//_fondo.scrollSpeed=0.1f;
+			velocidadFondo=0.2f;
+			divisorVelPerfo=30f;
+			divisorVelLinea=8.5f;
+			time = 12.0f;
 			break;
 		case 3:
-			//_fondo.scrollSpeed=0.2f;
-			velocidadFondo=0.1f;
-			divisorVelPerfo=60f;
-			divisorVelLinea=19f;
-			time = 6.0f;
+			//_fondo.scrollSpeed=0.1f;
+			velocidadFondo=0.2f;
+			divisorVelPerfo=30f;
+			divisorVelLinea=8.5f;
+			time = 12.0f;
 			break;
 		}
 		StartCoroutine (SetWinLose ());
