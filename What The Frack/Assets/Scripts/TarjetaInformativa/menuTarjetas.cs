@@ -16,10 +16,10 @@ public class menuTarjetas : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
-		checkCardsActivadas ();
-		CountCardsActivadas ();
 		Txtpuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		checkCardsActivadas ();
+		CountCardsActivadas ();
 	}
 	
 	// Update is called once per frame

@@ -57,8 +57,8 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	public void SetMenssageWinorLose(tipoMensaje typeMenssage){
 		if(typeMenssage == tipoMensaje.Gano){
 			textoWinLose.text="FRACK IT!";
-			btn_siguiente.SetActive(true);
 			PauseHide(false);
+			btn_siguiente.SetActive(true);
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroWin[idMiniGame];
 		}
 
