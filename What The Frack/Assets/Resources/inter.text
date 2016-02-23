@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<English>
+		<string name="mainmenu_mapamundi_popup_completa">Complete all the challenges at the current level to unblock a greater difficulty level.</string>
+     	<string name="creditmenu_title">CREDITS</string>
+		<string name="creditmenu_direccion">Head of the Heinrich Böll Foundation's Office for Mexico, Central America and the Caribbean</string>
+		<string name="creditmenu_investigacion">Research and Contents</string>
+		<string name="creditmenu_diseno">Design and Creative Director</string>
+		<string name="creditmenu_programacion">Programming</string>
+		<string name="creditmenu_asistencia">Programming Assistance</string>
+		<string name="creditmenu_sonido">Sound design</string>
+		<string name="creditmenu_agradecimiento">We express our appreciation for the support from</string>
+		<string name="creditmenu_info">More information</string>
+		<string name="creditmenu_mitos">"20 myths and realities of fracking"</string>
+		<string name="creditmenu_loca_ingles">English</string>
+		<string name="creditmenu_loca_aleman">German</string>
+		<string name="loadingscreen_text">LOADING</string>
+		<string name="pausemenu_title">PAUSE</string>
+		<string name="tutorialscreen_title">WHAT TO DO?</string>
+		<string name="cardsmenu_popup_incrementa">Increase your score to unblock this card.</string>
+		<string name="ingame_scene_win_title">FRACK IT!</string>
+		<string name="ingame_scene_lose_title">NO FRACK</string>
+		<string name="exitscreen_title">EXIT</string>
+	</English>
+
+	<Spanish>
+		<string name="mainmenu_mapamundi_popup_completa">Completa todos los retos en el Nivel actual para desbloquear una dificultad mayor.</string>
+		<string name="creditmenu_title">CREDITOS</string>
+		<string name="creditmenu_direccion">Dirección de la Fundación Heinrich Böll México, Centroamérica y el Caribe</string>
+		<string name="creditmenu_investigacion">Investigación y Contenido</string>
+		<string name="creditmenu_diseno">Diseño y Dirección Creativa</string>
+		<string name="creditmenu_programacion">Programación</string>
+		<string name="creditmenu_asistencia">Asistencia en programación</string>
+		<string name="creditmenu_sonido">Diseño de Sonido</string>
+		<string name="creditmenu_agradecimiento">Agradecemos el apoyo de</string>
+		<string name="creditmenu_info">Más información</string>
+		<string name="creditmenu_mitos">"20 Mitos y realidades del fracking"</string>
+		<string name="creditmenu_loca_ingles">Localización Ingles</string>
+		<string name="creditmenu_loca_aleman">Localización Aleman</string>
+		<string name="loadingscreen_text">CARGANDO</string>
+		<string name="pausemenu_title">PAUSA</string>
+		<string name="tutorialscreen_title">¿QUÉ HACER?</string>
+		<string name="cardsmenu_popup_incrementa">Incrementa tu puntaje para desbloquear esta tarjeta.</string>
+		<string name="ingame_scene_win_title">FRACK IT!</string>
+		<string name="ingame_scene_lose_title">NO FRACK</string>
+		<string name="exitscreen_title">SALIR</string>
+	</Spanish>
+
+	<German>
+		<string name="mainmenu_mapamundi_popup_completa">Überwinde alle Hürden dieses Levels, um zur nächsten Schwierigkeitsstufe zu gelangen.</string>
+		<string name="creditmenu_title">CREDITS</string>
+		<string name="creditmenu_direccion">Leitung der Heinrich Böll Stiftung México, Centroamérica y El Caribe</string>
+		<string name="creditmenu_investigacion">Forschung und Inhalt</string>
+		<string name="creditmenu_diseno">Design und Creative Director</string>
+		<string name="creditmenu_programacion">Programmierung</string>
+		<string name="creditmenu_asistencia">Assistent</string>
+		<string name="creditmenu_sonido">Sounddesign</string>
+		<string name="creditmenu_agradecimiento">Unser Dank für die Unterstützung geht an</string>
+		<string name="creditmenu_info">Weitere Informationen</string>
+		<string name="creditmenu_mitos">"20 Mitos y realidades del fracking"</string>
+		<string name="creditmenu_loca_ingles">Englisch</string>
+		<string name="creditmenu_loca_aleman">Deutsch</string>
+		<string name="loadingscreen_text">LÄDT</string>
+		<string name="pausemenu_title">PAUSE</string>
+		<string name="tutorialscreen_title">WAS IST ZU TUN?</string>
+		<string name="cardsmenu_popup_incrementa">Erhöhe deine Punktzahl, um diese Karte zu öffnen.</string>
+		<string name="ingame_scene_win_title">FRACK IT!</string>
+		<string name="ingame_scene_lose_title">NO FRACK</string>
+		<string name="exitscreen_title">VERLASSEN</string>
+	</German>
+</languages>
