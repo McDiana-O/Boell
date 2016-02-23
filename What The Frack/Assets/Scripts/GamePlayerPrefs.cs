@@ -41,6 +41,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 		CreateNivelArray ();
 		CreateTutoArray ();
 		CreateCardsArray ();
+		Debug.Log("Entra");
 	}
 	
 	// Update is called once per frame
