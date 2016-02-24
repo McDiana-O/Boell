@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<English>
+    <string name="minigame_01_title">Preparing the land</string>
+    <string name="minigame_02_title">Building extracting facility</string>
+    <string name="minigame_03_title">Building pools</string>
+    <string name="minigame_04_title">Vertical drilling</string>
+    <string name="minigame_05_title">Inserting pipes</string>
+    <string name="minigame_06_title">Covering cracks</string>
+    <string name="minigame_07_title">Kick-off point</string>
+    <string name="minigame_08_title">Horizontal drilling</string>
+    <string name="minigame_09_title">Setting off explosives</string>
+    <string name="minigame_10_title">Pumping water and chemicals</string>
+    <string name="minigame_11_title">Eliminating contaminants</string>
+    <string name="minigame_12_title">Distributing wastes and gas</string>
+    <string name="minigame_13_title">Earthquake-proof</string>
+    <string name="minigame_14_title">Harmful effects</string>
+	</English>
+    
+  <Spanish>
+    <string name="minigame_01_title">Prepara el terreno</string>
+    <string name="minigame_02_title">Construye el complejo extractivo</string>
+    <string name="minigame_03_title">Construye las piletas</string>
+    <string name="minigame_04_title">Perforación vertical</string>
+    <string name="minigame_05_title">Introduce la cañería</string>
+    <string name="minigame_06_title">Cubre las fisuras</string>
+    <string name="minigame_07_title">Kick-Off-Point</string>
+    <string name="minigame_08_title">Perforación horizontal</string>
+    <string name="minigame_09_title">Activa los explosivos</string>
+    <string name="minigame_10_title">Bombea el agua y químicos</string>
+    <string name="minigame_11_title">Elimina los contaminantes</string>
+    <string name="minigame_12_title">Distribuye los residuos y el gas</string>
+    <string name="minigame_13_title">A prueba de sismos</string>
+    <string name="minigame_14_title">Efectos nocivos</string>
+  </Spanish>
+
+	<German>
+    <string name="minigame_01_title">Bereite das Gelände vor</string>
+    <string name="minigame_02_title">Baue die Infrastruktur auf</string>
+    <string name="minigame_03_title">Errichte die Auffangbecken</string>
+    <string name="minigame_04_title">Vertikale Bohrung</string>
+    <string name="minigame_05_title">Verlege die Rohre</string>
+    <string name="minigame_06_title">Repariere die Risse</string>
+    <string name="minigame_07_title">Kick-Off-Point</string>
+    <string name="minigame_08_title">Horizontale Bohrung</string>
+    <string name="minigame_09_title">Aktiviere den Sprengstoff</string>
+    <string name="minigame_10_title">Pumpe das Wasser und die Chemikalien in das Bohrloch</string>
+    <string name="minigame_11_title">Entferne die Schadstoffe</string>
+    <string name="minigame_12_title">Entsorgung der Abfallprodukte und Gaslieferung </string>
+    <string name="minigame_13_title">Erdbebensicher?</string>
+    <string name="minigame_14_title">Schädliche Auswirkungen</string>
+	</German>
+</languages>

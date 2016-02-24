@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<English>
+    <string name="tutorial_minigame_01">Slide your finger across the land to begin clearing, leveling and cementing the land.</string>
+    <string name="tutorial_minigame_02">Build roads along the marked lines, and then tap your finger to place the machinery.</string>
+    <string name="tutorial_minigame_03">Drag the pools to the indicated place.</string>
+    <string name="tutorial_minigame_04">Drag your finger along a straight line, to drill through the various layers of the earth.</string>
+    <string name="tutorial_minigame_05">Drag the pipes to the bottom of the well without touching the sides.</string>
+    <string name="tutorial_minigame_06">Tap the cracks to seal them.</string>
+    <string name="tutorial_minigame_07">Tap at just the right moment to change the direction of the drilling and reach the target.</string>
+    <string name="tutorial_minigame_08">Tilt the device to make the drilling as straight as possible.</string>
+    <string name="tutorial_minigame_09">Tap all the explosives along the pipe to set them off.</string>
+    <string name="tutorial_minigame_10">Tap the screen rapidly to pump the water, mix it with chemicals and inject it into the well.</string>
+    <string name="tutorial_minigame_11">Tap the contaminants to bring them out of the pipe.</string>
+    <string name="tutorial_minigame_12">Tap a truck to turn it on and then tap the place where it should arrive. Trucks transporting wastes go to Treatment Plants and trucks transporting gas go to cities.</string>
+    <string name="tutorial_minigame_13">Tap repeatedly and quickly, alternating between right and left.</string>
+    <string name="tutorial_minigame_14">Tap damaged organs to heal them.</string>
+	</English>
+
+  <Spanish>
+    <string name="tutorial_minigame_01">Desliza el dedo por el terreno para iniciar la tala, el aplanado y la cimentación del terreno.</string>
+    <string name="tutorial_minigame_02">Construye caminos sobre las líneas marcadas y toca después para colocar la maquinaria.</string>
+    <string name="tutorial_minigame_03">Arrastra los Piletones al lugar indicado.</string>
+    <string name="tutorial_minigame_04">Arrastra el dedo en línea recta perforando las distintas capas de tierra.</string>
+    <string name="tutorial_minigame_05">Arrastra la tubería hasta el fondo sin tocar las paredes del pozo.</string>
+    <string name="tutorial_minigame_06">Toca las fisuras para sellarlas.</string>
+    <string name="tutorial_minigame_07">Toca en el momento justo para comenzar el punto de inflexión de la perforación y llegar al objetivo.</string>
+    <string name="tutorial_minigame_08">Inclina el dispositivo para hacer la perforación lo más recta posible.</string>
+    <string name="tutorial_minigame_09">Toca todos los explosivos a lo largo de la cañería para activarlos.</string>
+    <string name="tutorial_minigame_10">Toca rápidamente la pantalla para bombear el agua, mezclarla con químicos e inyectarla al pozo.</string>
+    <string name="tutorial_minigame_11">Toca los contaminantes para sacarlos del tubo.</string>
+    <string name="tutorial_minigame_12">Toca un camión para activarlo y después toca el lugar al que le corresponde llegar. Los camiones con residuos van a las Plantas de Tratamiento y los camiones con gas a la ciudad.</string>
+    <string name="tutorial_minigame_13">Haz taps rápidamente alternando derecha e izquierda.</string>
+    <string name="tutorial_minigame_14">Toca los diferentes órganos dañados para sanarlos.</string>
+	</Spanish>
+
+	<German>
+    <string name="tutorial_minigame_01">Fahre mit dem Finger über das Gelände, um die Bäume zu fällen, den Boden zu ebnen und zu betonieren.</string>
+    <string name="tutorial_minigame_02">Baue Straßen auf den vorgegebenen Linien und platziere dann die Maschinen, indem du auf die vorgegebenen Stellen tippst. </string>
+    <string name="tutorial_minigame_03">Platziere die Becken auf den gekennzeichneten Stellen.</string>
+    <string name="tutorial_minigame_04">Ziehe den Finger in einer gerade Linie nach unten, um die verschiedenen Erdschichten zu durchbohren.</string>
+    <string name="tutorial_minigame_05">Verlege die Rohre senkrecht nach unten, ohne die Wände zu berühren.</string>
+    <string name="tutorial_minigame_06">Berühre die Risse, um sie zu versiegeln.</string>
+    <string name="tutorial_minigame_07">Berühre den Bildschirm im richtigen Moment, um die horizontale Bohrung einzuleiten und den Zielpunkt zu erreichen.</string>
+    <string name="tutorial_minigame_08">Neige das Gerät, um so gerade wie möglich zu bohren.</string>
+    <string name="tutorial_minigame_09">Berühre alle Sprengkörper entlang der Rohre, um sie zu aktivieren.</string>
+    <string name="tutorial_minigame_10">Tippe so schnell wie möglich auf den Bildschirm, um das Wasser abzupumpen und gemeinsam mit Chemikalien in das Bohrloch zu pressen.</string>
+    <string name="tutorial_minigame_11">Entferne die Schadstoffe aus dem Wasser, indem du auf die Symbole tippst.</string>
+    <string name="tutorial_minigame_12">Tippe auf die LKWs und ihre entsprechenden Ziele. Die LKWs mit den Abfallprodukten fahren zur Kläranlage, die anderen bringen das Gas in die Stadt.</string>
+    <string name="tutorial_minigame_13">Tippe so schnell du kannst links und rechts auf den Bildschirm.</string>
+    <string name="tutorial_minigame_14">Berühre die erkrankten Organe, um sie zu heilen.</string>
+	</German>
+</languages>
