@@ -18,6 +18,7 @@ public class MenuGame : MonoBehaviour {
 	public  Sprite[] SpriteBtnMusicSound;
 	public GameObject tarjetaMensajeQuiz;
 	public GameObject resplandor;
+    Text[] textosRayos;
 	//public int[] NivelesGames = new int[14];
 	// Use this for initialization
 	void Awake(){
@@ -26,7 +27,7 @@ public class MenuGame : MonoBehaviour {
 	}
 	void Start () {
 		_playerPrefs.MiniGameActual = 0;
-		_textPuntos.text = _playerPrefs.getPointsTxt ();
+        _textPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
 		ImgSFX.sprite = SpriteBtnSFX[_playerPrefs.OnMuteSFX];
 		ImgMusicSound.sprite = SpriteBtnMusicSound[_playerPrefs.OnMuteMusic];
@@ -34,6 +35,7 @@ public class MenuGame : MonoBehaviour {
 		if (_playerPrefs.MyFirstTime==0 && _playerPrefs.IsMyFirstTime()) {
 			resplandor.SetActive(true);
 		}
+
 
 		startWorld ();
 		if (_playerPrefs.NivelMaximo < 3) {
@@ -43,7 +45,9 @@ public class MenuGame : MonoBehaviour {
 		_playerPrefs.NivelActual=PlayerPrefs.GetInt("Nivel");
 		nivelActual = _playerPrefs.NivelActual;
 		imgLelvel.sprite = spriteLevels [_playerPrefs.NivelActual- 1];
-	}
+        GetTxtRayos();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -94,7 +98,7 @@ public class MenuGame : MonoBehaviour {
 		if (_playerPrefs.NivelMaximo == 1) 
 		{
 			PlayerPrefs.SetInt("Nivel",nivelActual);
-			tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Completa todos los retos en el Nivel actual para desbloquear una dificultad mayor.");
+			tarjetaMensajeQuiz.SendMessage ("ShowMensaje", "mainmenu_mapamundi_popup_completa");
 		}
 		else if (_playerPrefs.NivelMaximo == 2) 
 		{
@@ -131,8 +135,27 @@ public class MenuGame : MonoBehaviour {
 	void OnDestroy() {
 		if (_playerPrefs.MyFirstTime == 1) {
 			_playerPrefs.setMyFirstTime ();
-			resplandor.SetActive(false);
+			resplandor.SetActive(false); 
 		}
 
 	}
+
+    void GetTxtRayos() {
+        GameObject[] objetos;
+        objetos = GameObject.FindGameObjectsWithTag("txtrayos");
+        int i=1; 
+        foreach (GameObject objeto in objetos) {
+            if (i < 10)
+            {
+                objeto.GetComponent<Text>().text = _playerPrefs.LMenuMapa.getString("minigame_0" + i + "_title");
+            }
+            else {
+                objeto.GetComponent<Text>().text = _playerPrefs.LMenuMapa.getString("minigame_" + i + "_title");
+            }
+            i++;
+        }
+
+
+        
+    }
 }

@@ -107,7 +107,7 @@ public class menuTarjetas : MonoBehaviour {
 	public void activaTarjeta(int numeroTarjeta){
 		if (_playerPrefs.OpenedCards [numeroTarjeta-1] == 0) {
 			SoundBotones.SFXPlayShot(2);
-			tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+			tarjetaMensajeQuiz.SendMessage ("ShowMensaje", "cardsmenu_popup_incrementa");
 			//tarjetaMensajeQuiz.GetComponent<PopUpQuiz>().ShowMensaje("Incrementa tu puntaje para <br> desbloquear esta tarjeta.");
 			//Debug.Log("Entro a este If de Menu de tarjetas");
 		}
@@ -116,8 +116,6 @@ public class menuTarjetas : MonoBehaviour {
 			tarjetasCanvasHide (true);
 			tarjetaCanvas.SendMessage ("InicializaTarjeta",numeroTarjeta);
 		}
-
-
 	}
 
 

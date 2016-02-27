@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GamePlayerPrefs : MonoBehaviour {
+
+    /// <summary>
+    /// Borrar esta variable despues
+    /// </summary>
+    public Text txt_btnIdioma;
 
 	public int PuntosTotales;
 	public int NivelActual;
@@ -20,8 +26,19 @@ public class GamePlayerPrefs : MonoBehaviour {
 	public int[] Tutos = new int[14];
 	public int[] OpenedCards = new int[25];
 
+    /// <summary>
+    /// Variables para  cargar los lenguajes
+    /// </summary>
+    public Lang Lgui;
+    public Lang LMenuMapa;
+    public Lang LTutoriales;
+    /// <summary>
+    /// 0 Ingles, 1 Español, 2 Aleman
+    /// </summary>
+    public static string[] language= new string[] {"English", "Spanish","German" };
 
-	public static GamePlayerPrefs _gamePlayerPrefs;
+
+    public static GamePlayerPrefs _gamePlayerPrefs;
 	void Awake(){
 		if (_gamePlayerPrefs == null) {
 			_gamePlayerPrefs = this;
@@ -41,8 +58,8 @@ public class GamePlayerPrefs : MonoBehaviour {
 		CreateNivelArray ();
 		CreateTutoArray ();
 		CreateCardsArray ();
-		Debug.Log("Entra");
-	}
+        ChangeCurrentLangu(language[0]);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -92,12 +109,16 @@ public class GamePlayerPrefs : MonoBehaviour {
 		
 		if (PlayerPrefs.HasKey ("Language")) {
 			Language = PlayerPrefs.GetString ("Language");
-		} 
+            ChangeCurrentLangu(Language);
+
+        } 
 		else {
 			PlayerPrefs.SetString("Language","English");
 			Language ="English";
-		}
-	}
+            ChangeCurrentLangu(Language);
+        }
+        txt_btnIdioma.text = Language;
+    }
 	void CreateNumPoints(){
 		if (PlayerPrefs.HasKey ("PuntosTotales")) {
 			PuntosTotales = PlayerPrefs.GetInt ("PuntosTotales");
@@ -108,6 +129,34 @@ public class GamePlayerPrefs : MonoBehaviour {
 			PlayerPrefs.SetInt("PuntosTotales",PuntosTotales);
 		}
 	}
+    void ChangeCurrentLangu(string currentlang)
+    {
+        Lgui = new Lang("inter", currentlang, false);
+        LMenuMapa = new Lang("menu", currentlang, false);
+        LTutoriales = new Lang("tuto", currentlang, false);
+    }
+    /// <summary>
+    /// Temporal para cambiar idioma
+    /// </summary>
+   public void ChangeLanguaje() {
+
+        if (Language == "English")
+        {
+            Language = "Spanish";
+        }
+        else if (Language == "Spanish")
+        {
+            Language = "German";
+        }
+        else
+        {
+            Language = "English";
+        }
+        PlayerPrefs.SetString("Language", Language);
+        ChangeCurrentLangu(Language);
+        txt_btnIdioma.text= Language;
+    }
+
 
 	void CreateNivelArray(){
 		for (int index=0; index<Minigame.Length; index++) {

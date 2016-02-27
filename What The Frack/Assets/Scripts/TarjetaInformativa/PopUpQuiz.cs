@@ -96,7 +96,7 @@ public class PopUpQuiz : MonoBehaviour {
 		popUpQuiz.gameObject.SetActive(true);
 		Mensaje.gameObject.SetActive(true);
 		IsActivateMensaje = true;
-		Mensaje.text =System.Text.RegularExpressions.Regex.Unescape(value);
+		Mensaje.text =System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.Lgui.getString(value));
 	}
 	 
 	public void ShowQuiz(int idCard){

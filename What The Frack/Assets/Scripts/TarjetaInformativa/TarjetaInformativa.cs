@@ -42,5 +42,6 @@ public class TarjetaInformativa : MonoBehaviour {
 		txt_contenido.text= contenidos[numeroTarjeta-1];
 		txt_titulo.text = System.Text.RegularExpressions.Regex.Unescape(titulos [numeroTarjeta - 1]);
 		imgCard.sprite = ImgCards [numeroTarjeta - 1];
-	}
+        Debug.Log("Numero de tarjeta: "+numeroTarjeta);
+    }
 }

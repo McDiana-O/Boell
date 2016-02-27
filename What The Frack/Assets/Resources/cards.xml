@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<English>
+    <string name="card_01_title">Welcome!</string>
+    <string name="card_01_text">Welcome to Frack it! Everything’s ready to begin extracting gas through a technique known as fracking. Using this technique, it’s possible to remove shale gas located deep below the surface of the earth. This gas is used to generate electricity, but its extraction causes serious impacts on the environment and on health. Throughout the game, the Information Cards will guide you. Collect them! Obtain the highest score to collect all of them.</string>
+    
+    <string name="card_02_title">Preparing the land</string>
+    <string name="card_02_text">More than a hectare of land is needed for drilling, extracting, moving machinery and storing fluids. The size and characteristics of the land plot vary according to topographic, social and hydrologic conditions.</string>
+    
+    <string name="card_03_title">Extracting facility</string>
+    <string name="card_03_text">Highways are built to access the land and transport machinery and materials, signifying intensive land use.</string>
+    
+    <string name="card_04_title">Building pools </string>
+    <string name="card_04_text">Different types of pools are needed: one for flow-back wastes, one for drill cuttings (small pieces of rock brought up from well) and one that serves to either vent or burn the gas.</string>
+    
+    <string name="card_05_title">Vertical drilling</string>
+    <string name="card_05_text">The rock where shale gas is located is found at a depth of two or more kilometers. To reach this rock, it’s necessary to drill vertically through formations of freshwater and soil layers. </string>
+    
+    <string name="card_06_title">Inserting pipes</string>
+    <string name="card_06_text">To prevent water and dirt from entering the well, a steel pipe and cement is inserted. Due to the well’s depth, it’s impossible to prevent the pipes from resting against the walls of the well along one side or another, and this prevents perfect cementation.</string>
+    
+    <string name="card_07_title">Cement and cracks</string>
+    <string name="card_07_text">Cracks in the cement ring are very likely, and toxic fluids from fracking will leak through the cracks and contaminate the soil and aquifers.</string>
+    
+    <string name="card_08_title">Kick-off point</string>
+    <string name="card_08_text">When drilling reaches a certain distance from the shale rock, a “kick-off point” is established, where horizontal drilling begins.</string>
+    
+    <string name="card_09_title">Horizontal drilling </string>
+    <string name="card_09_text">Horizontal drilling extends for 1.5 to 3 kilometers and makes it possible to maximize contact with the rock where gas is located.</string>
+    
+    <string name="card_10_title">Setting off explosives </string>
+    <string name="card_10_text">In order to connect the well with the shale rock formation, explosives are used. The resulting explosions open up holes in the pipe, penetrating the cementation and rock formation.</string>
+    
+    <string name="card_11_title">Use of water</string>
+    <string name="card_11_text">To access the gas, it’s necessary to fracture the rock by injecting millions of liters of water obtained from nearby aquifers for public use. Chemicals and sand are added to the water, which together with the gas, will flow through the perforations. </string>
+    
+    <string name="card_12_title">Gas and contaminants</string>
+    <string name="card_12_text">The gas released comes out of the well with the wastewater referred to as flow-back and containing large amounts of chemicals and toxics such as methane gas, a flammable gas that generates many times more greenhouse gases than carbon dioxide (CO2).</string>
+    
+    <string name="card_13_title">Flow-back, treatment and distribution</string>
+    <string name="card_13_text">The gas and flow-back are collected in pools. The gas is filtered out and tanker trucks carry the flow-back to treatment plants that are not prepared for processing these fluids and are unable to remove the methane gas completely. The drinking water of nearby communities is contaminated. In other cases, the flow-back is injected into the ground to get rid of it.</string>
+    
+    <string name="card_14_title">Earthquakes </string>
+    <string name="card_14_text">Reinjecting highly toxic flow-back into the ground can trigger earthquakes, by lubricating stratigraphic faults that have been sealed over geological time.</string>
+    
+    <string name="card_15_title">Harmful effects</string>
+    <string name="card_15_text">The toxic and chemical substances used in fracking have an impact on health, with direct effects to skin and eyes, and to respiratory, gastrointestinal, nervous, immunological and cardiovascular systems, and kidneys. They cause cancer and genetic mutations.</string>
+    
+    <string name="card_16_title">Frack it!</string>
+    <string name="card_16_text">Now that you have managed to get gas out of the ground, have you noticed the consequences? And you still want more? You are invited to play in an advanced challenge. You will obtain more points that you can swap for more cards. Learn more about fracking, think about it, and increase your awareness of this issue and the way it’s affecting the world in which we live.</string>
+
+    <string name="card_17_question"></string>
+    <string name="card_17_title"></string>
+    <string name="card_17_text"></string>
+
+    <string name="card_18_question"></string>
+    <string name="card_18_title"></string>
+    <string name="card_18_text"></string>
+
+    <string name="card_19_question"></string>
+    <string name="card_19_title"></string>
+    <string name="card_19_text"></string>
+    
+    
+    <string name="card_20_question"></string>
+    <string name="card_20_title"></string>
+    <string name="card_20_text"></string>
+    
+    <string name="card_21_question"></string>
+    <string name="card_21_title"></string>
+    <string name="card_21_text"></string>
+    
+    <string name="card_23_question"></string>
+    <string name="card_22_title"></string>
+    <string name="card_22_text"></string>
+    
+    <string name="card_23_question"></string>
+    <string name="card_23_title"></string>
+    <string name="card_23_text"></string>
+    
+    <string name="card_24_question"></string>
+    <string name="card_24_title"></string>
+    <string name="card_24_text"></string>
+    
+    <string name="card_25_question"></string>
+    <string name="card_25_title"></string>
+    <string name="card_25_text"></string>
+
+	</English>
+    
+  <Spanish>
+    <string name="card_01_title"></string>
+    <string name="card_01_text"></string>
+    
+    <string name="card_02_title"></string>
+    <string name="card_02_text"></string>
+    
+    <string name="card_03_title"></string>
+    <string name="card_03_text"></string>
+    
+    <string name="card_04_title"></string>
+    <string name="card_04_text"></string>
+    
+    <string name="card_05_title"></string>
+    <string name="card_05_text"></string>
+    
+    <string name="card_06_title"></string>
+    <string name="card_06_text"></string>
+    
+    <string name="card_07_title"></string>
+    <string name="card_07_text"></string>
+    
+    <string name="card_08_title"></string>
+    <string name="card_08_text"></string>
+    
+    <string name="card_09_title"></string>
+    <string name="card_09_text"></string>
+    
+    <string name="card_10_title"></string>
+    <string name="card_10_text"></string>
+    
+    <string name="card_11_title"></string>
+    <string name="card_11_text"></string>
+    
+    <string name="card_12_title"></string>
+    <string name="card_12_text"></string>
+    
+    <string name="card_13_title"></string>
+    <string name="card_13_text"></string>
+    
+    <string name="card_14_title"></string>
+    <string name="card_14_text"></string>
+    
+    <string name="card_15_title"></string>
+    <string name="card_15_text"></string>
+    
+    <string name="card_16_title"></string>
+    <string name="card_16_text"></string>
+
+    <string name="card_17_question"></string>
+    <string name="card_17_title"></string>
+    <string name="card_17_text"></string>
+
+    <string name="card_18_question"></string>
+    <string name="card_18_title"></string>
+    <string name="card_18_text"></string>
+
+    <string name="card_19_question"></string>
+    <string name="card_19_title"></string>
+    <string name="card_19_text"></string>
+
+
+    <string name="card_20_question"></string>
+    <string name="card_20_title"></string>
+    <string name="card_20_text"></string>
+
+    <string name="card_21_question"></string>
+    <string name="card_21_title"></string>
+    <string name="card_21_text"></string>
+
+    <string name="card_23_question"></string>
+    <string name="card_22_title"></string>
+    <string name="card_22_text"></string>
+
+    <string name="card_23_question"></string>
+    <string name="card_23_title"></string>
+    <string name="card_23_text"></string>
+
+    <string name="card_24_question"></string>
+    <string name="card_24_title"></string>
+    <string name="card_24_text"></string>
+
+    <string name="card_25_question"></string>
+    <string name="card_25_title"></string>
+    <string name="card_25_text"></string>
+
+  </Spanish>
+
+	<German>
+    <string name="card_01_title"></string>
+    <string name="card_01_text"></string>
+
+    <string name="card_02_title"></string>
+    <string name="card_02_text"></string>
+
+    <string name="card_03_title"></string>
+    <string name="card_03_text"></string>
+
+    <string name="card_04_title"></string>
+    <string name="card_04_text"></string>
+
+    <string name="card_05_title"></string>
+    <string name="card_05_text"></string>
+
+    <string name="card_06_title"></string>
+    <string name="card_06_text"></string>
+
+    <string name="card_07_title"></string>
+    <string name="card_07_text"></string>
+
+    <string name="card_08_title"></string>
+    <string name="card_08_text"></string>
+
+    <string name="card_09_title"></string>
+    <string name="card_09_text"></string>
+
+    <string name="card_10_title"></string>
+    <string name="card_10_text"></string>
+
+    <string name="card_11_title"></string>
+    <string name="card_11_text"></string>
+
+    <string name="card_12_title"></string>
+    <string name="card_12_text"></string>
+
+    <string name="card_13_title"></string>
+    <string name="card_13_text"></string>
+
+    <string name="card_14_title"></string>
+    <string name="card_14_text"></string>
+
+    <string name="card_15_title"></string>
+    <string name="card_15_text"></string>
+
+    <string name="card_16_title"></string>
+    <string name="card_16_text"></string>
+
+    <string name="card_17_question"></string>
+    <string name="card_17_title"></string>
+    <string name="card_17_text"></string>
+
+    <string name="card_18_question"></string>
+    <string name="card_18_title"></string>
+    <string name="card_18_text"></string>
+
+    <string name="card_19_question"></string>
+    <string name="card_19_title"></string>
+    <string name="card_19_text"></string>
+
+
+    <string name="card_20_question"></string>
+    <string name="card_20_title"></string>
+    <string name="card_20_text"></string>
+
+    <string name="card_21_question"></string>
+    <string name="card_21_title"></string>
+    <string name="card_21_text"></string>
+
+    <string name="card_23_question"></string>
+    <string name="card_22_title"></string>
+    <string name="card_22_text"></string>
+
+    <string name="card_23_question"></string>
+    <string name="card_23_title"></string>
+    <string name="card_23_text"></string>
+
+    <string name="card_24_question"></string>
+    <string name="card_24_title"></string>
+    <string name="card_24_text"></string>
+
+    <string name="card_25_question"></string>
+    <string name="card_25_title"></string>
+    <string name="card_25_text"></string>
+
+  </German>
+</languages>
