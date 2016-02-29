@@ -18,7 +18,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
 	void Start () {
-		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		idMiniGame = _playerPrefs.MiniGameActual - 1;
 	}
 	
@@ -76,8 +76,11 @@ public class ScriptMenuWinLose : MonoBehaviour {
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
 		}
 		else if(typeMenssage == tipoMensaje.Pause){
-			textoWinLose.text=_playerPrefs.Lgui.getString("pausemenu_title");
-			PauseHide(true);
+            _playerPrefs = GameObject.FindGameObjectWithTag("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+            textoWinLose.text= _playerPrefs.Lgui.getString("pausemenu_title"); 
+            
+            //textoWinLose.text = "Pause";
+            PauseHide(true);
 		}
 
 	}

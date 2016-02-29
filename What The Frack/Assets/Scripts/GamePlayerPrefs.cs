@@ -59,7 +59,7 @@ public class GamePlayerPrefs : MonoBehaviour {
 		CreateNivelArray ();
 		CreateTutoArray ();
 		CreateCardsArray ();
-        ChangeCurrentLangu(language[0]);
+
     }
 	
 	// Update is called once per frame
@@ -111,7 +111,6 @@ public class GamePlayerPrefs : MonoBehaviour {
 		if (PlayerPrefs.HasKey ("Language")) {
 			Language = PlayerPrefs.GetString ("Language");
             ChangeCurrentLangu(Language);
-
         } 
 		else {
 			PlayerPrefs.SetString("Language","English");

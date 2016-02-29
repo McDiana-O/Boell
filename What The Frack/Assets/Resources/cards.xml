@@ -90,9 +90,7 @@
     
   <Spanish>
     <string name="card_01_title">¡Bienvenid@!</string>
-    <string name="card_01_text">
-      Bienvenid@ a Frack it! Todo está listo para iniciar la extracción de gas mediante la técnica del fracking. Con esta técnica puedes sacar el gas llamado shale que se encuentra a grandes profundidades del subsuelo. El gas se utiliza para generar energía eléctrica, pero su extracción causa graves impactos en el medio ambiente y la salud. \n
-      A lo largo del juego, las Tarjetas Informativas te irán guiando. ¡Colecciónalas! Consigue el mayor puntaje para reunir todas.
+    <string name="card_01_text">Bienvenid@ a Frack it! Todo está listo para iniciar la extracción de gas mediante la técnica del fracking. Con esta técnica puedes sacar el gas llamado shale que se encuentra a grandes profundidades del subsuelo. El gas se utiliza para generar energía eléctrica, pero su extracción causa graves impactos en el medio ambiente y la salud. \nA lo largo del juego, las Tarjetas Informativas te irán guiando. ¡Colecciónalas! Consigue el mayor puntaje para reunir todas.
     </string>
     
     <string name="card_02_title">Preparar el terreno</string>
