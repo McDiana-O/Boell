@@ -142,7 +142,7 @@ public class menuTarjetas : MonoBehaviour {
 			else 
 			{
 				SoundBotones.SFXPlayShot(2);
-				tarjetaMensajeQuiz.SendMessage ("ShowMensaje","Incrementa tu puntaje para \n desbloquear esta tarjeta.");
+				tarjetaMensajeQuiz.SendMessage ("ShowMensaje", "cardsmenu_popup_incrementa");
 			}
 			Txtpuntos.text = _playerPrefs.getPointsTxt();
 		}

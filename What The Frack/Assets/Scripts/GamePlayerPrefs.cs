@@ -32,6 +32,7 @@ public class GamePlayerPrefs : MonoBehaviour {
     public Lang Lgui;
     public Lang LMenuMapa;
     public Lang LTutoriales;
+    public Lang LTarjetas;
     /// <summary>
     /// 0 Ingles, 1 Español, 2 Aleman
     /// </summary>
@@ -134,6 +135,7 @@ public class GamePlayerPrefs : MonoBehaviour {
         Lgui = new Lang("inter", currentlang, false);
         LMenuMapa = new Lang("menu", currentlang, false);
         LTutoriales = new Lang("tuto", currentlang, false);
+        LTarjetas = new Lang("cards", currentlang, false);
     }
     /// <summary>
     /// Temporal para cambiar idioma

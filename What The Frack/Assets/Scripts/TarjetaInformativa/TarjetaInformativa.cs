@@ -36,12 +36,16 @@ public class TarjetaInformativa : MonoBehaviour {
 
 		if (numeroTarjeta < 10) {
 			txt_numTerjeta.text = "0" + numeroTarjeta.ToString();
-		} else {
+            txt_titulo.text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTarjetas.getString("card_0" + (numeroTarjeta) + "_title"));
+            txt_contenido.text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTarjetas.getString("card_0" + (numeroTarjeta) + "_text"));
+        } else {
 			txt_numTerjeta.text = numeroTarjeta.ToString();
-		}
-		txt_contenido.text= contenidos[numeroTarjeta-1];
-		txt_titulo.text = System.Text.RegularExpressions.Regex.Unescape(titulos [numeroTarjeta - 1]);
-		imgCard.sprite = ImgCards [numeroTarjeta - 1];
-        Debug.Log("Numero de tarjeta: "+numeroTarjeta);
+            txt_titulo.text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTarjetas.getString("card_" + (numeroTarjeta) + "_title"));
+            txt_contenido.text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTarjetas.getString("card_" + (numeroTarjeta) + "_text"));
+        }
+		//txt_contenido.text= contenidos[numeroTarjeta-1];
+        //txt_titulo.text = System.Text.RegularExpressions.Regex.Unescape(titulos [numeroTarjeta - 1]);
+        imgCard.sprite = ImgCards [numeroTarjeta - 1];
+       
     }
 }

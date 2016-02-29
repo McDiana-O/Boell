@@ -97,7 +97,8 @@ public class PopUpQuiz : MonoBehaviour {
 		Mensaje.gameObject.SetActive(true);
 		IsActivateMensaje = true;
 		Mensaje.text =System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.Lgui.getString(value));
-	}
+
+    }
 	 
 	public void ShowQuiz(int idCard){
 		popUpQuiz.gameObject.SetActive(true);
@@ -106,8 +107,10 @@ public class PopUpQuiz : MonoBehaviour {
 		btnFalse.gameObject.SetActive(true);
 		Quiz.gameObject.SetActive(true);
 		FondoNaranja.gameObject.SetActive(true);
-		Quiz.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]);
-		idCartaActiva = idCard;
+        //Quiz.text =System.Text.RegularExpressions.Regex.Unescape(TextQuiz[idCard-17]);
+        Quiz.text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTarjetas.getString("card_" + idCard+ "_question"));
+        //Debug.Log("Numero de tarjeta: " + idCard);
+        idCartaActiva = idCard;
 	}
 
 

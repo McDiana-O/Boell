@@ -40,7 +40,7 @@
 		<string name="loadingscreen_text">CARGANDO</string>
 		<string name="pausemenu_title">PAUSA</string>
 		<string name="tutorialscreen_title">¿QUÉ HACER?</string>
-		<string name="cardsmenu_popup_incrementa">Incrementa tu puntaje para desbloquear esta tarjeta.</string>
+		<string name="cardsmenu_popup_incrementa">Incrementa tu puntaje para \ndesbloquear esta tarjeta.</string>
 		<string name="ingame_scene_win_title">FRACK IT!</string>
 		<string name="ingame_scene_lose_title">NO FRACK</string>
 		<string name="exitscreen_title">SALIR</string>

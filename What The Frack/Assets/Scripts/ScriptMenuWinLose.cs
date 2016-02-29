@@ -76,7 +76,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 			imgRetro.GetComponent<Image>().sprite=SpriteRetroLose[idMiniGame];
 		}
 		else if(typeMenssage == tipoMensaje.Pause){
-			textoWinLose.text="PAUSA";
+			textoWinLose.text=_playerPrefs.Lgui.getString("pausemenu_title");
 			PauseHide(true);
 		}
 

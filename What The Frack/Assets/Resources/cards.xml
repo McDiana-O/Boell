@@ -204,66 +204,66 @@
     <string name="card_08_title">Kick-Off-Point</string>
     <string name="card_08_text">Sobald die vertikale Bohrung eine gewisse Tiefe erreicht hat, beginnt am Kick-Off-Point die horizontalen Bohrung. </string>
 
-    <string name="card_09_title"></string>
-    <string name="card_09_text"></string>
+    <string name="card_09_title">Horizontale Bohrung</string>
+    <string name="card_09_text">Die horizontale Bohrung erreicht eine Länge von 1,5 bis zu 3 km und dient dem Zugang zu dem Gestein, in dem das Gas lagert.</string>
 
-    <string name="card_10_title"></string>
-    <string name="card_10_text"></string>
+    <string name="card_10_title">Aktivierung des Sprengstoffes</string>
+    <string name="card_10_text">Mit Hilfe von Explosionen entstehen Öffnungen in den Rohren, die den Kontakt zwischen Bohrloch und Gestein herstellen. </string>
 
-    <string name="card_11_title"></string>
-    <string name="card_11_text"></string>
+    <string name="card_11_title">Fracking-Flüssigkeit</string>
+    <string name="card_11_text">Um an das Gas zu gelangen, muss das Gestein aufgebrochen werden. Dazu werden Millionen von Litern Wasser, Chemikalien und Sand in das Bohrloch gepumpt. Das Wasser stammt aus nahegelegenen Grundwasservorkommen. Der Sand dient als Stützmittel, um die Öffnungen aufrecht zu erhalten, durch die das Gas in das Bohrloch fließt.</string>
 
-    <string name="card_12_title"></string>
-    <string name="card_12_text"></string>
+    <string name="card_12_title">Gas und Schadstoffe</string>
+    <string name="card_12_text">Das freigesetzte Gas gelangt zusammen mit der Flüssigkeit (flow-back) an die Oberfläche. Bei dem Vorgang werden toxische Gase freigesetzt sowie Methangas, ein entzündliches Gas, das weitaus mehr Treibhausgase generiert als Kohlenstoffdioxid (CO2).</string>
 
-    <string name="card_13_title"></string>
-    <string name="card_13_text"></string>
+    <string name="card_13_title">Flow-back, Verarbeitung und Lieferung</string>
+    <string name="card_13_text">Das Gas wird gewonnen und das flow-back wird zu Kläranlagen transportiert, die jedoch das Wasser nicht vollständig säubern können, was zu einer Verschmutzung des Trinkwassers führt.  In einigen Fällen wird das flow-back einfach in den Boden gepumpt.</string>
 
-    <string name="card_14_title"></string>
-    <string name="card_14_text"></string>
+    <string name="card_14_title">Erdbeben</string>
+    <string name="card_14_text">Die Lagerung des hochgiftigen flow-backs im Boden kann Erdbeben hervorrufen. Erdrisse, die über viele geologische Zeitalter hinweg zusammengewachsen sind, öffnen sich wieder.</string>
 
-    <string name="card_15_title"></string>
-    <string name="card_15_text"></string>
+    <string name="card_15_title">Schädliche Auswirkungen</string>
+    <string name="card_15_text">Die giftigen Substanzen, die beim Fracking verwendet werden haben Auswirkungen auf die Gesundheit: Hauterkrankungen, Atembeschwerden, Erkrankungen des Nervensystems und des Immunsystems sind nur einige von vielen Folgen. Darüber hinaus können sie Krebs und genetische Mutationen hervorrufen.</string>
 
-    <string name="card_16_title"></string>
-    <string name="card_16_text"></string>
+    <string name="card_16_title">Frack it!</string>
+    <string name="card_16_text">Hast du die Folgen bemerkt, jetzt, wo du das Gas aus dem Erdboden geholt hast? Willst du noch mehr fracken? Dann spiele doch noch das nächste Level! So erhältst du noch mehr Punkte, die du gegen Karten eintauschen kannst. Diese informieren dich über das Fracking! Reflektiere und schärfe das Bewusstsein über das Thema und die negativen Auswirkungen für die Welt, in der wir leben.</string>
 
-    <string name="card_17_question"></string>
-    <string name="card_17_title"></string>
-    <string name="card_17_text"></string>
+    <string name="card_17_question">Ein Bohrloch kann 15 bis 20 Jahre für die Gasförderung genutzt werden.</string>
+    <string name="card_17_title">Geringe Produktivität</string>
+    <string name="card_17_text">Die geschätzte Produktivität eines Bohrloches beträgt nur 6 Jahre mit einem starken Rückgang von 70% nach dem ersten Jahr!</string>
 
-    <string name="card_18_question"></string>
-    <string name="card_18_title"></string>
-    <string name="card_18_text"></string>
+    <string name="card_18_question">Gas und Öl gelangen beim Fracking ohne jegliche Schadstoffe an die Erdoberfläche.</string>
+    <string name="card_18_title">Vergiftung des Bodens</string>
+    <string name="card_18_text">Gas und Öl gelangen zusammen mit Chemikalien und giftigen Substanzen an die Oberfläche. Darunter sind Schwermetalle und radioaktive Elemente wie das Radium-226.</string>
 
-    <string name="card_19_question"></string>
-    <string name="card_19_title"></string>
-    <string name="card_19_text"></string>
+    <string name="card_19_question">Fracking wird nur in Wüstenregionen durchgeführt, die nicht besiedelt sind.</string>
+    <string name="card_19_title">Invasive Praxis</string>
+    <string name="card_19_text">Fracking wird auch in der Nähe von Wohnorten und landwirtschaftlichen Anbauflächen sowie in Küstennähe betrieben (Offshore-Fracking, z.B. im Golf von Mexiko).</string>
 
 
-    <string name="card_20_question"></string>
-    <string name="card_20_title"></string>
-    <string name="card_20_text"></string>
+    <string name="card_20_question">Beim Fracking werden zwischen 9 und 29 Mio. Liter Wasser verwendet.</string>
+    <string name="card_20_title">Hoher Wasserverbrauch</string>
+    <string name="card_20_text">Beim Fracking werden zwischen 9 und 29 Mio. Liter Wasser in das Bohrloch gepresst. Dieser Prozess wird bis zu drei mal wiederholt, um die größtmögliche Menge an Gas zu fördern.</string>
 
-    <string name="card_21_question"></string>
-    <string name="card_21_title"></string>
-    <string name="card_21_text"></string>
+    <string name="card_21_question">Die Reaktionen der Gesellschaft und die Proteste gegen Fracking haben geringe Auswirkungen.</string>
+    <string name="card_21_title">Laut werden!</string>
+    <string name="card_21_text">Einige Länder und Regionen haben es geschafft, Fracking zu verbieten (z.B. Frankreich, einige US-Bundesstaaten und Gemeinden in Argentinien und Quebec).</string>
 
-    <string name="card_22_question"></string>
-    <string name="card_22_title"></string>
-    <string name="card_22_text"></string>
+    <string name="card_22_question">Argentinien, Brasilien und Mexiko sind die Länder Lateinamerikas mit den größten Reserven an Schiefergas.</string>
+    <string name="card_22_title">Größte Vorkommen</string>
+    <string name="card_22_text">Laut der US Energy Information Administration verfügt Argentinien über 11%, Mexiko über 7,5% und Brasilien über 3,4% der weltweit förderbaren Schiefergasvorkommen (US EIA 2013).</string>
 
-    <string name="card_23_question"></string>
-    <string name="card_23_title"></string>
-    <string name="card_23_text"></string>
+    <string name="card_23_question">Fracking verletzt Menschenrechte.</string>
+    <string name="card_23_title">Menschenrechtsverletzungen</string>
+    <string name="card_23_text">Fracking verletzt die Menschenrechte auf eine gesunde Umwelt, auf Zugang zu sauberem Wasser, auf Gesundheit, Ernährung, Wohnen, Zugang zu Informationen und Mitbestimmung.</string>
 
-    <string name="card_24_question"></string>
-    <string name="card_24_title"></string>
-    <string name="card_24_text"></string>
+    <string name="card_24_question">Fracking ist eine experimentelle Technik.</string>
+    <string name="card_24_title">Ein riskantes Experiment</string>
+    <string name="card_24_text">Schäden an den Rohren und der Isolierung können kaum verhindert werden. Es ist nicht vorhersehbar wie weit die Risse die Erdschichten durchqueren und somit Gas, Chemikalien und Giftstoffen den Boden und Gewässer verseuchen.</string>
 
-    <string name="card_25_question"></string>
-    <string name="card_25_title"></string>
-    <string name="card_25_text"></string>
+    <string name="card_25_question">Bei sinkenden Ölpreisen, lohnt es sich um so mehr in Fracking-Projekte zu investieren. </string>
+    <string name="card_25_title">Höhere Kosten</string>
+    <string name="card_25_text">Fracking ist deutlich teurer als die konventionelle Förderung von Öl. Bei niedrigem Ölpreis lohnt die Investition in Fracking-Projekte nicht.</string>
 
   </German>
 </languages>
