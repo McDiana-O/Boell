@@ -18,7 +18,7 @@ public class ScriptMenuWinLose : MonoBehaviour {
 	private GamePlayerPrefs _playerPrefs;
 	// Use this for initialization
 	void Start () {
-		//_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
+		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		idMiniGame = _playerPrefs.MiniGameActual - 1;
 	}
 	
