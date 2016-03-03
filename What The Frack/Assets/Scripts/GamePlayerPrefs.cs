@@ -36,7 +36,7 @@ public class GamePlayerPrefs : MonoBehaviour {
     /// <summary>
     /// 0 Ingles, 1 Español, 2 Aleman
     /// </summary>
-    public static string[] language= new string[] {"English", "Spanish","German" };
+   // public static string[] languageString= new string[] {"English", "Spanish","German" };
 
 
     public static GamePlayerPrefs _gamePlayerPrefs;
