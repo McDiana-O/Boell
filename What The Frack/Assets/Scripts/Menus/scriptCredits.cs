@@ -21,7 +21,7 @@ public class scriptCredits : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		idMiniGame = _playerPrefs.MiniGameActual;
 		txtTitulo.text= _playerPrefs.Lgui.getString("creditmenu_title");
-		txtDireccion.text= _playerPrefs.Lgui.getString("creditmenu_direccion");
+		txtDireccion.text= System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.Lgui.getString("creditmenu_direccion"));
 		txtInvestigacion.text= _playerPrefs.Lgui.getString("creditmenu_investigacion");
 		txtDiseno.text= _playerPrefs.Lgui.getString("creditmenu_diseno");
 		txtProgramacion.text= _playerPrefs.Lgui.getString("creditmenu_programacion");
