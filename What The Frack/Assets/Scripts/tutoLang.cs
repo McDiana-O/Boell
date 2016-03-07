@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class tutoLang : MonoBehaviour {
 	public Text texto;
+	public Text textoQueHacer;
 	private GamePlayerPrefs _playerPrefs;
 	public int idMiniGame;
 
@@ -12,6 +13,8 @@ public class tutoLang : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		idMiniGame = _playerPrefs.MiniGameActual;
 		texto.text= _playerPrefs.LTutoriales.getString("tutorial_minigame_"+formatNumberString(idMiniGame,2));
+		textoQueHacer=(Text)GameObject.Find ("Txt_QueHacer").GetComponent<Text>();
+		textoQueHacer.text=_playerPrefs.Lgui.getString("tutorialscreen_title");
 	}
 	
 	// Update is called once per frame

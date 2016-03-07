@@ -6,6 +6,7 @@ public class MenuGame : MonoBehaviour {
 
 	public GotoEnd _gotoEnd;
 	public GameObject imgCargando;
+	public Text textCargando;
 	public Image imgLelvel; 
 	public Sprite[] spriteLevels;
 	int nivelActual=1;
@@ -46,7 +47,7 @@ public class MenuGame : MonoBehaviour {
 		nivelActual = _playerPrefs.NivelActual;
 		imgLelvel.sprite = spriteLevels [_playerPrefs.NivelActual- 1];
         GetTxtRayos();
-
+		textCargando.text = "";
     }
 	
 	// Update is called once per frame
@@ -71,7 +72,7 @@ public class MenuGame : MonoBehaviour {
 		id =int.Parse(level.Remove (0, 5).ToString());
 		_playerPrefs.MiniGameActual = id;
 
-
+		//textCargando.text = _playerPrefs.Lgui.getString("loadingscreen_text");
 		imgCargando.SetActive (true);
 		Application.LoadLevel(level);
 	}
