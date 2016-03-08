@@ -21,6 +21,9 @@ public class MenuGame : MonoBehaviour {
 	public GameObject resplandor;
     Text[] textosRayos;
 	//public int[] NivelesGames = new int[14];
+	public Image mapImg;
+	public Sprite[] Spritesmaps;
+
 	// Use this for initialization
 	void Awake(){
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
@@ -48,6 +51,7 @@ public class MenuGame : MonoBehaviour {
 		imgLelvel.sprite = spriteLevels [_playerPrefs.NivelActual- 1];
         GetTxtRayos();
 		textCargando.text = "";
+		ChangeMapIdiom(_playerPrefs.Language);
     }
 	
 	// Update is called once per frame
@@ -149,19 +153,26 @@ public class MenuGame : MonoBehaviour {
 			//Debug.Log("d:"+objeto.name);
 			string s;
 			s = objeto.name.Substring(5,2);
-			Debug.Log("d:"+s);
 			objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_" + s+ "_title"));
-            /*if (i < 10)
-            {
-                objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_0" + i + "_title"));
-            }
-            else {
-                objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_" + i + "_title"));
-            }*/
-            i++;
         }
-
-
         
     }
+	public void ChangeMapIdiom(string Value)
+	{
+		
+		if (Value == "English")
+		{
+			mapImg.sprite=Spritesmaps[0];
+		}
+		else if (Value == "Spanish")
+		{
+			mapImg.sprite=Spritesmaps[1];
+		}
+		else if (Value == "German")
+		{
+			mapImg.sprite=Spritesmaps[2];
+		}
+
+	}
+
 }
