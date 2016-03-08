@@ -66,6 +66,6 @@
 		<string name="cardsmenu_popup_incrementa">Erhöhe deine Punktzahl, \num diese Karte zu öffnen.</string>
 		<string name="ingame_scene_win_title">FRACK IT!</string>
 		<string name="ingame_scene_lose_title">NO FRACK</string>
-		<string name="exitscreen_title">VERLASSEN</string>
+		<string name="exitscreen_title">EXIT</string>
 	</German>
 </languages>

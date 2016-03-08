@@ -76,7 +76,7 @@ public class MenuGame : MonoBehaviour {
 		id =int.Parse(level.Remove (0, 5).ToString());
 		_playerPrefs.MiniGameActual = id;
 
-		//textCargando.text = _playerPrefs.Lgui.getString("loadingscreen_text");
+		textCargando.text = _playerPrefs.Lgui.getString("loadingscreen_text");
 		imgCargando.SetActive (true);
 		Application.LoadLevel(level);
 	}

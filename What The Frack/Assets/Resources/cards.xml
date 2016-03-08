@@ -7,16 +7,16 @@
     <string name="card_02_title">Preparing the land</string>
     <string name="card_02_text">More than a hectare of land is needed for drilling, extracting, moving machinery and storing fluids. The size and characteristics of the land plot vary according to topographic, social and hydrologic conditions.</string>
     
-    <string name="card_03_title">Extracting facility</string>
+    <string name="card_03_title">Extracting\nfacility</string>
     <string name="card_03_text">Highways are built to access the land and transport machinery and materials, signifying intensive land use.</string>
     
-    <string name="card_04_title">Building pools </string>
+    <string name="card_04_title">Building\npools </string>
     <string name="card_04_text">Different types of pools are needed: one for flow-back wastes, one for drill cuttings (small pieces of rock brought up from well) and one that serves to either vent or burn the gas.</string>
     
-    <string name="card_05_title">Vertical drilling</string>
+    <string name="card_05_title">Vertical\ndrilling</string>
     <string name="card_05_text">The rock where shale gas is located is found at a depth of two or more kilometers. To reach this rock, it’s necessary to drill vertically through formations of freshwater and soil layers. </string>
     
-    <string name="card_06_title">Inserting pipes</string>
+    <string name="card_06_title">Inserting\npipes</string>
     <string name="card_06_text">To prevent water and dirt from entering the well, a steel pipe and cement is inserted. Due to the well’s depth, it’s impossible to prevent the pipes from resting against the walls of the well along one side or another, and this prevents perfect cementation.</string>
     
     <string name="card_07_title">Cement and cracks</string>
@@ -25,60 +25,60 @@
     <string name="card_08_title">Kick-off point</string>
     <string name="card_08_text">When drilling reaches a certain distance from the shale rock, a “kick-off point” is established, where horizontal drilling begins.</string>
     
-    <string name="card_09_title">Horizontal drilling </string>
+    <string name="card_09_title">Horizontal\ndrilling </string>
     <string name="card_09_text">Horizontal drilling extends for 1.5 to 3 kilometers and makes it possible to maximize contact with the rock where gas is located.</string>
     
-    <string name="card_10_title">Setting off explosives </string>
+    <string name="card_10_title">Setting off\nexplosives </string>
     <string name="card_10_text">In order to connect the well with the shale rock formation, explosives are used. The resulting explosions open up holes in the pipe, penetrating the cementation and rock formation.</string>
     
     <string name="card_11_title">Use of water</string>
     <string name="card_11_text">To access the gas, it’s necessary to fracture the rock by injecting millions of liters of water obtained from nearby aquifers for public use. Chemicals and sand are added to the water, which together with the gas, will flow through the perforations. </string>
     
-    <string name="card_12_title">Gas and contaminants</string>
+    <string name="card_12_title">Gas and\ncontaminants</string>
     <string name="card_12_text">The gas released comes out of the well with the wastewater referred to as flow-back and containing large amounts of chemicals and toxics such as methane gas, a flammable gas that generates many times more greenhouse gases than carbon dioxide (CO2).</string>
     
-    <string name="card_13_title">Flow-back, treatment and distribution</string>
+    <string name="card_13_title">Flow-back, treatment\nand distribution</string>
     <string name="card_13_text">The gas and flow-back are collected in pools. The gas is filtered out and tanker trucks carry the flow-back to treatment plants that are not prepared for processing these fluids and are unable to remove the methane gas completely. The drinking water of nearby communities is contaminated. In other cases, the flow-back is injected into the ground to get rid of it.</string>
     
     <string name="card_14_title">Earthquakes </string>
     <string name="card_14_text">Reinjecting highly toxic flow-back into the ground can trigger earthquakes, by lubricating stratigraphic faults that have been sealed over geological time.</string>
     
-    <string name="card_15_title">Harmful effects</string>
+    <string name="card_15_title">Harmful\neffects</string>
     <string name="card_15_text">The toxic and chemical substances used in fracking have an impact on health, with direct effects to skin and eyes, and to respiratory, gastrointestinal, nervous, immunological and cardiovascular systems, and kidneys. They cause cancer and genetic mutations.</string>
     
     <string name="card_16_title">Frack it!</string>
     <string name="card_16_text">Now that you have managed to get gas out of the ground, have you noticed the consequences? And you still want more? You are invited to play in an advanced challenge. You will obtain more points that you can swap for more cards. Learn more about fracking, think about it, and increase your awareness of this issue and the way it’s affecting the world in which we live.</string>
 
-    <string name="card_17_question">Gas can be extracted from a well for 15 to 20 years.</string>
-    <string name="card_17_title">Short productive life</string>
+    <string name="card_17_question">Gas can be extracted from a well\nfor 15 to 20 years.</string>
+    <string name="card_17_title">Short\nproductive life</string>
     <string name="card_17_text">The estimated productive life of a fracking well is only six years, with a drastic drop of up to 70% at the end of the first year.</string>
 
     <string name="card_18_question">The gas and oil released from fracking is clean when it’s brought up to the surface.</string>
-    <string name="card_18_title">Underground contamination</string>
+    <string name="card_18_title">Underground\ncontamination</string>
     <string name="card_18_text">When this hydrocarbon comes out of the ground, it brings with it a significant portion of the fluids injected, together with highly toxic chemical and radioactive compounds from the bottom of the well. These compounds include Volatile Organic Compounds, heavy metals and radioactive elements such as radium-226.</string>
 
     <string name="card_19_question">Fracking is a practice used only in desert areas where no one lives.</string>
-    <string name="card_19_title">Invasive practice</string>
+    <string name="card_19_title">Invasive\npractice</string>
     <string name="card_19_text">Fracking is also used in areas located near communities and their croplands. And there is also deep-sea fracking in places like the Gulf of Mexico, referred to as offshore fracking.</string>
     
     
-    <string name="card_20_question">Between 9 and 29 million liters of water are used in the fracking process.</string>
-    <string name="card_20_title">Depleting water sources</string>
+    <string name="card_20_question">Between 9 and 29 million liters of water\nare used in the fracking process.</string>
+    <string name="card_20_title">Depleting\nwater sources</string>
     <string name="card_20_text">Between 9 and 29 million liters of water are used to fracture a single well. And a well is sometimes fractured up to three times in an attempt to extract the most gas possible.</string>
     
     <string name="card_21_question">Society’s response and protests against fracking have little or no effect.</string>
     <string name="card_21_title">Speaking out</string>
     <string name="card_21_text">France, some US states, a number of cities in Argentina and the city of Quebec, and others, have been able to prohibit fracking in their regions.</string>
     
-    <string name="card_22_question">Argentina, Brazil and Mexico are the Latin American countries with the largest reserves of shale gas.</string>
-    <string name="card_22_title">Largest reserves</string>
+    <string name="card_22_question">Argentina, Brazil and Mexico are the\nLatin American countries with the largest\nreserves of shale gas.</string>
+    <string name="card_22_title">Largest\nreserves</string>
     <string name="card_22_text">According to the US Energy Information Administration, Argentina has 11%, Mexico, 7.5%, and Brazil, 3.4% of the planet’s total amount of technically recoverable shale gas (US EIA 2013).</string>
     
-    <string name="card_23_question">Fracking threatens human rights.</string>
-    <string name="card_23_title">Against human rights</string>
+    <string name="card_23_question">Fracking threatens\nhuman rights.</string>
+    <string name="card_23_title">Against\nhuman rights</string>
     <string name="card_23_text">Fracking endangers our human rights to a healthy environment, to access to pure water, to health, food, housing, access to information, and to free, prior and informed consent, and participation!</string>
     
-    <string name="card_24_question">Fracking is an experimental technique.</string>
+    <string name="card_24_question">Fracking is an\nexperimental technique.</string>
     <string name="card_24_title">A risky experiment</string>
     <string name="card_24_text">It’s impossible to avoid defects in pipes and cementations, and it’s not known just how far fractures in the rock may extend. Defects may result in the leaking of gas, and of chemicals and toxics injected into the ground, thus causing the contamination of soil and aquifers.</string>
     
@@ -93,86 +93,86 @@
     <string name="card_01_text">Bienvenid@ a Frack it! Todo está listo para iniciar la extracción de gas mediante la técnica del fracking. Con esta técnica puedes sacar el gas llamado shale que se encuentra a grandes profundidades del subsuelo. El gas se utiliza para generar energía eléctrica, pero su extracción causa graves impactos en el medio ambiente y la salud. \nA lo largo del juego, las Tarjetas Informativas te irán guiando. ¡Colecciónalas! Consigue el mayor puntaje para reunir todas.
     </string>
     
-    <string name="card_02_title">Preparar el terreno</string>
+    <string name="card_02_title">Preparar\nel terreno</string>
     <string name="card_02_text">La superficie necesaria es mayor a 1 hectárea para permitir la perforación, extracción, el despliegue de maquinaria y almacenaje de los fluidos. El tamaño del terreno y las características cambian de acuerdo con las condiciones topográficas, sociales e hidrológicas.</string>
     
-    <string name="card_03_title">Complejo extractivo</string>
+    <string name="card_03_title">Complejo\nextractivo</string>
     <string name="card_03_text">Para el acceso al terreno, el transporte de la maquinaria y del material se construyen carreteras, lo que significa un uso intensivo del territorio.</string>
     
-    <string name="card_04_title">Construir piletas</string>
+    <string name="card_04_title">Construir\npiletas</string>
     <string name="card_04_text">Se necesitan varios tipos de piletas: Una para desechos de la inyección de perforación (flow-back), una para los cuttings de perforación (pedacitos de roca que se sacan del pozo) y una que funciona como fosa de venteo donde se quema el gas.</string>
     
-    <string name="card_05_title">Perforación vertical</string>
+    <string name="card_05_title">Perforación\nvertical</string>
     <string name="card_05_text">Las rocas que alojan el gas shale se encuentran a profundidades de 2 o más kilómetros. Para llegar a ellas es necesario realizar una perforación vertical que atraviesa formaciones de agua dulce y otras capas de suelo.</string>
     
-    <string name="card_06_title">Introducción de cañería</string>
+    <string name="card_06_title">Introducción\nde cañería</string>
     <string name="card_06_text">Para evitar la entrada de agua y tierra al pozo, se introduce una cañería de acero y cemento. Por la profundidad, es imposible evitar que las cañerías se recarguen sobre uno u otro lado de la pared del pozo, lo que impide una cementación perfecta.</string>
     
-    <string name="card_07_title">Cemento y fisuras</string>
+    <string name="card_07_title">Cemento\ny fisuras</string>
     <string name="card_07_text">Es muy probable que el anillo de cemento tenga fisuras, por donde escapan los fluidos tóxicos de la fracturación y contaminan suelos y acuíferos.</string>
     
     <string name="card_08_title">Kick-Off-Point</string>
     <string name="card_08_text">Una vez que se llega a cierta distancia de la roca shale, se establece el “Kick-Off-Point”, punto de inicio de la perforación horizontal.</string>
     
-    <string name="card_09_title">Perforación horizontal</string>
+    <string name="card_09_title">Perforación\nhorizontal</string>
     <string name="card_09_text">La perforación horizontal tiene una longitud de 1.5 a 3 km y permite maximizar el contacto con la roca que aloja el gas.</string>
     
-    <string name="card_10_title">Activación de explosivos</string>
+    <string name="card_10_title">Activación de\nexplosivos</string>
     <string name="card_10_text">Para comunicar el pozo con la formación de la roca shale, se realizan explosiones que abren agujeros en la cañería penetrando la cementación y la formación rocosa.</string>
     
-    <string name="card_11_title">Explotación del agua</string>
+    <string name="card_11_title">Explotación\ndel agua</string>
     <string name="card_11_text">Para acceder al gas es necesario fracturar la roca mediante la inyección de millones de litros de agua que se obtiene de acuíferos cercanos de uso común. Al agua se le añaden químicos y arena que junto con el gas buscarán salida a través de los punzados.</string>
     
-    <string name="card_12_title">Gas y contaminantes</string>
+    <string name="card_12_title">Gas y\ncontaminantes</string>
     <string name="card_12_text">El gas liberado sale al pozo junto con el agua residual llamado flow back que contiene grandes cantidades de químicos y tóxicos como el gas metano, un gas inflamable que genera muchas veces más gases de efecto invernadero que el dióxido de carbono (CO2).</string>
     
-    <string name="card_13_title">Flow back, tratamiento y distribución</string>
+    <string name="card_13_title">Flow back, tratamiento\ny distribución</string>
     <string name="card_13_text">El gas y el flow back se colectan en piletas. El gas se filtra y tanques colectores transportan el flow back a plantas de tratamiento que no están preparadas para procesarlo y no pueden quitar el metano completamente. El agua potable de comunidades cercanas es contaminada. En otros casos, el flow back se inyecta al subsuelo para deshacerse de él.</string>
     
     <string name="card_14_title">Sismos</string>
     <string name="card_14_text">La reinyección del flow back altamente tóxico al subsuelo puede detonar sismos, al lubricar fallas estratigráficas que estaban selladas a través de edades geológicas.</string>
     
-    <string name="card_15_title">Efectos nocivos</string>
+    <string name="card_15_title">Efectos\nnocivos</string>
     <string name="card_15_text">Las sustancias químicas y tóxicas que se utilizan en el fracking afectan la salud: efectos directos a la piel, ojos, sistema respiratorio, sistema gastrointestinal, sistema nervioso, inmunológico, cardiovascular, riñones, provoca cáncer y mutaciones genéticas.</string>
     
     <string name="card_16_title">Frack it!</string>
     <string name="card_16_text">Ahora que has conseguido sacar el gas del subsuelo, ¿notaste sus consecuencias? ¿Aún quieres más?. Te invitamos a jugar en una dificultad avanzada. Obtendrás más puntos que podrás canjear por más tarjetas. Mantente informado acerca del Fracking, reflexiona y haz conciencia sobre este tema y la forma en la que afecta al mundo donde vivimos.</string>
 
-    <string name="card_17_question">De un pozo se puede extraer gas durante 15 a 20 años.</string>
-    <string name="card_17_title">Poca vida productiva</string>
+    <string name="card_17_question">De un pozo se puede extraer gas\ndurante 15 a 20 años.</string>
+    <string name="card_17_title">Poca vida\nproductiva</string>
     <string name="card_17_text">La vida productiva estimada de un pozo de fracking es de solo 6 años, con una marcada caída de hasta 70% al cabo del primer año.</string>
 
     <string name="card_18_question">El gas y petróleo que se libera con el fracking sale limpio a la superficie.</string>
-    <string name="card_18_title">Contaminación desde el subsuelo</string>
+    <string name="card_18_title">Contaminación\ndesde el subsuelo</string>
     <string name="card_18_text">El hidrocarburo sale a la superficie y arrastra gran parte de los fluidos inyectados además de componentes químicos y radiactivos muy tóxicos desde el fondo del pozo. Entre estos podemos encontrar Compuestos Volátiles Orgánicos, metales pesados, y elementos radiactivos como el radio-226.</string>
 
     <string name="card_19_question">El fracking solamente se practica en zonas desérticas donde no hay población. </string>
-    <string name="card_19_title">Práctica invasiva</string>
+    <string name="card_19_title">Práctica\ninvasiva</string>
     <string name="card_19_text">El fracking se practica también en zonas cerca de comunidades y sus campos de cultivo. Además existe el fracking en ultramar, como en el Golfo de México, llamado “Offshore-Fracking.”</string>
 
 
-    <string name="card_20_question">En el proceso del fracking se usan entre 9 y 29 millones de litros de agua.</string>
-    <string name="card_20_title">Privación del agua</string>
+    <string name="card_20_question">En el proceso del fracking se usan entre\n9 y 29 millones de litros de agua.</string>
+    <string name="card_20_title">Privación\ndel agua</string>
     <string name="card_20_text">Cada vez que se fractura un pozo se utilizan entre 9 y 29 millones de litros de agua. Un pozo a veces se fractura hasta 3 veces para tratar de sacar la mayor cantidad posible de gas.</string>
 
     <string name="card_21_question">La respuesta social y las manifestaciones contra el fracking tienen poco o ningún efecto.</string>
-    <string name="card_21_title">Alzando la voz</string>
+    <string name="card_21_title">Alzando\nla voz</string>
     <string name="card_21_text">Francia, algunos estados de los EE.UU., varias ciudades de Argentina y la ciudad de Quebec, entre otros, han conseguido prohibir el fracking en su región.</string>
 
     <string name="card_22_question">Argentina, Brasil y México son los países de América Latina con las reservas más grandes de gas de esquisto.</string>
-    <string name="card_22_title">Mayores reservas</string>
+    <string name="card_22_title">Mayores\nreservas</string>
     <string name="card_22_text">Según la US Energy Information Administration, Argentina cuenta con 11%, México con 7,5% y Brasil con 3,4% de la cantidad global de gas esquisto técnicamente recuperable (US EIA 2013).</string>
 
-    <string name="card_23_question">El fracking pone en riesgo los derechos humanos.</string>
-    <string name="card_23_title">Contra los derechos humanos</string>
+    <string name="card_23_question">El fracking pone en riesgo\nlos derechos humanos.</string>
+    <string name="card_23_title">Contra los\nderechos humanos</string>
     <string name="card_23_text">El fracking pone en riesgo los derechos humanos a un ambiente sano, al acceso al agua pura, a la salud, a la alimentación, a la vivienda, al acceso a la información, al consentimiento previo, libre e informado y a la participación!</string>
 
-    <string name="card_24_question">El fracking es una técnica experimental.</string>
-    <string name="card_24_title">Experimento riesgoso</string>
+    <string name="card_24_question">El fracking es una\ntécnica experimental.</string>
+    <string name="card_24_title">Experimento\nriesgoso</string>
     <string name="card_24_text">No se pueden evitar defectos en cañerías o cementaciones y no se sabe hasta dónde lleguen las fracturas en las rocas. Los defectos pueden resultar en fugas de gas y de los químicos y tóxicos que se inyectan en el subsuelo provocando así la contaminación de suelos y acuíferos.</string>
 
-    <string name="card_25_question">Cuando el precio del petróleo cae, conviene mucho más invertir en la técnica del fracking.</string>
-    <string name="card_25_title">Costo mayor</string>
+    <string name="card_25_question">Cuando el precio del petróleo cae,\nconviene mucho más invertir en\nla técnica del fracking.</string>
+    <string name="card_25_title">Costo\nmayor</string>
     <string name="card_25_text">La técnica del fracking es mucho más costosa que la extracción convencional de petróleo. Si el precio del petróleo es bajo, no vale la pena invertir en fracking.</string>
 
   </Spanish>
@@ -181,86 +181,86 @@
     <string name="card_01_title">Herzlich Willkommen!</string>
     <string name="card_01_text">Herzlich Willkommen zu Frack it! Bist du bereit für die Gasförderung anhand der Fracking-Technik? Damit lässt sich das sogenannte Schiefergas fördern, das sich in großen Tiefen in der Erde befindet. Das Gas wird für die Energiegewinnung verwendet, aber seine Förderung hat gefährliche Auswirkungen auf Umwelt und Gesundheit. Anhand der Informationskarten wirst du durch das Spiel geleitet. Sammle sie! Erziele die höchste Punktzahl, um alle Karten zu öffnen.</string>
 
-    <string name="card_02_title">Vorbereitung des Geländes</string>
+    <string name="card_02_title">Vorbereitung\ndes Geländes</string>
     <string name="card_02_text">Mehr als 1 Hektar Fläche wird für den gesamten Prozess (Bohrung, Transport der Maschinen, Gasförderung und Lagerung der Flüssigkeit) benötigt. Die Größe und Art der Fläche hängt von den jeweiligen topographischen, sozialen und hydrologischen Bedingungen ab. </string>
 
-    <string name="card_03_title">Infrastruktur für die Gasförderung</string>
+    <string name="card_03_title">Infrastruktur für\ndie Gasförderung</string>
     <string name="card_03_text">Für den Zugang zum Gelände, den Transport der Maschinerie und der Materialien werden Straßen gebaut. Dies bedeutet eine intensive Landnutzung.</string>
 
-    <string name="card_04_title">Errichtung der Auffangbecken</string>
+    <string name="card_04_title">Errichtung der\nAuffangbecken</string>
     <string name="card_04_text">Es werden verschiedene Auffangbecken benötigt. Eines für die Abfallprodukte, die bei der Bohrung entstehen, eines für den flow-back (Flüssigkeit, die in das Bohrloch gepresst wird und dann zurück fließt) und eines, das zur Entlüftung und Verbrennung des Gases dient.</string>
 
-    <string name="card_05_title">Vetikale Bohrung</string>
+    <string name="card_05_title">Vetikale\nBohrung</string>
     <string name="card_05_text">Die Gesteinsschicht, in der das Gas lagert, befindet sich in Tiefen von mehr als zwei Kilometern. Um dorthin zu gelangen, ist eine vertikale Bohrung durch mehrere Erdschichten und Grundwasservorkommen notwendig.</string>
 
-    <string name="card_06_title">Verlegung der Rohre</string>
+    <string name="card_06_title">Verlegung\nder Rohre</string>
     <string name="card_06_text">Um zu verhindern, dass Wasser und Erde in das Bohrloch gelangen, werden Stahlrohre verlegt und mit Zement isoliert. Dabei stoßen die Rohre jedoch oft an die Wände des Bohrloches. Dies macht eine makellose Isolierung unmöglich.</string>
 
-    <string name="card_07_title">Zementierung und Risse</string>
+    <string name="card_07_title">Zementierung\nund Risse</string>
     <string name="card_07_text">Es ist sehr wahrscheinlich, dass sich in dem Ring aus Zement Risse bilden. Dies kann später dazu führen, dass giftige Flüssigkeit austritt und Boden und Grundwasser verseucht.</string>
 
     <string name="card_08_title">Kick-Off-Point</string>
     <string name="card_08_text">Sobald die vertikale Bohrung eine gewisse Tiefe erreicht hat, beginnt am Kick-Off-Point die horizontalen Bohrung. </string>
 
-    <string name="card_09_title">Horizontale Bohrung</string>
+    <string name="card_09_title">Horizontale\nBohrung</string>
     <string name="card_09_text">Die horizontale Bohrung erreicht eine Länge von 1,5 bis zu 3 km und dient dem Zugang zu dem Gestein, in dem das Gas lagert.</string>
 
-    <string name="card_10_title">Aktivierung des Sprengstoffes</string>
+    <string name="card_10_title">Aktivierung des\nSprengstoffes</string>
     <string name="card_10_text">Mit Hilfe von Explosionen entstehen Öffnungen in den Rohren, die den Kontakt zwischen Bohrloch und Gestein herstellen. </string>
 
     <string name="card_11_title">Fracking-Flüssigkeit</string>
     <string name="card_11_text">Um an das Gas zu gelangen, muss das Gestein aufgebrochen werden. Dazu werden Millionen von Litern Wasser, Chemikalien und Sand in das Bohrloch gepumpt. Das Wasser stammt aus nahegelegenen Grundwasservorkommen. Der Sand dient als Stützmittel, um die Öffnungen aufrecht zu erhalten, durch die das Gas in das Bohrloch fließt.</string>
 
-    <string name="card_12_title">Gas und Schadstoffe</string>
+    <string name="card_12_title">Gas und\nSchadstoffe</string>
     <string name="card_12_text">Das freigesetzte Gas gelangt zusammen mit der Flüssigkeit (flow-back) an die Oberfläche. Bei dem Vorgang werden toxische Gase freigesetzt sowie Methangas, ein entzündliches Gas, das weitaus mehr Treibhausgase generiert als Kohlenstoffdioxid (CO2).</string>
 
-    <string name="card_13_title">Flow-back, Verarbeitung und Lieferung</string>
+    <string name="card_13_title">Flow-back, Verarbeitung\nund Lieferung</string>
     <string name="card_13_text">Das Gas wird gewonnen und das flow-back wird zu Kläranlagen transportiert, die jedoch das Wasser nicht vollständig säubern können, was zu einer Verschmutzung des Trinkwassers führt.  In einigen Fällen wird das flow-back einfach in den Boden gepumpt.</string>
 
     <string name="card_14_title">Erdbeben</string>
     <string name="card_14_text">Die Lagerung des hochgiftigen flow-backs im Boden kann Erdbeben hervorrufen. Erdrisse, die über viele geologische Zeitalter hinweg zusammengewachsen sind, öffnen sich wieder.</string>
 
-    <string name="card_15_title">Schädliche Auswirkungen</string>
+    <string name="card_15_title">Schädliche\nAuswirkungen</string>
     <string name="card_15_text">Die giftigen Substanzen, die beim Fracking verwendet werden haben Auswirkungen auf die Gesundheit: Hauterkrankungen, Atembeschwerden, Erkrankungen des Nervensystems und des Immunsystems sind nur einige von vielen Folgen. Darüber hinaus können sie Krebs und genetische Mutationen hervorrufen.</string>
 
     <string name="card_16_title">Frack it!</string>
     <string name="card_16_text">Hast du die Folgen bemerkt, jetzt, wo du das Gas aus dem Erdboden geholt hast? Willst du noch mehr fracken? Dann spiele doch noch das nächste Level! So erhältst du noch mehr Punkte, die du gegen Karten eintauschen kannst. Diese informieren dich über das Fracking! Reflektiere und schärfe das Bewusstsein über das Thema und die negativen Auswirkungen für die Welt, in der wir leben.</string>
 
-    <string name="card_17_question">Ein Bohrloch kann 15 bis 20 Jahre für die Gasförderung genutzt werden.</string>
-    <string name="card_17_title">Geringe Produktivität</string>
+    <string name="card_17_question">Ein Bohrloch kann 15 bis 20 Jahre\nfür die Gasförderung genutzt werden.</string>
+    <string name="card_17_title">Geringe\nProduktivität</string>
     <string name="card_17_text">Die geschätzte Produktivität eines Bohrloches beträgt nur 6 Jahre mit einem starken Rückgang von 70% nach dem ersten Jahr!</string>
 
-    <string name="card_18_question">Gas und Öl gelangen beim Fracking ohne jegliche Schadstoffe an die Erdoberfläche.</string>
+    <string name="card_18_question">Gas und Öl gelangen beim Fracking ohne\njegliche Schadstoffe an die Erdoberfläche.</string>
     <string name="card_18_title">Vergiftung des Bodens</string>
     <string name="card_18_text">Gas und Öl gelangen zusammen mit Chemikalien und giftigen Substanzen an die Oberfläche. Darunter sind Schwermetalle und radioaktive Elemente wie das Radium-226.</string>
 
-    <string name="card_19_question">Fracking wird nur in Wüstenregionen durchgeführt, die nicht besiedelt sind.</string>
-    <string name="card_19_title">Invasive Praxis</string>
+    <string name="card_19_question">Fracking wird nur in Wüstenregionen\ndurchgeführt, die nicht besiedelt sind.</string>
+    <string name="card_19_title">Invasive\nPraxis</string>
     <string name="card_19_text">Fracking wird auch in der Nähe von Wohnorten und landwirtschaftlichen Anbauflächen sowie in Küstennähe betrieben (Offshore-Fracking, z.B. im Golf von Mexiko).</string>
 
 
-    <string name="card_20_question">Beim Fracking werden zwischen 9 und 29 Mio. Liter Wasser verwendet.</string>
-    <string name="card_20_title">Hoher Wasserverbrauch</string>
+    <string name="card_20_question">Beim Fracking werden zwischen\n9 und 29 Mio. Liter Wasser verwendet.</string>
+    <string name="card_20_title">Hoher\nWasserverbrauch</string>
     <string name="card_20_text">Beim Fracking werden zwischen 9 und 29 Mio. Liter Wasser in das Bohrloch gepresst. Dieser Prozess wird bis zu drei mal wiederholt, um die größtmögliche Menge an Gas zu fördern.</string>
 
-    <string name="card_21_question">Die Reaktionen der Gesellschaft und die Proteste gegen Fracking haben geringe Auswirkungen.</string>
+    <string name="card_21_question">Die Reaktionen der Gesellschaft und die Proteste\ngegen Fracking haben geringe Auswirkungen.</string>
     <string name="card_21_title">Laut werden!</string>
     <string name="card_21_text">Einige Länder und Regionen haben es geschafft, Fracking zu verbieten (z.B. Frankreich, einige US-Bundesstaaten und Gemeinden in Argentinien und Quebec).</string>
 
-    <string name="card_22_question">Argentinien, Brasilien und Mexiko sind die Länder Lateinamerikas mit den größten Reserven an Schiefergas.</string>
-    <string name="card_22_title">Größte Vorkommen</string>
+    <string name="card_22_question">Argentinien, Brasilien und Mexiko sind\ndie Länder Lateinamerikas mit\nden größten Reserven an Schiefergas.</string>
+    <string name="card_22_title">Größte\nVorkommen</string>
     <string name="card_22_text">Laut der US Energy Information Administration verfügt Argentinien über 11%, Mexiko über 7,5% und Brasilien über 3,4% der weltweit förderbaren Schiefergasvorkommen (US EIA 2013).</string>
 
-    <string name="card_23_question">Fracking verletzt Menschenrechte.</string>
+    <string name="card_23_question">Fracking verletzt\nMenschenrechte.</string>
     <string name="card_23_title">Menschenrechtsverletzungen</string>
     <string name="card_23_text">Fracking verletzt die Menschenrechte auf eine gesunde Umwelt, auf Zugang zu sauberem Wasser, auf Gesundheit, Ernährung, Wohnen, Zugang zu Informationen und Mitbestimmung.</string>
 
-    <string name="card_24_question">Fracking ist eine experimentelle Technik.</string>
-    <string name="card_24_title">Ein riskantes Experiment</string>
+    <string name="card_24_question">Fracking ist eine\nexperimentelle Technik.</string>
+    <string name="card_24_title">Ein riskantes\nExperiment</string>
     <string name="card_24_text">Schäden an den Rohren und der Isolierung können kaum verhindert werden. Es ist nicht vorhersehbar wie weit die Risse die Erdschichten durchqueren und somit Gas, Chemikalien und Giftstoffen den Boden und Gewässer verseuchen.</string>
 
-    <string name="card_25_question">Bei sinkenden Ölpreisen, lohnt es sich um so mehr in Fracking-Projekte zu investieren. </string>
-    <string name="card_25_title">Höhere Kosten</string>
+    <string name="card_25_question">Bei sinkenden Ölpreisen, lohnt es sich um\nso mehr in Fracking-Projekte zu investieren. </string>
+    <string name="card_25_title">Höhere\nKosten</string>
     <string name="card_25_text">Fracking ist deutlich teurer als die konventionelle Förderung von Öl. Bei niedrigem Ölpreis lohnt die Investition in Fracking-Projekte nicht.</string>
 
   </German>
