@@ -82,6 +82,7 @@ public class MenuGame : MonoBehaviour {
 	}
 	//Cualquiera que no sean minijuegos
 	public void GotoOther(string level){
+		textCargando.text = _playerPrefs.Lgui.getString("loadingscreen_text");
 		imgCargando.SetActive (true);
 		Application.LoadLevel(level);
 
