@@ -12,9 +12,9 @@ public class tutoLang : MonoBehaviour {
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		idMiniGame = _playerPrefs.MiniGameActual;
-		texto.text= _playerPrefs.LTutoriales.getString("tutorial_minigame_"+formatNumberString(idMiniGame,2));
+		texto.text= System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LTutoriales.getString("tutorial_minigame_"+formatNumberString(idMiniGame,2)));
 		textoQueHacer=(Text)GameObject.Find ("Txt_QueHacer").GetComponent<Text>();
-		textoQueHacer.text=_playerPrefs.Lgui.getString("tutorialscreen_title");
+		textoQueHacer.text=System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.Lgui.getString("tutorialscreen_title"));
 	}
 	
 	// Update is called once per frame
