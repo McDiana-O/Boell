@@ -27,7 +27,7 @@ public class scriptCredits : MonoBehaviour {
 		txtProgramacion.text= _playerPrefs.Lgui.getString("creditmenu_programacion");
 		txtAsistencia.text= _playerPrefs.Lgui.getString("creditmenu_asistencia");
 		txtSonido.text= _playerPrefs.Lgui.getString("creditmenu_sonido");
-		txtAgradecimiento.text= _playerPrefs.Lgui.getString("creditmenu_agradecimiento");
+		txtAgradecimiento.text=System.Text.RegularExpressions.Regex.Unescape( _playerPrefs.Lgui.getString("creditmenu_agradecimiento"));
 		txtInfo.text= _playerPrefs.Lgui.getString("creditmenu_info");
 		txtMitos.text= _playerPrefs.Lgui.getString("creditmenu_mitos");
 	}

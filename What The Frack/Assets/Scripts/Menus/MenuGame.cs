@@ -146,13 +146,18 @@ public class MenuGame : MonoBehaviour {
         objetos = GameObject.FindGameObjectsWithTag("txtrayos");
         int i=1; 
         foreach (GameObject objeto in objetos) {
-            if (i < 10)
+			//Debug.Log("d:"+objeto.name);
+			string s;
+			s = objeto.name.Substring(5,2);
+			Debug.Log("d:"+s);
+			objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_" + s+ "_title"));
+            /*if (i < 10)
             {
                 objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_0" + i + "_title"));
             }
             else {
                 objeto.GetComponent<Text>().text = System.Text.RegularExpressions.Regex.Unescape(_playerPrefs.LMenuMapa.getString("minigame_" + i + "_title"));
-            }
+            }*/
             i++;
         }
 
