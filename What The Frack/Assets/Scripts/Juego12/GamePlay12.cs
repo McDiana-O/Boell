@@ -174,6 +174,7 @@ public class GamePlay12 : MonoBehaviour {
 	public void InPause(){
 		_playerPrefs.SoundPauseApply (true);
 		_playerPrefs.CustomSoundMuteApply ("Carro",true);
+		_playerPrefs.CustomSoundMuteApply ("Carro2",true);
 		isPausing = true;
 		Time.timeScale=0;
 		MenuWinLose.SetActive(true);
@@ -182,6 +183,7 @@ public class GamePlay12 : MonoBehaviour {
 	public void OutPause(){
 		_playerPrefs.SoundPauseApply (false);
 		_playerPrefs.CustomSoundMuteApply ("Carro",false);
+		_playerPrefs.CustomSoundMuteApply ("Carro2",false);
 		isPausing = false;
 		MenuWinLose.SetActive(false);
 		Time.timeScale=1;

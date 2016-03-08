@@ -18,26 +18,27 @@ public class CisternaComportamiento : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (myState == stateCamion.Inactivo && camionEstado == 0) {
-			camionEstado=1;
-			anim.SetInteger ("Estado", camionEstado);
-		}
-		if (myState == stateCamion.Andando) {
-			if(camionEstado == 1){
-				camionEstado=2;
+		if (!_gameplay.isPausing) {
+			if (myState == stateCamion.Inactivo && camionEstado == 0) {
+				camionEstado = 1;
 				anim.SetInteger ("Estado", camionEstado);
 			}
-			else if(camionEstado == 2){
-				this.gameObject.transform.Translate(xMov,yMov,0.0f);
+			if (myState == stateCamion.Andando) {
+				if (camionEstado == 1) {
+					camionEstado = 2;
+					anim.SetInteger ("Estado", camionEstado);
+				} else if (camionEstado == 2) {
+					this.gameObject.transform.Translate (xMov, yMov, 0.0f);
+				}
 			}
-		}
-		if (myState == stateCamion.Vacio && camionEstado == 2) {
-			camionEstado=3;
-			anim.SetInteger ("Estado", camionEstado);
-		}
-		if (myState == stateCamion.Error && camionEstado == 2) {
-			camionEstado=4;
-			anim.SetInteger ("Estado", camionEstado);
+			if (myState == stateCamion.Vacio && camionEstado == 2) {
+				camionEstado = 3;
+				anim.SetInteger ("Estado", camionEstado);
+			}
+			if (myState == stateCamion.Error && camionEstado == 2) {
+				camionEstado = 4;
+				anim.SetInteger ("Estado", camionEstado);
+			}
 		}
 	}
 
