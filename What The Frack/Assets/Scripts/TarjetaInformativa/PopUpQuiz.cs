@@ -29,7 +29,17 @@ public class PopUpQuiz : MonoBehaviour {
 	public string[] TextQuiz;
 	private int  idCartaActiva = 0;
 	public SFX_Sounds SoundBotones;
-
+	//Idiomas Botones
+	//Bonton Falso
+	//public Button btnFalso;
+	private Image imgFalso;
+	private SpriteState spriteStateFalso;
+	public Sprite[] spritesFalso;
+	//Boton Verdadero
+	//public Button btnVerdad;
+	private Image imgVerdad;
+	private SpriteState spriteStateVerdad;
+	public Sprite[] spritesVerdad;
 	// Use this for initialization
 	void Start () {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
@@ -37,6 +47,12 @@ public class PopUpQuiz : MonoBehaviour {
 		timeStartLife = 0;
 		IsActivateMensaje=false;
 		IsActivateQuizBad = false;
+
+
+		imgFalso = btnFalse.GetComponent<Image>();
+		imgVerdad = btnTrue.GetComponent<Image>();
+
+		ChangeBotonesIdiomas(PlayerPrefs.GetString("Language"));
 
 	}
 
@@ -127,5 +143,48 @@ public class PopUpQuiz : MonoBehaviour {
 		if (AnimRed)
 			AnimRed.gameObject.SetActive(value);
 	}
+	//Idiomas
+	public void ChangeBotonesIdiomas(string Value)
+	{
+		
+		if (Value == "English")
+		{
+			imgFalso.sprite = spritesFalso[0];
+			spriteStateFalso.highlightedSprite = spritesFalso[0];
+			spriteStateFalso.pressedSprite = spritesFalso[1];
+			spriteStateFalso.disabledSprite = spritesFalso[1];
 
+			imgVerdad.sprite = spritesVerdad[0];
+			spriteStateVerdad.highlightedSprite = spritesVerdad[0];
+			spriteStateVerdad.pressedSprite = spritesVerdad[1];
+			spriteStateVerdad.disabledSprite = spritesVerdad[1];
+		}
+		else if (Value == "Spanish")
+		{
+			imgFalso.sprite = spritesFalso[2];
+			spriteStateFalso.highlightedSprite = spritesFalso[2];
+			spriteStateFalso.pressedSprite = spritesFalso[3];
+			spriteStateFalso.disabledSprite = spritesFalso[3];
+
+			imgVerdad.sprite = spritesVerdad[2];
+			spriteStateVerdad.highlightedSprite = spritesVerdad[2];
+			spriteStateVerdad.pressedSprite = spritesVerdad[3];
+			spriteStateVerdad.disabledSprite = spritesVerdad[3];
+
+		}
+		else if (Value == "German")
+		{	
+			imgFalso.sprite = spritesFalso[4];
+			spriteStateFalso.highlightedSprite = spritesFalso[4];
+			spriteStateFalso.pressedSprite = spritesFalso[5];
+			spriteStateFalso.disabledSprite = spritesFalso[5];
+				                                                  
+			imgVerdad.sprite = spritesVerdad[4];
+          	spriteStateVerdad.highlightedSprite = spritesVerdad[4];
+          	spriteStateVerdad.pressedSprite = spritesVerdad[5];
+          	spriteStateVerdad.disabledSprite = spritesVerdad[5];
+		}
+		btnFalse.spriteState = spriteStateFalso;
+		btnTrue.spriteState= spriteStateVerdad;
+	}
 }

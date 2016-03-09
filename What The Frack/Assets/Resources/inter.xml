@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <languages>
 	<English>
-		<string name="mainmenu_mapamundi_popup_completa">Complete all the challenges at the current level \nto unblock a greater difficulty level.</string>
+		<string name="mainmenu_mapamundi_popup_completa">Complete all the challenges at \nthe current level to unblock a \ngreater difficulty level.</string>
      	<string name="creditmenu_title">CREDITS</string>
 		<string name="creditmenu_direccion">Head of the Heinrich Böll Foundation's Office \nfor Mexico, Central America and the Caribbean</string>
 		<string name="creditmenu_investigacion">Research and Contents</string>
@@ -32,7 +32,7 @@
 		<string name="creditmenu_programacion">Programación</string>
 		<string name="creditmenu_asistencia">Asistencia en programación</string>
 		<string name="creditmenu_sonido">Diseño de Sonido</string>
-		<string name="creditmenu_agradecimiento">Agradecemos el apoyo de</string>
+		<string name="creditmenu_agradecimiento">Agradecemos el \napoyo de</string>
 		<string name="creditmenu_info">Más información</string>
 		<string name="creditmenu_mitos">"20 Mitos y realidades del fracking"</string>
 		<string name="creditmenu_loca_ingles">Localización Ingles</string>
@@ -47,7 +47,7 @@
 	</Spanish>
 
 	<German>
-		<string name="mainmenu_mapamundi_popup_completa">Überwinde alle Hürden dieses Levels, \num zur nächsten Schwierigkeitsstufe zu gelangen.</string>
+		<string name="mainmenu_mapamundi_popup_completa">Überwinde alle Hürden dieses Levels, \num zur nächsten Schwierigkeitsstufe \nzu gelangen.</string>
 		<string name="creditmenu_title">CREDITS</string>
 		<string name="creditmenu_direccion">Leitung der Heinrich Böll Stiftung \nMexiko, Zentralamerika und Karibik </string>
 		<string name="creditmenu_investigacion">Forschung und Inhalt</string>

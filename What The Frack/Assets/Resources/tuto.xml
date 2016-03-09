@@ -27,9 +27,9 @@
     <string name="tutorial_minigame_07">Toca en el momento justo para comenzar el punto\nde inflexión de la perforación y llegar al objetivo.</string>
     <string name="tutorial_minigame_08">Inclina el dispositivo para hacer la perforación\nlo más recta posible.</string>
     <string name="tutorial_minigame_09">Toca todos los explosivos a lo largo de la cañería para activarlos.</string>
-    <string name="tutorial_minigame_10">Toca rápidamente la pantalla para bombear el agua,\nmezclarla con químicos e inyectarla al pozo.</string>
+    <string name="tutorial_minigame_10">Toca rápidamente la pantalla para bombear el agua, mezclarla con químicos e inyectarla al pozo.</string>
     <string name="tutorial_minigame_11">Toca los contaminantes para sacarlos del tubo.</string>
-    <string name="tutorial_minigame_12">Toca un camión para activarlo y después\ntoca el lugar al que le corresponde llegar.\nLos camiones con residuos van a las Plantas de Tratamiento\ny los camiones con gas a la ciudad.</string>
+    <string name="tutorial_minigame_12">Toca un camión para activarlo y después\ntoca el lugar al que le corresponde llegar.\nLos camiones con residuos van a las Plantas de \nTratamiento y los camiones con gas a la ciudad.</string>
     <string name="tutorial_minigame_13">Haz taps rápidamente alternando derecha e izquierda.</string>
     <string name="tutorial_minigame_14">Toca los diferentes órganos dañados para sanarlos.</string>
 	</Spanish>

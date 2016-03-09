@@ -20,7 +20,7 @@ public class MenuGame : MonoBehaviour {
 	public GameObject tarjetaMensajeQuiz;
 	public GameObject resplandor;
     Text[] textosRayos;
-	//public int[] NivelesGames = new int[14];
+	//public int[] NivelesGames = new int[14]; 
 	public Image mapImg;
 	public Sprite[] Spritesmaps;
 
