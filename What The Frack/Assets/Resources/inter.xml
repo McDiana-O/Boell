@@ -12,8 +12,8 @@
 		<string name="creditmenu_agradecimiento">We express our appreciation \nfor the support from</string>
 		<string name="creditmenu_info">More information</string>
 		<string name="creditmenu_mitos">"20 myths and realities of fracking"</string>
-		<string name="creditmenu_loca_ingles">English</string>
-		<string name="creditmenu_loca_aleman">German</string>
+		<string name="creditmenu_loca_ingles">Localization English</string>
+		<string name="creditmenu_loca_aleman">Localization German</string>
 		<string name="loadingscreen_text">LOADING</string>
 		<string name="pausemenu_title">PAUSE</string>
 		<string name="tutorialscreen_title">WHAT TO DO?</string>
@@ -22,7 +22,7 @@
 		<string name="ingame_scene_lose_title">NO FRACK</string>
 		<string name="exitscreen_title">EXIT</string>
 	</English>
-
+ 
 	<Spanish>
 		<string name="mainmenu_mapamundi_popup_completa">Completa todos los retos en el Nivel actual \npara desbloquear una dificultad mayor.</string>
 		<string name="creditmenu_title">CREDITOS</string>
@@ -55,11 +55,11 @@
 		<string name="creditmenu_programacion">Programmierung</string>
 		<string name="creditmenu_asistencia">Assistent</string>
 		<string name="creditmenu_sonido">Sounddesign</string>
-		<string name="creditmenu_agradecimiento">Unser Dank für die Unterstützung geht an</string>
+		<string name="creditmenu_agradecimiento">\nUnser Dank für die Unterstützung geht an</string>
 		<string name="creditmenu_info">Weitere Informationen</string>
 		<string name="creditmenu_mitos">"20 Mythen und Wahrheiten über Fracking"</string>
-		<string name="creditmenu_loca_ingles">Englisch</string>
-		<string name="creditmenu_loca_aleman">Deutsch</string>
+		<string name="creditmenu_loca_ingles">Lokalisierung Englisch</string>
+		<string name="creditmenu_loca_aleman">Lokalisierung Deutsch</string>
 		<string name="loadingscreen_text">LÄDT</string>
 		<string name="pausemenu_title">PAUSE</string>
 		<string name="tutorialscreen_title">WAS IST ZU TUN?</string>
