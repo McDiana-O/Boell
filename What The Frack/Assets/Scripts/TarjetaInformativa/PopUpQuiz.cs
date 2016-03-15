@@ -150,11 +150,13 @@ public class PopUpQuiz : MonoBehaviour {
 		if (Value == "English")
 		{
 			imgFalso.sprite = spritesFalso[0];
+			imgFalso.SetNativeSize();
 			spriteStateFalso.highlightedSprite = spritesFalso[0];
 			spriteStateFalso.pressedSprite = spritesFalso[1];
 			spriteStateFalso.disabledSprite = spritesFalso[1];
 
 			imgVerdad.sprite = spritesVerdad[0];
+			imgVerdad.SetNativeSize();
 			spriteStateVerdad.highlightedSprite = spritesVerdad[0];
 			spriteStateVerdad.pressedSprite = spritesVerdad[1];
 			spriteStateVerdad.disabledSprite = spritesVerdad[1];
@@ -162,11 +164,13 @@ public class PopUpQuiz : MonoBehaviour {
 		else if (Value == "Spanish")
 		{
 			imgFalso.sprite = spritesFalso[2];
+			imgFalso.SetNativeSize();
 			spriteStateFalso.highlightedSprite = spritesFalso[2];
 			spriteStateFalso.pressedSprite = spritesFalso[3];
 			spriteStateFalso.disabledSprite = spritesFalso[3];
 
 			imgVerdad.sprite = spritesVerdad[2];
+			imgVerdad.SetNativeSize();
 			spriteStateVerdad.highlightedSprite = spritesVerdad[2];
 			spriteStateVerdad.pressedSprite = spritesVerdad[3];
 			spriteStateVerdad.disabledSprite = spritesVerdad[3];
@@ -175,11 +179,13 @@ public class PopUpQuiz : MonoBehaviour {
 		else if (Value == "German")
 		{	
 			imgFalso.sprite = spritesFalso[4];
+			imgFalso.SetNativeSize();
 			spriteStateFalso.highlightedSprite = spritesFalso[4];
 			spriteStateFalso.pressedSprite = spritesFalso[5];
 			spriteStateFalso.disabledSprite = spritesFalso[5];
 				                                                  
 			imgVerdad.sprite = spritesVerdad[4];
+			imgVerdad.SetNativeSize();
           	spriteStateVerdad.highlightedSprite = spritesVerdad[4];
           	spriteStateVerdad.pressedSprite = spritesVerdad[5];
           	spriteStateVerdad.disabledSprite = spritesVerdad[5];
