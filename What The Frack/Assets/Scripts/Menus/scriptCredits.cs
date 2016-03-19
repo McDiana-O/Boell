@@ -12,8 +12,10 @@ public class scriptCredits : MonoBehaviour {
 	public Text txtSonido;
 	public Text txtLocaIngles;
 	public Text txtLocaAleman;
+	public Text txtNombreLocaAleman;
 	public Text txtAgradecimiento;
 	public Text txtInfo;
+	public Text txtMasInfo;
 	public Text txtMitos;
 	private GamePlayerPrefs _playerPrefs;
 	public int idMiniGame;
@@ -31,8 +33,10 @@ public class scriptCredits : MonoBehaviour {
 		txtSonido.text= _playerPrefs.Lgui.getString("creditmenu_sonido");
 		txtLocaIngles.text=_playerPrefs.Lgui.getString("creditmenu_loca_ingles");
 		txtLocaAleman.text=_playerPrefs.Lgui.getString("creditmenu_loca_aleman");
+		txtNombreLocaAleman.text=_playerPrefs.Lgui.getString("textmenu_loca_aleman");
 		txtAgradecimiento.text=System.Text.RegularExpressions.Regex.Unescape( _playerPrefs.Lgui.getString("creditmenu_agradecimiento"));
 		txtInfo.text= _playerPrefs.Lgui.getString("creditmenu_info");
+		txtMasInfo.text=_playerPrefs.Lgui.getString("textmenu_info");
 		txtMitos.text= _playerPrefs.Lgui.getString("creditmenu_mitos");
 	}
 	
