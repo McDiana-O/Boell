@@ -400,10 +400,10 @@ public class GamePlayerPrefs : MonoBehaviour {
 	}
 
 	public void CamaraIpadResolution(){
-		GameObject Cam=	GameObject.FindGameObjectWithTag("MainCamara");
+		GameObject Cam=	GameObject.FindGameObjectWithTag("MainCamera");
 		if(isIpad==true)
 		{
-			Cam.GetComponent<CameraFit>().UnitsForWidth = 18f;
+			Cam.GetComponent<CameraFit>().UnitsForWidth = 16.25f;
 		}
 		else{
 			Cam.GetComponent<CameraFit>().UnitsForWidth = 14.6f;
