@@ -149,7 +149,7 @@ public class MenuGame : MonoBehaviour {
     void GetTxtRayos() {
         GameObject[] objetos;
         objetos = GameObject.FindGameObjectsWithTag("txtrayos");
-        int i=1; 
+//        int i=1; 
         foreach (GameObject objeto in objetos) {
 			//Debug.Log("d:"+objeto.name);
 			string s;

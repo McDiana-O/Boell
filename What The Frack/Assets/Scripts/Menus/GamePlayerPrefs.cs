@@ -5,7 +5,7 @@ using System.Collections;
 public class GamePlayerPrefs : MonoBehaviour {
 
 
-
+	public bool isIpad=false;
 	public int PuntosTotales;
 	public int NivelActual;
 	public int NivelMaximo;
@@ -56,12 +56,24 @@ public class GamePlayerPrefs : MonoBehaviour {
 		CreateNivelArray ();
 		CreateTutoArray ();
 		CreateCardsArray ();
-
+		IpadResolution();
     }
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	void IpadResolution(){
+		//Debug.Log(Screen.width+ ","+Screen.height);
+		// 2048x1536,1024x768
+		//if((Screen.width==768 || Screen.width==1536) && (Screen.height==1024 || Screen.height==2048)){
+		int divisionResolution=2048/1536;
+		if(divisionResolution == (Screen.height/Screen.width)){
+			isIpad=true;
+		}
+		else{
+			isIpad=false;
+		}
 	}
 	void CreateVariables(){
 		if (PlayerPrefs.HasKey ("Nivel")) {
@@ -387,4 +399,15 @@ public class GamePlayerPrefs : MonoBehaviour {
 		}
 	}
 
+	public void CamaraIpadResolution(){
+		GameObject Cam=	GameObject.FindGameObjectWithTag("MainCamara");
+		if(isIpad==true)
+		{
+			Cam.GetComponent<CameraFit>().UnitsForWidth = 18f;
+		}
+		else{
+			Cam.GetComponent<CameraFit>().UnitsForWidth = 14.6f;
+		}
+		
+	}
 }

@@ -42,11 +42,10 @@ public class AlmaJuego : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CamaraIpadResolution();
 	}
 	void Start () {
 		MyStateGame = stateGame.Inicio;
-
-
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown>();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
