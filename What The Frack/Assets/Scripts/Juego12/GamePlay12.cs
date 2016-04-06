@@ -35,6 +35,7 @@ public class GamePlay12 : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CamaraIpadResolution();
 		_playerPrefs.CustomSoundMuteApply ("Carro",_playerPrefs.OnMuteSFX == 1);
 		_playerPrefs.CustomSoundMuteApply ("Carro2",_playerPrefs.OnMuteSFX == 1);
 	}
