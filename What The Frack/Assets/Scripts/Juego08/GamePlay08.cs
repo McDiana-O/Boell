@@ -28,6 +28,7 @@ public class GamePlay08 : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CamaraIpadResolution();
 	}
 	void Start () {
 		_fondo = GameObject.FindGameObjectWithTag ("Fondo").GetComponent<WaterAnimacion> ();

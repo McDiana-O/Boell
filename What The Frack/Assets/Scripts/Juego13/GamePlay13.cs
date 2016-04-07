@@ -49,6 +49,7 @@ public class GamePlay13 : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
+		_playerPrefs.CamaraIpadResolution();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		myState = stateGame13.Begin;
 		nivel = _playerPrefs.NivelActual;

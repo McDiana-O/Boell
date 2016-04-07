@@ -41,6 +41,7 @@ public class AlmaJuego6 : MonoBehaviour {
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
 		_playerPrefs.CamaraIpadResolution();
+		IsIpad();
 		//nivel = PlayerPrefs.GetInt ("Nivel");nivel = PlayerPrefs.GetInt ("Nivel");
 		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
@@ -166,5 +167,13 @@ public class AlmaJuego6 : MonoBehaviour {
 			InitializeCracks();
 		}*/
 
+	}
+	void IsIpad(){
+		int[] posIpad=new int[] {7, 4, 1, -2,-5,-8,7, 4, 1, -2,-5,-8};
+		if(_playerPrefs.isIpad){
+			for(int i=0;i<cracks.Length;i++){
+				cracks[i].transform.position = new Vector3(cracks[i].transform.position.x,posIpad[i],cracks[i].transform.position.z);
+			}
+		}
 	}
 }

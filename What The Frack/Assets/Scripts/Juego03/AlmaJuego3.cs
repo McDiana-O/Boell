@@ -35,6 +35,7 @@ public class AlmaJuego3 : MonoBehaviour {
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
+		_playerPrefs.CamaraIpadResolution();
 		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 

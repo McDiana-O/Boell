@@ -35,7 +35,8 @@ public class GamePlay12 : MonoBehaviour {
 		_playerPrefs = GameObject.FindGameObjectWithTag ("GamePlayerPrefs").GetComponent<GamePlayerPrefs>();
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
-		_playerPrefs.CamaraIpadResolution();
+		//_playerPrefs.CamaraIpadResolution();
+		isIpad();
 		_playerPrefs.CustomSoundMuteApply ("Carro",_playerPrefs.OnMuteSFX == 1);
 		_playerPrefs.CustomSoundMuteApply ("Carro2",_playerPrefs.OnMuteSFX == 1);
 	}
@@ -217,5 +218,13 @@ public class GamePlay12 : MonoBehaviour {
 	
 	public void HideTarjetaInformativa(){
 		TarjetasInformativas.SetActive (false);
+	}
+	void isIpad(){
+		if(_playerPrefs.isIpad){
+			GameObject Cam=	GameObject.FindGameObjectWithTag("MainCamera");
+			GameObject fondo = GameObject.Find("mj01_fondo");
+			Cam.GetComponent<CameraFit>().UnitsForWidth = 18;
+			fondo.transform.localScale= new Vector3(1.18f,1f,1f);
+		}
 	}
 }

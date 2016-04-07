@@ -40,6 +40,7 @@ public class GamePlay11 : MonoBehaviour {
 		//nivel = _playerPrefs.NivelActual;
 		mystate = stateGameMini11.Pausa;
 		level= _playerPrefs.NivelActual;
+		_playerPrefs.CamaraIpadResolution();
 		posX [0] = -3.0f;
 		posX [1] = -2.1f;
 		posX [2] = -0.8f;
