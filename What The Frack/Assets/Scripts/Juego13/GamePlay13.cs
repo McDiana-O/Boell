@@ -198,5 +198,11 @@ public class GamePlay13 : MonoBehaviour {
 		
 	}
 
-
+	void IsIpad(){
+		if(_playerPrefs.isIpad){
+			GameObject cam = GameObject.FindGameObjectWithTag("Camera");
+			CameraFit camfit= cam.GetComponent<CameraFit>();
+			camfit.UnitsForWidth=18.11f;
+		}
+	}
 }

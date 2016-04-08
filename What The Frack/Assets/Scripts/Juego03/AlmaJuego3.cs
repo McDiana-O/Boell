@@ -36,6 +36,7 @@ public class AlmaJuego3 : MonoBehaviour {
 		_playerPrefs.SoundMuteApply ();
 		//nivel = PlayerPrefs.GetInt ("Nivel");
 		_playerPrefs.CamaraIpadResolution();
+		IsIpad();
 		nivel =_playerPrefs.NivelActual;
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 
@@ -148,5 +149,13 @@ public class AlmaJuego3 : MonoBehaviour {
 	public void lessPiletones(){
 		Piletonestotales -= 1;
 	}
+	void IsIpad(){
+		if(_playerPrefs.isIpad){
+			GameObject cam = GameObject.FindGameObjectWithTag("Camera");
+			CameraFit camfit= cam.GetComponent<CameraFit>();
+			camfit.UnitsForWidth=16.36f;
+			cam.transform.position= new Vector3(0.0f,-0.5f,-10.0f);
 
+		}
+	}
 }
