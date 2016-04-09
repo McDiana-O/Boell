@@ -50,6 +50,7 @@ public class GamePlay13 : MonoBehaviour {
 		_txtPuntos.text = _playerPrefs.getPointsTxt ();
 		_playerPrefs.SoundMuteApply ();
 		_playerPrefs.CamaraIpadResolution();
+		IsIpad();
 		_timeDown = GameObject.FindGameObjectWithTag ("Clock").GetComponent<timedown> ();
 		myState = stateGame13.Begin;
 		nivel = _playerPrefs.NivelActual;
@@ -200,7 +201,7 @@ public class GamePlay13 : MonoBehaviour {
 
 	void IsIpad(){
 		if(_playerPrefs.isIpad){
-			GameObject cam = GameObject.FindGameObjectWithTag("Camera");
+			GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
 			CameraFit camfit= cam.GetComponent<CameraFit>();
 			camfit.UnitsForWidth=18.11f;
 		}
