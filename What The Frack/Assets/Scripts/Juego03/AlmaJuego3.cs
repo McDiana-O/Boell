@@ -154,7 +154,7 @@ public class AlmaJuego3 : MonoBehaviour {
 			GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
 			CameraFit camfit= cam.GetComponent<CameraFit>();
 			camfit.UnitsForWidth=16.36f;
-			cam.transform.position= new Vector3(0.0f,-0.5f,-10.0f);
+			cam.transform.position= new Vector3(0.0f,-0.8f,-10.0f);
 
 		}
 	}
