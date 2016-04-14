@@ -153,7 +153,7 @@ public class AlmaJuego3 : MonoBehaviour {
 		if(_playerPrefs.isIpad){
 			GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
 			CameraFit camfit= cam.GetComponent<CameraFit>();
-			camfit.UnitsForWidth=16.36f;
+			camfit.UnitsForWidth=16.3f;
 			cam.transform.position= new Vector3(0.0f,-0.8f,-10.0f);
 
 		}
